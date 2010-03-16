@@ -1,0 +1,220 @@
+html,body,div,table,ul,li,form,input,label{
+	margin:0px;
+	padding:0px;
+}
+
+body{
+	font-family:"Trebuchet MS", Verdana, Arial, Sans-Serif;
+	font-size:18px;
+	background:White;
+	text-align: center;
+	min-width: 1200px;
+	background-repeat:repeat;
+}
+
+div#tlo{
+	position:relative;
+	z-index:1;
+	width:1200px;
+	height:0px;
+	margin-left: auto;
+	margin-right: auto;}
+
+div#strona{
+	position:relative;
+	z-index:2;
+	width:1009px;
+	height:797px;
+	margin-left: auto;
+	margin-right: auto}
+
+div#gora_pasek{
+	width: 1009px;
+	height: 158px;
+	background-image:url(../images/lajalt22_04.png);
+}
+
+/*
+div#main{
+	width: 1005px;
+	height: 651px;
+}
+*/
+
+div#lewy_pasek{
+	float: left;
+	width: 143px;
+	width: 143px;
+	height: 639px;
+	background-image:url(../images/a_06.png);
+}
+
+div#srodek_pasek{
+	float: left;
+	width: 538px;
+	height: 639px;
+	background-image:url(../images/a_07.png);
+}
+
+div#tekst_field_1{
+	float: left;
+	width: 531px;
+	height: 643px;
+	margin: 0px auto;
+}
+
+div#calender_container{
+	float: left;
+	width: 350px;
+	height: 630px;
+	margin: 0px auto;
+	padding: 100px 0px 0px 0px;
+}
+
+div#calendar{
+	width: 350px;
+	height: 310px;
+	margin: 0px auto;
+	padding: 20px 0px 0px 0px;
+}
+
+div#middlearea{
+	width: 350px;
+	height: 310px;
+	margin: 0px auto;
+	padding: 80px 0px 0px 0px;
+}
+
+div#colorimage_container{
+	float: left;
+	width: 181px;
+	height: 643px;
+	margin: 0px auto;
+}
+
+div#colorimage{
+	float: left;
+	font-size:14px;
+	width: 161px;
+	height: 643px;
+	margin: 0px auto;
+	padding: 20px 20px 0px 0px;
+}
+
+div#prawy_pasek{
+	float: left;
+	width: 328px;
+	height: 639px;
+	background-image:url(../images/a_08.png);
+}
+
+div#webcams{
+	float: left;
+	width: 328px;
+	height: 639px;
+	margin: 0px auto;
+}
+
+div#webcam1{
+	width: 300px;
+	height: 280px;
+	padding: 10px;
+	margin: 10px auto;
+}
+
+div#webcam2{
+	width: 300px;
+	height: 280px;
+	padding: 10px;
+	margin: 10px auto;
+}
+
+div#container_login_bar{
+	float:right;
+	width:30%;
+}
+
+div#container_top{
+	width:100%;
+}
+
+div#login_bar{
+	float:right;
+	padding: 20px 0px 0px 0px;
+	width:auto;
+	font-size:14px;
+}
+
+div#login_bar label{
+	width: 5em;
+	float: left;
+	text-align: right;
+	margin-right: 0.5em;
+	display: block
+}
+
+div#login_bar .submit input {
+	margin-left: 5.5em;
+}
+
+div#bottom_menu{
+	float:left;
+	position:relative;
+	right:-80px;
+	top:120px;
+}
+
+div#pass_reg{
+	float:right;
+	padding-right: 1.5em;
+	width:auto;
+	font-size:12px;
+}
+
+div#pass_reg a{
+	padding-left: 5px;
+}
+
+div#register_form{
+	font-size:14px;
+	position:relative;
+	float:left;
+	right:-110px;
+}
+
+div#bottom_menu a{
+	padding-left: 30px;
+	/*
+	width: 92px;
+	height: 47px;
+	background-image:url(../images/przycisk_07.png);
+	background-repeat: no-repeat;
+	*/
+}
+
+div#bottom_menu a:link {color:White}      /* unvisited link */
+div#bottom_menu a:visited {color:Purple}  /* visited link */
+div#bottom_menu a:hover {color:Black}  /* mouse over link */
+div#bottom_menu a:active {color:Red}
+
+legend{
+	font-size:18px;
+	text-align:center;
+}
+
+/*
+div#login-panel{
+	float:right;
+	position:absolute;
+	right:0px;
+	width:300px;
+    font-size:8pt;
+    font-weight:bold;
+    color: Black;
+	}
+div#center_top{
+	font-size:16;
+	font-color:Black;
+	float:center;
+}
+*/

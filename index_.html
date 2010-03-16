@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>Lappia Halli - Home Page</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="generator" content="Geany 0.18" />
+	<link rel="stylesheet" href="css/css.css" type="text/css">
+</head>
+
+<body>
+	<?php
+		include 'include/adduser.php';
+		include 'include/sqlconnect.php';
+		include 'include/calendar.php';
+		include 'include/login.php';
+		include	'include/area.php';
+		include 'include/manuachosersdate.php';
+		include 'include/genkey.php';
+		include 'include/formnonregister.php';
+	?>
+
+	<div id="tlo">
+	</div>
+
+	<div id="strona">
+
+		<div id="gora_pasek">
+			<div id="container_top">
+				<div id="login_bar">
+					<form action="#">
+						<p><label for="e-mail">E-mail:</label> <input type="text" id="e-mail" /></p>
+						<p><label for="password">Password:</label> <input type="password" id="password" /></p>
+						<p class="submit"><input type="submit" value="Login" /></p>
+					</form>
+					<div id="pass_reg">
+						<a href="html/lost_passwd.html">Lost Password?</a>
+						<a href="html/register.html">Register</a>
+					</div>
+					<!--<form action="" method="post">
+						E-mail:
+						<input name="username" type="text">
+						<br>
+						Password:
+						<input name="password" type="password">
+						<br>
+						<input type="submit" name="submit" value="Login">
+					</form>-->
+				</div>
+			</div>
+
+			<div id="bottom_menu">
+				<a href="#">Home</a>
+				<a href="html/costs.html">Costs</a>
+				<a href="html/au.html">About Us</a>
+				<a href="html/disc.html">Disclaimer</a>
+				<a href="html/pp.html">Privacy Policy</a>
+				<a href="html/help.html">Help</a>
+			</div>
+		</div>
+
+		<div id="lewy_pasek">
+			<div id="ad">
+			</div>
+		</div>
+
+		<div id="srodek_pasek">
+				<div id="text_field_1">
+					<div id="calender_container">
+						<div id="calender">
+							<h2>calendar</h2>
+						</div>
+						<div id="middlearea">
+							<h2>something</h2>
+						</div>
+					</div>
+
+					<div id="colorimage_container">
+						<div id="colorimage">
+							<h2>image here</h2>
+						</div>
+					</div>
+				</div>
+		</div>
+
+		<div id="prawy_pasek">
+			<div id="webcams">
+				<div id="webcam1">
+					<h2>webcam 1</h2>
+				</div>
+				<div id="webcam2">
+					<h2>webcam 2</h2>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
