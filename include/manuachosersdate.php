@@ -1,6 +1,6 @@
 <?php
 class ManuaChosersDate
-{
+{	
 	private $y;
 	private $m;
 	private $d;
@@ -8,8 +8,10 @@ class ManuaChosersDate
 	private $time;
 	private $duration;
 	private $area;
-	public function ManuaChosersDate($date)
+	private $infotab;
+	public function ManuaChosersDate($date,$infotab)
 	{
+		$this->infotab=$infotab;
 		if(isset($_POST['choserdate']))
 		{
 			$this->time=$_POST['areatime'];
@@ -17,35 +19,32 @@ class ManuaChosersDate
 			$this->area=$_POST['areaarea'];
 			$this->SetSessiondata();
 		}
-
+		
 		if(!isset($_POST['date'])){
 			$date=date("Y-m-d");
 		}
 		$this->ExplodeDate($date);
 		if(isset($_POST['areaday'])) $_SESSION["areadate"]=$_POST['areayear'].'-'.$_POST['areamonth'].'-'.$_POST['areaday'];
-
-		$this->dayinmonth=cal_days_in_month(CAL_GREGORIAN, $this->m, $this->y);
+		
+		$this->dayinmonth=cal_days_in_month(CAL_GREGORIAN, $this->m, $this->y);	
 	}
 	private function ExplodeDate($date)
 	{
 		$this->y=substr($date,0,4);
 		$this->m=substr($date,5,2);
-		$this->d=substr($date,8,2);
+		$this->d=substr($date,8,2);	
 	}
 	private function SetSessiondata(){
 		$_SESSION['areatime']=$this->time;
-	//	$_SESSION['areamonth']=
-	//	$_SESSION['areaday']=
-	//	$_SESSION['areayear']=
 		$_SESSION['areaduration']=$this->duration;
 		$_SESSION['areaarea']=$this->area;
 	}
 	public function ShowForm()
 	{
-
+			
 			$test=false;
 			if(isset($_POST['next_step'])) $test=$this->CheckAvailability();
-
+			
 			echo "<form action='index.php' method=post>";
 			echo "Select Area:";
 			$this->ShowListArea("areaarea");
@@ -58,13 +57,18 @@ class ManuaChosersDate
 			echo "<br>Duration";
 			$this->ShowList("areaduration",1,24,$this->duration);
 			echo '<INPUT TYPE=hidden NAME=choserdate VALUE="send">';
-			echo "<br><input type=submit name=next_step value='Check'>";
+			echo "<br><input type=submit name=next_step value='Chack'>";
 			echo "</form>";
-
+	
 			echo "<FORM METHOD='LINK' action='test.php'>";
-			if($test) echo "<button type='submit' name='next_step' value='true'>Go to reservation</button>";
+			if($test){
+				echo "<button type='submit' name='next_step' value='true'>Go to reservation</button>";
+				//"fruits"  => array("a" => "orange", "b" => "banana", "c" => "apple"),
+				$reservation=array('date' => $_SESSION['areadate'], 'time' => $_SESSION['areatime'],'duration' => $_SESSION['areaduration'],'area'=>$_SESSION['areaarea']);
+				$_SESSION['reservation']=$reservation;
+			}
 			else echo "<button type='submit' disabled='disabled' name='next_step' value='false'>Go to reservation</button>";
-			echo "</FORM>";
+			echo "</FORM>"; 
 		/*
 		areaday
 		areamonth
@@ -73,34 +77,55 @@ class ManuaChosersDate
 		areaduration
 		*/
 	}
-
+	
 	private function CheckAvailability()
 	{
-
 		$date_start_time=mktime($_POST['areatime'], 0, 0,$_POST['areamonth'], $_POST['areaday'], $_POST['areayear']);
 		$date_finish_time=$date_start_time+(($_POST['areaduration'])*60*60);
 		$ds=date('Y-m-d',$date_start_time);
+		$ds0=date('Y-m-d',$date_start_time-24*60*60); //startdate -24 h
 		$df=date('Y-m-d',$date_finish_time);
-		$ts=date('H:i',$date_start_time);
-		$tf=date('H:i',$date_finish_time);
-		$tfm=date('H:i',$date_finish_time-(60*60));
-		$tsm=date('H:i',$date_start_time-(60*60));
-		$tsu=date('H:i',$date_start_time+(60*60));
+		$df1=date('Y-m-d',$date_finish_time+24*60*60); //finishdate +24 h
+	
 		$area=$_POST['areaarea'];
-
+		
 		//select * from Reservation where Startingdate BETWEEN '2010-10-01' AND '2010-12-01' and Endingdate BETWEEN '2010-10-01' AND '2010-12-01' and Statingtime BETWEEN '08:00' and '17:00' and Endingtime BETWEEN '08:00' and '17:00';
-
-		$query="select * from Reservation where Startingdate BETWEEN '$ds' AND '$df' and Endingdate BETWEEN '$ds' AND '$df' and Statingtime BETWEEN '$ts' and '$tfm' and Endingtime BETWEEN '$tsu' and '$tf' and area='$area' and Rstat is NULL or Rstat='0'";
-
-	//	echo $query;
-		if(mysql_num_rows(mysql_query($query)))
-		{
-			echo '<br>'.mysql_error();
-			$_POST['next_step']='inclorect';
-			return false;
+		
+		$query="select Startingdate, Statingtime,Endingdate, Endingtime from Reservation where Startingdate BETWEEN '$ds0' AND '$df' and Endingdate BETWEEN '$ds' AND '$df1' and area='$area' and idAdminuser is not NULL";
+		
+		//echo $query;
+		$result=mysql_query($query);
+		if(mysql_num_rows($result))
+		{	
+			echo '<br>' .mysql_num_rows($result);
+			while($row=mysql_fetch_assoc($result)) 
+				if(!$this->CheckTime($row,$date_start_time,$date_finish_time)) { echo $this->infotab['busy_period'];$_POST['next_step']='incorect';return false;}
 		}
+		echo $this->infotab['free_time']; 
 		$_POST['next_step']='corect';
 		return true;
+	}
+	public function CheckTime($assocarray,$stime,$ftime)
+	{
+		$arr=$assocarray;
+		$sm=substr($arr['Startingdate'],5,2);
+		$sd=substr($arr['Startingdate'],8,2);
+		$sy=substr($arr['Startingdate'],0,4);
+		$sh=substr($arr['Statingtime'],0,2);
+		$smin=substr($arr['Statingtime'],3,2);
+		$fm=substr($arr['Endingdate'],5,2);
+		$fd=substr($arr['Endingdate'],8,2);
+		$fy=substr($arr['Endingdate'],0,2);
+		$fh=substr($arr['Endingtime'],0,2);
+		$fmin=substr($arr['Endingtime'],3,2);
+		
+		$start=mktime($sh,$smin,0,$sm,$sd,$sy);
+		$finish=mktime($fh,$fmin,0,$fm,$fd,$fy);
+		
+	//echo "<br>data $sy $sm $sd time $sh $smin finish date $fy $fm $fd time $fh $fmin<br>";
+		if(($start > $stime && $start >= $ftime) || ($finish <= $stime && $finish < $ftime)) return true;
+		
+		return false;
 	}
 	public function SetCalendar($calendar)
 	{
@@ -122,7 +147,7 @@ class ManuaChosersDate
 				else $menu.= "<option value='".sprintf("%02d",$i)."'>".sprintf("%02d",$i)."</option>";
 			}
 		$menu.= "</select>";
-
+		
 		echo  $menu;
 	}
 	private function ShowListArea($name)
@@ -146,6 +171,6 @@ class ManuaChosersDate
 			echo "<option value='B'>Area B</option>";
 		}
 		echo "</select>";
-	}
+	}	
 }
 ?>

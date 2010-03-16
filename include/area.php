@@ -1,4 +1,60 @@
 <?php
+class UserRecord
+{
+	public $cperson;
+	public $area;
+	public $rstat;
+	public function UserRecord($cperson,$area,$rstat=0)
+	{	
+		$this->cperson=$cperson;
+		$this->area=$area;
+		if($rstat == NULL) $this->rsta=NULL;
+		$this->rstat=$rstat;
+	}
+}
+	/*
+	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
+	*| area | Statingtime | Endingtime | Startingdate | Endingdate | cperson | idAdminuser | Reservecode |
+	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
+	*| A    | 08:00:00    | 18:00:00   | 2010-03-05   | 2010-03-05 | x       |        NULL | NULL        | 
+	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
+	*/
+class DataTable
+{
+	public  $areaA;
+	public  $areaB;
+public function DataTable($result)
+	{
+		for($i=0;$i < 24;$i++) $this->areaA[$i]=NULL;
+		for($i=0;$i < 24;$i++) $this->areaB[$i]=NULL;
+		$this->CreateTable($result);
+	}
+	public function CreateTable($result)
+	{
+		while($row = mysql_fetch_array($result,MYSQL_ASSOC)){
+			$row;
+			if($row['Startingdate']!=$row['Endingdate']) $row['Statingtime']='00';
+			$startime=(int)substr($row['Statingtime'],0,2);
+			$endtime=(int)substr($row['Endingtime'],0,2);
+			for($i=$startime;$i < $endtime;$i++)
+			{
+					$rstat=0;
+					if($row['idAdminuser'] != NULL) $rstat=1;
+					$tmpobject= new UserRecord($row['cperson'],$row['area'],$rstat);
+					if($row['area'] == 'A')
+					{
+						if($this->areaA[$i] == NULL) $this->areaA[$i]=array();
+						array_push($this->areaA[$i],$tmpobject);
+					}
+					else 
+					{
+						if($this->areaB[$i] == NULL) $this->areaB[$i]=array();
+						array_push($this->areaB[$i],$tmpobject);
+					}
+			}
+		}
+	}
+}
 class Area 
 {
 	private $adate;
@@ -7,7 +63,7 @@ class Area
 	private $acolorc2c3;
 	private $acolorreservednotchack;
 	private $acolorreserved;
-	public function Area($date,$colorc1='c9cfc4',$colorc2c3='91d94a',$colorreservednotchack='yellow',$colorreserved='red')
+	public function Area($date,$colorc1='c9cfc4',$colorc2c3='86c856',$colorreservednotchack='fbf963',$colorreserved='red')
 	{
 		$this->acolorc1=$colorc1;
 		$this->acolorc2c3=$colorc2c3;
@@ -29,56 +85,37 @@ class Area
 			$this->ShowArea();
 		}
 	}
-	private function getReservationTable($date) //2010-11-01
+	private function getReservationTable($sdate) 
 	{
-		$nquwey="select  r.area, r.Statingtime, r.Endingtime, ru.Contactperson cperson , Rstat from Reservation r ,registereduser ru where r.RegisteredEmailaddress=ru.RegisteredEmailaddress and Startingdate='".$date."' union all select  r.area, r.Statingtime, r.Endingtime, nru.Contactperson cperson, Rstat from Reservation r ,Unregistereduser nru where r.idUnregistereduser=nru.idUnregistereduser and Startingdate='".$date."' order by Statingtime";
-//		echo "<br>" .$nquwey. "<br>";
-		$query="select r.Statingtime,r.area,r.Rstat,reg.Contactperson from Reservation r,registereduser reg where r.RegisteredEmailaddress=reg.RegisteredEmailaddress and Startingdate='".$date."' order by Statingtime";
+	$y=substr($sdate,0,4);
+		$m=substr($sdate,5,2);
+		$d=substr($sdate,8,2);
+		$mkt=mktime(0,0,0,$m,$d,$y);
+		$edate=date('Y-m-d',$mkt-24*60*60);
+		$query_part2="select r.area, r.Statingtime, r.Endingtime,r.Startingdate,r.Endingdate,nru.Contactperson cperson, r.idAdminuser,r.Reservecode from Reservation r ,Unregistereduser nru where r.idUnregistereduser=nru.idUnregistereduser and Startingdate between '".$edate."' and '".$sdate."' and Endingdate!= '".$edate."'";
+		$query_part1="select r.area, r.Statingtime, r.Endingtime,r.Startingdate,r.Endingdate,ru.Contactperson cperson,r.idAdminuser,r.Reservecode from Reservation r ,registereduser ru where r.idRegistereduser=ru.idRegistereduser and Startingdate between '".$edate."' and '".$sdate."' and Endingdate!= '".$edate."'";
+		$query= $query_part1 . " union all " . $query_part2 ." order by Startingdate,Statingtime";
 		$result=mysql_query($query);
-		if(!mysql_num_rows($result))
-		{
-			$query="select r.Statingtime,r.area,r.Rstat,reg.Contactperson from Reservation r, Unregistereduser reg where r.idUnregistereduser=reg.idUnregistereduser and Startingdate='".$date."' order by Statingtime";	
-			$result=mysql_query($query);
-		}
-		
-		$array;
-		$i=0;
-	 	while($row = mysql_fetch_array($result, MYSQL_NUM)){
-	 		$array[$i]=$row;
-	 		$i++;                                     
-        }
-        $this->coll=$i;
-		return  $array;                		
+	//	echo "<br> AREA query<br> $query<br>".mysql_errno();
+		$dtable= new DataTable($result);
+		return  $dtable;                		
 	}
-	private function ChangeColor($time, $area)
-	{
-			
-		$tmp=$this->getReservationTable($this->adate);
-		for($i=0; $i < $this->coll ; $i++)
-		{
-			if(substr($tmp[$i][0],0,5) == $time && $area == $tmp[$i][1])	
-			{
-				$color;
-				if($tmp[$i][2] == 1) $color=$this->acolorreserved;
-				else if( $tmp[$i][2]==0) $color=$this->acolorreservednotchack;
-				return "<td BGCOLOR='".$color."'>".$tmp[$i][3]."</td>\n";
-			}
-			
-		}
-		return null;
-	}
+	
 	/*
-	 *+------+-------------+------------+---------+-------+
-	 *| area | Statingtime | Endingtime | cperson | Rstat |
-	 *+------+-------------+------------+---------+-------+
-	 *| A    | 00:00:00    | 01:00:00   | x       |  NULL | 
-	 *+------+-------------+------------+---------+-------+
-	 */
+	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
+	*| area | Statingtime | Endingtime | Startingdate | Endingdate | cperson | idAdminuser | Reservecode |
+	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
+	*| A    | 08:00:00    | 18:00:00   | 2010-03-05   | 2010-03-05 | x       |        NULL | NULL        | 
+	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
+	*/
 	public function ShowArea()
 	{
-	 	$mtable="<table>";
-        $mtable.="<tr><td></td><td>A</td><td>B</td></tr>";
-	 	echo $_SESSION["areadate"].'<br>';
+		
+		$dtab= $this->getReservationTable($this->adate);
+		$mtable="<table>";
+		$mtable.= "<caption>".$this->adate.'</caption>'."\n";
+        $mtable.="<tr><td></td><th>A</th><th>B</th></tr>";
+	 
 	   	for($i=0;$i <= 23;$i++)
         {
         	$mtable .= "<tr>\n";
@@ -88,15 +125,39 @@ class Area
                 switch($j)
                 {
                 	case 0:
-                    	$mtable .= '<td class="area_cool1" BGCOLOR='.$this->acolorc1.'>'.$ltime.'</td>'."\n";
+                    	$mtable .= "<td class='area_cool1' BGCOLOR='$this->acolorc1'>$ltime</td>";
                     break;
                     	case 1:
-                    	if(($tmpstr=$this->ChangeColor($ltime, 'A')) != null) $mtable.=$tmpstr;
-                    	else $mtable .= '<td class="area" BGCOLOR='.$this->acolorc2c3.'> </td>'."\n";
-                    break;
+                    	$mtable.="<td class='area'";
+                    	$info;
+                    	$c=count($dtab->areaA[$i]);
+                    	if( $c > 0 ){
+                    		$object= $dtab->areaA[$i];
+                    		if( $c == 1 ) $mtable.=$this->ChangeColor($object[0]->rstat);
+                    		else{
+                    			$setcolor=0;
+                   				for($x=0;$x < count($object);$x++) if($object[$x]->rstat == 1) $setcolor=$object[$x]->rstat;
+                    			$mtable.=$this->ChangeColor($setcolor);
+                    		}
+                    	}
+                    	else $mtable.=" BGCOLOR='$this->acolorc2c3'>";
+                    	$mtable.="</td>";
+                   break;
                     case 2:
-                    	if(($tmpstr=$this->ChangeColor($ltime, 'B')) != null) $mtable.=$tmpstr;
-                    	else $mtable .= '<td class="area" BGCOLOR='.$this->acolorc2c3.'> </td>'."\n";
+                    	$mtable.="<td class='area'";
+                    	$info;
+                    	$c=count($dtab->areaB[$i]);
+                    	if( $c > 0 ){
+                    		$object= $dtab->areaB[$i];
+                    		if( $c == 1 ) $mtable.=$this->ChangeColor($object[0]->rstat);
+                    		else{
+                    			$setcolor=0;
+                   				for($x=0;$x < count($object);$x++) if($object[$x]->rstat == 1) $setcolor=$object[$x]->rstat;
+                    			$mtable.=$this->ChangeColor($setcolor);
+                    		}
+                    	}
+                    	else $mtable.=" BGCOLOR='$this->acolorc2c3'>";
+                    	$mtable.="</td>";
                     break;
                 }	
 	        }
@@ -105,5 +166,10 @@ class Area
         $mtable .= "</table>";
         echo $mtable;
      }	
+     public function ChangeColor($change)
+     {
+     	if($change == 0) return " BGCOLOR='$this->acolorreservednotchack'>";
+     	return " BGCOLOR='$this->acolorreserved'>" .$info;
+     }
 }
 ?>

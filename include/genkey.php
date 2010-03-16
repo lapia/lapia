@@ -2,11 +2,19 @@
 class GenKey{
 	
 	private $code;
+	private $timestemp;
 	function GenKey($mail,$table,$col)
 	{
-		//$mail.=mktime();
-		$code=substr(md5($mail.=mktime()),0,24);
-		while(!$this->CheckCode($table,$col,$code)) $code=substr(md5($mail.=mktime()),0,24);
+		$this->timestemp=time();
+		$code=substr(md5($mail.$this->timestemp),0,25);
+		$test;
+		while(!($test=$this->CheckCode($table,$col,$code))){
+			if (!test)
+			{
+				$this->timestemp=time();
+				$code=substr(md5($mail.$timestemp));
+			}
+		}
 		
 		$this->code=$code; 
 	}
@@ -18,5 +26,6 @@ class GenKey{
 		return true;
 	}
 	public function GetCode() {return $this->code;}
+	public function GetTimestemp() { return $this->timestemp;}
 }
 ?>

@@ -50,20 +50,24 @@ class FormNonRegister
 	}
 	function AdReservation()
 	{
-		$this->ExplodeDate($_SESSION['areadate']);
+		//$reservation=array('date' => $_SESSION['areadate'], 'time' => $_SESSION['areatime'],'duration' => $_SESSION['areaduration'],'area'=>$_SESSION['areaarea']);
+		//$_SESSION['reservation']=$reservation;
+		$reservation=$_SESSION['reservation'];
+		$this->ExplodeDate($reservation['date']);
 		
-		$key=new GenKey($_POST['mail'],'Reservation','Reservecode');
-		$key=$key->GetCode();
-		$date_start_time=mktime($_SESSION['areatime'], 0, 0,$this->m, $this->d, $this->y);
-		$date_finish_time=$date_start_time+(($_SESSION['areaduration'])*60*60);
+		$gkey=new GenKey($_POST['mail'],'Reservation','Reservecode');
+		$key=$gkey->GetCode();
+		$tstemp=$gkey->GetTimestemp();
+		$date_start_time=mktime($reservation['time'], 0, 0,$this->m, $this->d, $this->y);
+		$date_finish_time=$date_start_time+(($reservation['duration'])*60*60);
 		$ds=date('Y-m-d',$date_start_time);
 		$df=date('Y-m-d',$date_finish_time);
 		$ts=date('H:i',$date_start_time);
 		$tf=date('H:i',$date_finish_time);
 		$query="(select idUnregistereduser from Unregistereduser where UnregisteredEmailaddress='".$_POST['mail']."' and Address='".$_POST["addres"]."' and Contactperson='".$_POST["cpersopn"]."' and OrganizatioNname='".$_POST["noforganization"]."' and phone='".$_POST["phone"]."')";
-		$aquery="insert into Reservation( Reservecode,area,Statingtime,Endingtime,Startingdate,Endingdate,idUnregistereduser) values('$key','".$_SESSION['areaarea']."','$ts','$tf','$ds','$df',$query)";
+		$aquery="insert into Reservation( area,Statingtime,Endingtime,Startingdate,Endingdate,idUnregistereduser,TimeStemp) values('".$reservation['area']."','$ts','$tf','$ds','$df',$query,'$tstemp')";
 		mysql_query($aquery);
-		echo '<br> rezerwacja <br> :' . $aquery . mysql_error();
+		echo '<br> nowe rezerwacja <br> :' . $aquery . mysql_error();
 		
 	}
 	private function ExplodeDate($date)
