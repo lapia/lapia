@@ -65,40 +65,35 @@ div#tekst_field_1{
 
 div#calender_container{
 	float: left;
-	width: 350px;
+	width: 400px;
 	height: 630px;
 	margin: 0px auto;
-	padding: 100px 0px 0px 0px;
 }
 
 div#calendar{
-	width: 350px;
-	height: 310px;
+	width: 400px;
+	height: 315px;
 	margin: 0px auto;
-	padding: 20px 0px 0px 0px;
 }
 
 div#middlearea{
-	width: 350px;
-	height: 310px;
+	width: 400px;
+	height: 315px;
 	margin: 0px auto;
-	padding: 80px 0px 0px 0px;
 }
 
 div#colorimage_container{
 	float: left;
-	width: 181px;
+	width: 131px;
 	height: 643px;
 	margin: 0px auto;
 }
 
 div#colorimage{
 	float: left;
-	font-size:14px;
-	width: 161px;
+	width: 131px;
 	height: 643px;
 	margin: 0px auto;
-	padding: 20px 20px 0px 0px;
 }
 
 div#prawy_pasek{
@@ -131,16 +126,31 @@ div#webcam2{
 
 div#container_login_bar{
 	float:right;
+	position:relative;
 	width:30%;
 }
 
 div#container_top{
+	position:relative;
 	width:100%;
 }
 
 div#login_bar{
 	float:right;
-	padding: 20px 0px 0px 0px;
+	margin-right: 20px;
+	width:auto;
+	font-size:14px;
+}
+div#login_bar2{
+	font-size:14px;
+	position:relative;
+	float:left;
+	right:-110px;
+}
+div#logout_bar{
+	top:-100px;
+	float:right;
+	margin-right: 20px;
 	width:auto;
 	font-size:14px;
 }
@@ -152,8 +162,19 @@ div#login_bar label{
 	margin-right: 0.5em;
 	display: block
 }
+div#login_bar2 label{
+	width: 5em;
+	float: left;
+	text-align: right;
+	margin-right: 0.5em;
+	display: block
+}
+
 
 div#login_bar .submit input {
+	margin-left: 5.5em;
+}
+div#login_bar2 .submit input {
 	margin-left: 5.5em;
 }
 
@@ -169,10 +190,43 @@ div#pass_reg{
 	padding-right: 1.5em;
 	width:auto;
 	font-size:12px;
+	font:
+}
+div#pass_reg2{
+	font-size:14px;
+	position:relative;
+	right:130px;
+	top:150px;
+}
+div#logout{
+	top:-100px;
+	float:right;
+	padding-right: 1.5em;
+	width:auto;
+	font-size:12px;
 }
 
 div#pass_reg a{
 	padding-left: 5px;
+}
+div#pass_reg2 a{
+	padding-left: 4px;
+}
+div#alert p{
+top:-40px;
+padding-left: 5px;
+color:Red;
+padding-right: 1.5em;
+width:auto;
+font-size:14px;
+}
+div#welcome_note p{
+top:-40px;
+padding-left: 8em;
+color:#20BF9F;
+padding-right: 1.5em;
+width:auto;
+font-size:18px;
 }
 
 div#register_form{
@@ -193,9 +247,11 @@ div#bottom_menu a{
 }
 
 div#bottom_menu a:link {color:White}      /* unvisited link */
-div#bottom_menu a:visited {color:Purple}  /* visited link */
-div#bottom_menu a:hover {color:Black}  /* mouse over link */
-div#bottom_menu a:active {color:Red}
+div#bottom_menu a:visited {color:#CFECEC}  /* visited link */
+div#pass_reg a:visited {color:#CFECEC} 
+div#pass_reg a:hover{color:#CFECEC} 
+div#bottom_menu a:hover {color:#DAF4F0}  /* mouse over link */
+div#bottom_menu a:active {color:#CFECEC}
 
 legend{
 	font-size:18px;
