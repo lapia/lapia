@@ -53,14 +53,14 @@
 
 <body>
 	<?php
-		include 'include/adduser.php';
-		include 'include/sqlconnect.php';
-		include 'include/calendar.php';
-		include 'include/login.php';
-		include 'include/area.php';
-		include 'include/manuachosersdate.php';
-		include 'include/genkey.php';
-		include 'include/formnonregister.php';
+		include '../include/adduser.php';
+		include '../include/sqlconnect.php';
+		include '../include/calendar.php';
+		include '../include/login.php';
+		include '../include/area.php';
+		include '../include/manuachosersdate.php';
+		include '../include/genkey.php';
+		include '../include/formnonregister.php';
 
 		$dbconn = new SqlConnect("localhost","root","test1","LHR");
 		$dbconn->connectToDb();
@@ -108,28 +108,16 @@
 				<div id="text_field_1">
 					<div id="calender_container">
 						<div id="calender">
-							<?php
-								$cal=new Calendar();
-								$rol=new ManuaChosersDate($_POST['date']);
-								$rol->SetCalendar($cal);
-								$cal->sHowCalendar();
-							?>
+								<h1>Policy - we have none :D</h1>
 						</div>
 						<div id="middlearea">
-							<?php
-								$rol->ShowForm();
-							?>
+
 						</div>
 					</div>
 
 					<div id="colorimage_container">
 						<div id="colorimage">
-							<?php
-								$area=new Area($_POST['date']);
 
-								echo "<br>check:" .$_POST['next_step'];
-								$dbconn->disocnnect();
-							?>
 						</div>
 					</div>
 				</div>
