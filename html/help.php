@@ -10,7 +10,7 @@
 	<title>Lappia Halli - Help</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
-	<link rel="stylesheet" href="css.css" type="text/css">
+	<link rel="stylesheet" href="../css/css.css" type="text/css">
 
 	<style type="text/css">
 	<!--
