@@ -7,10 +7,10 @@
 ?>
 
 <head>
-	<title>Lappia Halli - Home Page</title>
+	<title>Lappia Halli - Disclamer</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
-	<link rel="stylesheet" href="css/css.css" type="text/css">
+	<link rel="stylesheet" href="../css/css.css" type="text/css">
 
 	<style type="text/css">
 	<!--
@@ -90,12 +90,12 @@
 			</div>
 
 			<div id="bottom_menu">
-				<a href="#">Home Page</a>
-				<a href="html/costs.php">Costs</a>
-				<a href="html/aboutus.php">About Us</a>
-				<a href="html/disclamer.php">Disclaimer</a>
-				<a href="html/privacypolicy.php">Privacy Policy</a>
-				<a href="html/help.php">Help</a>
+				<a href="../index.php">Home Page</a>
+				<a href="costs.php">Costs</a>
+				<a href="aboutus.php">About Us</a>
+				<a href="disclamer.php">Disclaimer</a>
+				<a href="privacypolicy.php">Privacy Policy</a>
+				<a href="help.php">Help</a>
 			</div>
 		</div>
 
@@ -143,24 +143,24 @@
 					function LoadNewImage() {
 						var unique = new Date();
 						document.images.webcam.src = newImage.src;
-						newImage.src = "images/1265849610942_20.jpg?time=" + unique.getTime();
+						newImage.src = "../images/1265849610942_20.jpg?time=" + unique.getTime();
 					}
 
 					function InitialImage() {
 						var unique = new Date();
 						newImage.onload = LoadNewImage;
-						newImage.src = "images/1265849610942_20.jpg?time=" + unique.getTime();
+						newImage.src = "../images/1265849610942_20.jpg?time=" + unique.getTime();
 						document.images.webcam.onload="";
 					}
 				</script>
 
 				<div id="webcam1">
 					<!--<h3>A</h3>-->
-					<img src="images/1265849610942_20.jpg" name="webcam" width="300" height="280">
+					<img src="../images/1265849610942_20.jpg" name="webcam" width="300" height="280">
 				</div>
 				<div id="webcam2">
 					<!--<h3>A</h3>-->
-					<img src="images/1265849610942_20.jpg" name="webcam" width="300" height="280">
+					<img src="../images/1265849610942_20.jpg" name="webcam" width="300" height="280">
 				</div>
 			</div>
 		</div>
