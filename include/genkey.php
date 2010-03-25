@@ -3,10 +3,10 @@ class GenKey{
 	
 	private $code;
 	private $timestemp;
-	function GenKey($mail,$table,$col)
+	function GenKey($mail,$table,$col,$lenght)
 	{
 		$this->timestemp=time();
-		$code=substr(md5($mail.$this->timestemp),0,25);
+		$code=substr(md5($mail.$this->timestemp),0,$lenght);
 		$test;
 		while(!($test=$this->CheckCode($table,$col,$code))){
 			if (!test)

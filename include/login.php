@@ -8,7 +8,7 @@ class Login
                 if($_GET["logedout"]=="yes")
                 {
                         echo "You have been loged out ";
-                        $_SESSION["logedin"]="logedout";
+                        unset($_SESSION['username']);
                         $_SESSION['userid']=0;
                 }
                 if(isset($_POST['inlogin'])){
@@ -17,15 +17,15 @@ class Login
                                 for($i=strlen($_POST["password"]);$i > 0;$i--) $p=$p.'x';
                                 $this->ShowLogin("loged in",$_POST["login"],$p);
                                 $_SESSION["logedin"]="true";
-                                $_SESSION["Loginlogin"]=$_POST["login"];
+                                $_SESSION['username']=$_POST["login"];
                                 $_SESSION["Loginpassword"]=$p;
                                 echo "<a href='index.php?logedout=yes'> loged out</a>";
-                        }else $_SESSION["logedin"]= 'false';
+                        }else echo "<script type='text/javascript'>document.location = 'http://localhost/Lapia/newuser.php'</script>";
                 }else
                 {
-                        if($_SESSION["logedin"] == 'false') $this->ShowLogin("Wrong password or login!!!");
+                        if(!isset($_SESSION['username'])) $this->ShowLogin("you have not logged in!!!");
                         else{
-                                $this->ShowLogin("loged in",$_SESSION["Loginlogin"],$_SESSION["Loginpassword"]);
+                                $this->ShowLogin("loged in",$_SESSION['username'],$_SESSION["Loginpassword"]);
                                 echo "<a href='index.php?logedout=yes'> loged out</a>";
                         }
                 }

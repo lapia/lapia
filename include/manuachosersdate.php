@@ -1,4 +1,5 @@
-<?php
+<?php 
+echo "<script src='include/submitform.js' type='text/javascript'></script>";
 class ManuaChosersDate
 {	
 	private $y;
@@ -19,10 +20,20 @@ class ManuaChosersDate
 			$this->area=$_POST['areaarea'];
 			$this->SetSessiondata();
 		}
+		else
+		{
+			$this->ExplodeDate($_POST['date']);
+			$this->area='A';
+			$this->time=0;
+			$this->duration=1;
+			$this->SetSessiondata();
+		}
+		
 		
 		if(!isset($_POST['date'])){
 			$date=date("Y-m-d");
 		}
+		
 		$this->ExplodeDate($date);
 		if(isset($_POST['areaday'])) $_SESSION["areadate"]=$_POST['areayear'].'-'.$_POST['areamonth'].'-'.$_POST['areaday'];
 		
@@ -43,9 +54,9 @@ class ManuaChosersDate
 	{
 			
 			$test=false;
-			if(isset($_POST['next_step'])) $test=$this->CheckAvailability();
+			$test=$this->CheckAvailability();
 			
-			echo "<form action='index.php' method=post>";
+			echo "<form name='ManuaChosers' action='".$_SERVER['PHP_SELF']."' method=post>";
 			echo "Select Area:";
 			$this->ShowListArea("areaarea");
 			echo "<br>Date";
@@ -56,13 +67,12 @@ class ManuaChosersDate
 			$this->ShowList("areatime",0,23,$this->time);
 			echo "<br>Duration";
 			$this->ShowList("areaduration",1,24,$this->duration);
-			echo '<INPUT TYPE=hidden NAME=choserdate VALUE="send">';
-			echo "<br><input type=submit name=next_step value='Chack'>";
+			echo "<INPUT TYPE=hidden NAME=choserdate VALUE='send'>";
 			echo "</form>";
 	
 			echo "<FORM METHOD='LINK' action='test.php'>";
 			if($test){
-				echo "<button type='submit' name='next_step' value='true'>Go to reservation</button>";
+				echo "<button type='submit' name='next_step' id='xx' value='true'>Go to reservation</button>";
 				//"fruits"  => array("a" => "orange", "b" => "banana", "c" => "apple"),
 				$reservation=array('date' => $_SESSION['areadate'], 'time' => $_SESSION['areatime'],'duration' => $_SESSION['areaduration'],'area'=>$_SESSION['areaarea']);
 				$_SESSION['reservation']=$reservation;
@@ -80,18 +90,29 @@ class ManuaChosersDate
 	
 	private function CheckAvailability()
 	{
-		$date_start_time=mktime($_POST['areatime'], 0, 0,$_POST['areamonth'], $_POST['areaday'], $_POST['areayear']);
-		$date_finish_time=$date_start_time+(($_POST['areaduration'])*60*60);
+		
+		
+		/*private $y;
+		private $m;
+		private $d;
+		private $dayinmonth;
+		private $time;
+		private $duration;
+		private $area;
+		private $infotab;
+		*/
+		$date_start_time=mktime($this->time, 0, 0,$this->m,$this->d,$this->y);
+		$date_finish_time=$date_start_time+(($this->duration)*60*60);
 		$ds=date('Y-m-d',$date_start_time);
 		$ds0=date('Y-m-d',$date_start_time-24*60*60); //startdate -24 h
 		$df=date('Y-m-d',$date_finish_time);
 		$df1=date('Y-m-d',$date_finish_time+24*60*60); //finishdate +24 h
 	
-		$area=$_POST['areaarea'];
-		
+		//$area=$_POST['areaarea'];
+		if($this->area == 'A&B'){ $area_a='A';$area_b='B';}
+		else { $area_b=$area_a=$this->area;}
 		//select * from Reservation where Startingdate BETWEEN '2010-10-01' AND '2010-12-01' and Endingdate BETWEEN '2010-10-01' AND '2010-12-01' and Statingtime BETWEEN '08:00' and '17:00' and Endingtime BETWEEN '08:00' and '17:00';
-		
-		$query="select Startingdate, Statingtime,Endingdate, Endingtime from Reservation where Startingdate BETWEEN '$ds0' AND '$df' and Endingdate BETWEEN '$ds' AND '$df1' and area='$area' and idAdminuser is not NULL";
+		$query="select Startingdate, Statingtime,Endingdate, Endingtime from Reservation where Startingdate BETWEEN '$ds0' AND '$df' and Endingdate BETWEEN '$ds' AND '$df1' and (area='$area_a' or area='$area_b') and idAdminuser is not NULL";
 		
 		//echo $query;
 		$result=mysql_query($query);
@@ -122,7 +143,7 @@ class ManuaChosersDate
 		$start=mktime($sh,$smin,0,$sm,$sd,$sy);
 		$finish=mktime($fh,$fmin,0,$fm,$fd,$fy);
 		
-	//echo "<br>data $sy $sm $sd time $sh $smin finish date $fy $fm $fd time $fh $fmin<br>";
+		//echo "<br>data $sy $sm $sd time $sh $smin finish date $fy $fm $fd time $fh $fmin<br>";
 		if(($start > $stime && $start >= $ftime) || ($finish <= $stime && $finish < $ftime)) return true;
 		
 		return false;
@@ -140,7 +161,7 @@ class ManuaChosersDate
 	}
 	private function ShowList($name,$start,$stop,$test=-1)
 	{
-		$menu.= "<select name='".$name."'>";
+		$menu.= "<select name='".$name."' onChange='submitManuaChosers()'>";
 			for($i=$start; $i <= $stop;$i++)
 			{
 				if($test== $i) $menu.= "<option selected='selected' value='".sprintf("%02d",$i)."'>".sprintf("%02d",$i)."</option>";
@@ -152,7 +173,7 @@ class ManuaChosersDate
 	}
 	private function ShowListArea($name)
 	{
-		echo "<select name='".$name."'>";
+		echo "<select name='".$name."' onChange='submitManuaChosers()'>";
 		if(isset($_POST['areaarea']))
 		{
 			echo "area ".$_POST['areaarea'];
@@ -160,15 +181,25 @@ class ManuaChosersDate
 			{
 				echo "<option selected='selected' value='A'>Area A</option>";
 				echo "<option value='B'>Area B</option>";
-			}else
+				echo "<option value='A&B'>Area A&B</option>";
+			}
+			else if($_POST['areaarea'] == "B")
 			{
 				echo "<option value='A'>Area A</option>";
 				echo "<option selected='selected' value='B'>Area B</option>";
+				echo "<option value='A&B'>Area A&B</option>";
+			}
+			else 
+			{
+				echo "<option value='A'>Area A</option>";
+				echo "<option value='B'>Area B</option>";
+				echo "<option selected='selected' value='A&B'>Area A&B</option>";
 			}
 		}else
 		{
 			echo "<option value='A'>Area A</option>";
 			echo "<option value='B'>Area B</option>";
+			echo "<option value='A&B'>Area A&B</option>";
 		}
 		echo "</select>";
 	}	

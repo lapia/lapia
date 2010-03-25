@@ -149,7 +149,6 @@ class Calendar
 			}
 			
 			for($i,$y=1; $i <= 42;$i++,$y++){
-				
 				echo '<button disabled="disabled">',sprintf("%02d",$y),'</button>';
 				if(($i%7)==0) echo '<br>';
 			}

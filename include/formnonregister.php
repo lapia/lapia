@@ -10,6 +10,7 @@ class FormNonRegister
 	private $y;
 	private $m;
 	private $d;
+	private $key;
 	public function FormNonRegister()
 	{	
 		if($_SESSION['ShowRegisterForm'] == 0){
@@ -55,8 +56,8 @@ class FormNonRegister
 		$reservation=$_SESSION['reservation'];
 		$this->ExplodeDate($reservation['date']);
 		
-		$gkey=new GenKey($_POST['mail'],'Reservation','Reservecode');
-		$key=$gkey->GetCode();
+		$gkey=new GenKey($_POST['mail'],'Reservation','Reservecode',6);
+		$this->key=$gkey->GetCode();
 		$tstemp=$gkey->GetTimestemp();
 		$date_start_time=mktime($reservation['time'], 0, 0,$this->m, $this->d, $this->y);
 		$date_finish_time=$date_start_time+(($reservation['duration'])*60*60);
@@ -64,9 +65,22 @@ class FormNonRegister
 		$df=date('Y-m-d',$date_finish_time);
 		$ts=date('H:i',$date_start_time);
 		$tf=date('H:i',$date_finish_time);
+		$area=$area_b=0;
+		if($reservation['area'] == 'A&B'){
+			$area='A';
+			$area_b='B';
+		}else $area='A';
+		
 		$query="(select idUnregistereduser from Unregistereduser where UnregisteredEmailaddress='".$_POST['mail']."' and Address='".$_POST["addres"]."' and Contactperson='".$_POST["cpersopn"]."' and OrganizatioNname='".$_POST["noforganization"]."' and phone='".$_POST["phone"]."')";
-		$aquery="insert into Reservation( area,Statingtime,Endingtime,Startingdate,Endingdate,idUnregistereduser,TimeStemp) values('".$reservation['area']."','$ts','$tf','$ds','$df',$query,'$tstemp')";
+		$aquery="insert into Reservation( Reservecode,area,Statingtime,Endingtime,Startingdate,Endingdate,idUnregistereduser,TimeStemp) values('".$this->key."','".$area."','$ts','$tf','$ds','$df',$query,'$tstemp')";
+		
 		mysql_query($aquery);
+		
+		if($area_b == 'B')
+		{
+			$aquery="insert into Reservation( Reservecode,area,Statingtime,Endingtime,Startingdate,Endingdate,idUnregistereduser,TimeStemp) values('".$this->key."',".$area_b."','$ts','$tf','$ds','$df',$query,'$tstemp')";
+			mysql_query($aquery);
+		}
 		echo '<br> nowe rezerwacja <br> :' . $aquery . mysql_error();
 		
 	}
