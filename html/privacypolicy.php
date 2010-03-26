@@ -106,7 +106,9 @@
 
 		<div id="srodek_pasek">
 				<div id="text_field_1">
-					<h1>Policys - we have them</h1>
+					<div id="text_field_2" style="width: 511px; height: 603px; overflow: auto; border: 0px solid #666; background-color: trnsparent; padding: 0px 10px 0px 10px; margin: 25px 0px 25px 0px">
+						<h1>Policys - we have them</h1>
+					</div>
 				</div>
 		</div>
 

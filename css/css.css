@@ -63,6 +63,12 @@ div#tekst_field_1{
 	margin: 0px auto;
 }
 
+div#tekst_field_2{
+	width: 531px;
+	height: 643px;
+	margin: 0px auto;
+}
+
 div#calender_container{
 	float: left;
 	width: 350px;
