@@ -106,20 +106,7 @@
 
 		<div id="srodek_pasek">
 				<div id="text_field_1">
-					<div id="calender_container">
-						<div id="calender">
-								<h1>Costs - there are always some of those...</h1>
-						</div>
-						<div id="middlearea">
-
-						</div>
-					</div>
-
-					<div id="colorimage_container">
-						<div id="colorimage">
-
-						</div>
-					</div>
+					<h1>Costs - there are always some of those...</h1>
 				</div>
 		</div>
 

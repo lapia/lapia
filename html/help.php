@@ -106,20 +106,7 @@
 
 		<div id="srodek_pasek">
 				<div id="text_field_1">
-					<div id="calender_container">
-						<div id="calender">
-								<h1>HELP ME GOD DAMN IT!!!</h1>
-						</div>
-						<div id="middlearea">
-
-						</div>
-					</div>
-
-					<div id="colorimage_container">
-						<div id="colorimage">
-
-						</div>
-					</div>
+					<h1>HELP ME GOD DAMN IT!!!</h1>
 				</div>
 		</div>
 
