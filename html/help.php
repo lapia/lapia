@@ -106,7 +106,7 @@
 
 		<div id="srodek_pasek">
 				<div id="text_field_1">
-					<h1>HELP ME GOD DAMN IT!!!</h1>
+					<h1>HELP ME GOD!!!</h1>
 				</div>
 		</div>
 
