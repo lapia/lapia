@@ -126,9 +126,9 @@
 							<label for="txt_Phone" id="Phone-ariaLabel">Phone: </label>
 							<input id="txt_Phone" name="txt_Phone" type="text" aria-labelledby="Phone-ariaLabel" />
 						</div>
-						<div class="row">
+						<!--<div class="row">
 						<input type="submit" value="Save" />
-						</div>
+						</div>-->
 						</form>
 					</div>
 				</div>

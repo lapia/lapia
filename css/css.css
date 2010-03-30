@@ -256,6 +256,14 @@ div#editprofile_form{
 	padding: 50px 100px 50px 100px;
 }
 
+div#editprofile_form label{
+	float: left;
+}
+
+div#editprofile_form input{
+	float: right;
+}
+
 div#bottom_menu a{
 	padding-left: 30px;
 	/*
