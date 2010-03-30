@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!session_is_registered(username)){
-	header("../index_second.php");
+	header("../index.php");
 }
 ?>
 
