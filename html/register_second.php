@@ -57,8 +57,20 @@
 				<div id="register_form">
 					<form action="reg_form2.php" onsubmit="return validate_form(this)" enctype="multipart/form-data" method="post">
 
-					<p><?php if(isset($_SESSION['already_err'])){ ?><?php echo $_SESSION['already_err']; unset($_SESSION['already_err']);?><?php }?></p>
-					<p><?php if(isset($_SESSION['success'])){ ?><?php echo $_SESSION['success']; unset($_SESSION['success']);?><?php }?><p>
+					<p>
+						<?php if(isset($_SESSION['already_err'])) {
+							?>
+							<?php echo $_SESSION['already_err'];
+							unset($_SESSION['already_err']);?>
+						<?php }?>
+					</p>
+					<p>
+						<?php if(isset($_SESSION['success'])) {
+							?>
+							<?php echo $_SESSION['success'];
+							unset($_SESSION['success']);?>
+						<?php }?>
+					<p>
 
 						<fieldset>
 							<br/>
