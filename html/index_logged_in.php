@@ -138,7 +138,7 @@ if(!session_is_registered(username)){
 								// ManuaChosersDate class requires a second parameter an associative array of messages
 								$infotab['free_time']="<br>reservations can be made<br>";
 								$infotab['busy_period']="<br>time is busy<br>";
-								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br> Reservations must be made at least 3 hours before letting the area<br>";
+								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br>Reservations must be made at least<br> 3 hours before letting the area<br><br>";
 
 								$rol=new ManuaChosersDate($_POST['date'],$infotab);
 								$rol->SetCalendar($cal);
