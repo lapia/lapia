@@ -1,4 +1,5 @@
 <?php
+//DA2010-03-21
 class UserRecord
 {
 	public $cperson;
@@ -63,7 +64,7 @@ class Area
 	private $acolorc2c3;
 	private $acolorreservednotchack;
 	private $acolorreserved;
-	public function Area($date,$colorc1='c9cfc4',$colorc2c3='86c856',$colorreservednotchack='fbf963',$colorreserved='red')
+	public function Area($date/*YYYY-MM-DD*/,$colorc1='c9cfc4',$colorc2c3='86c856',$colorreservednotchack='fbf963',$colorreserved='red')
 	{
 		$this->acolorc1=$colorc1;
 		$this->acolorc2c3=$colorc2c3;

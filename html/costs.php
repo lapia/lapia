@@ -76,15 +76,14 @@
 		<div id="gora_pasek">
 			<div id="container_top">
 				<div id="login_bar">
-					<!--<form action="#">
-						<p><label for="e-mail">E-mail:</label> <input type="text" id="e-mail" /></p>
-						<p><label for="password">Password:</label> <input type="password" id="password" /></p>
-						<p class="submit"><input type="submit" value="Login" /></p>
-					</form>-->
-					<?php
-						new Login();
-					?>
+					<form action="login.php" method="post">
+						<p><label for="username">E-mail:</label> <input type="text" id="username" name="username"/></p>
+						<p><label for="password">Password:</label> <input type="password" id="password" name="password" /></p>
+						<p class="submit"><input type="submit" name="submit" value="Login" /></p>
+					</form>
 					<div id="pass_reg">
+						<a href="lost_password.php">Lost Password?</a>
+						<a href="register_second.php">Register</a>
 					</div>
 				</div>
 			</div>

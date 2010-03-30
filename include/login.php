@@ -4,13 +4,14 @@ class Login
 
         public function Login()
         {
-
-                if($_GET["logedout"]=="yes")
-                {
-                        echo "You have been loged out ";
-                        unset($_SESSION['username']);
-                        $_SESSION['userid']=0;
-                }
+				if(isset($_GET["logedout"]))
+	                if($_GET["logedout"]=="yes")
+	                {
+	                        echo "You have been loged out ";
+	                        unset($_SESSION['username']);
+	                        $_SESSION['userid']=0;
+	                }
+                
                 if(isset($_POST['inlogin'])){
                         if($this->cHackLogin() == true ){
                                 $p="";

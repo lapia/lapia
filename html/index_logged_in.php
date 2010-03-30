@@ -1,4 +1,10 @@
-<?php session_start();?>
+<?php
+session_start();
+if(!session_is_registered(username)){
+	header("../index_second.php");
+}
+?>
+
 <?php
 //	if($_SESSION["logedin"] == 'false')  header('Location: http://localhost/Lapia/newuser.php');
 //	echo  '<br>logedin :'.$_SESSION["logedin"].'<br> newuser:'.$_SESSION['newuser'] .'<br>'; // potrzebne do przekierowania jeżeli chasło nieprawidłowe
@@ -6,8 +12,12 @@
 
 ?>
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
 <head>
-	<title>Lappia Halli - Privacy Policy</title>
+	<title>Lappia Halli - Your Acount</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
 	<link rel="stylesheet" href="../css/css.css" type="text/css">
@@ -75,15 +85,27 @@
 
 		<div id="gora_pasek">
 			<div id="container_top">
-				<div id="login_bar">
-					<form action="login.php" method="post">
-						<p><label for="username">E-mail:</label> <input type="text" id="username" name="username"/></p>
-						<p><label for="password">Password:</label> <input type="password" id="password" name="password" /></p>
-						<p class="submit"><input type="submit" name="submit" value="Login" /></p>
-					</form>
+				<div id="logout_bar">
+				<br />
+				<br />
+				<br />
+					<div id="welcome_note"><p>Welcome
+					<?php $con = mysql_connect("localhost","root","test1");
+						if (!$con) {
+							die('Could not connect: ' . mysql_error());
+						}
+
+						mysql_select_db("LHR", $con);
+						$querystr = "SELECT Contactperson FROM registereduser WHERE RegisteredEmailaddress = '".$_SESSION['username']."'";
+						$result = mysql_query($querystr);
+						$row = mysql_fetch_assoc($result);
+						echo $row['Contactperson']
+					?>
+		</p></div>
+
 					<div id="pass_reg">
-						<a href="lost_password.php">Lost Password?</a>
-						<a href="register_second.php">Register</a>
+						<a href="Editprofile.html">Edit profile</a>
+						<a href="logout.php">Logout</a>
 					</div>
 				</div>
 			</div>
@@ -105,8 +127,38 @@
 
 		<div id="srodek_pasek">
 				<div id="text_field_1">
-					<div id="text_field_2" style="width: 511px; height: 603px; overflow: auto; border: 0px solid #666; background-color: trnsparent; padding: 0px 10px 0px 10px; margin: 25px 0px 25px 0px">
-						<h1>Policys - we have them</h1>
+					<div id="calender_container">
+						<div id="calender">
+							<?php
+								$cal=new Calendar();
+
+								//infotab['free_time']; infotab['busy_period']
+								// ManuaChosersDate class requires a second parameter an associative array of messages
+								$infotab['free_time']="<br>reservations can be made<br>";
+								$infotab['busy_period']="<br>time is busy<br>";
+								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br> Reservations must be made at least 3 hours before letting the area<br>";
+
+								$rol=new ManuaChosersDate($_POST['date'],$infotab);
+								$rol->SetCalendar($cal);
+								$cal->sHowCalendar();
+							?>
+						</div>
+						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
+							<?php
+								$rol->ShowForm();
+							?>
+						</div>
+					</div>
+
+					<div id="colorimage_container">
+						<div id="colorimage">
+							<?php
+								$area=new Area($_POST['date']);
+
+								echo "<br>check:" .$_POST['next_step'];
+								$dbconn->disocnnect();
+							?>
+						</div>
 					</div>
 				</div>
 		</div>
@@ -142,10 +194,6 @@
 		</div>
 
 	</div>
-
-<?php if($_SESSION["logedin"] == 'false')
-echo "<script type='text/javascript'>document.location = 'http://localhost/~test/newuser.php'</script>"
-?>
 
 </body>
 </html>

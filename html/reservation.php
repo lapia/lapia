@@ -7,7 +7,7 @@
 ?>
 
 <head>
-	<title>Lappia Halli - Privacy Policy</title>
+	<title>Lappia Halli - Reservation</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
 	<link rel="stylesheet" href="../css/css.css" type="text/css">
@@ -105,8 +105,38 @@
 
 		<div id="srodek_pasek">
 				<div id="text_field_1">
-					<div id="text_field_2" style="width: 511px; height: 603px; overflow: auto; border: 0px solid #666; background-color: trnsparent; padding: 0px 10px 0px 10px; margin: 25px 0px 25px 0px">
-						<h1>Policys - we have them</h1>
+					<div id="calender_container">
+						<div id="calender">
+							<?php
+								$cal=new Calendar();
+
+								//infotab['free_time']; infotab['busy_period']
+								// ManuaChosersDate class requires a second parameter an associative array of messages
+								$infotab['free_time']="<br>reservations can be made<br>";
+								$infotab['busy_period']="<br>time is busy<br>";
+								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br> Reservations must be made at least 3 hours before letting the area<br>";
+
+								$rol=new ManuaChosersDate($_POST['date'],$infotab);
+								$rol->SetCalendar($cal);
+								$cal->sHowCalendar();
+							?>
+						</div>
+						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
+							<?php
+								$rol->ShowForm();
+							?>
+						</div>
+					</div>
+
+					<div id="colorimage_container">
+						<div id="colorimage">
+							<?php
+								$area=new Area($_POST['date']);
+
+								echo "<br>check:" .$_POST['next_step'];
+								$dbconn->disocnnect();
+							?>
+						</div>
 					</div>
 				</div>
 		</div>
@@ -119,13 +149,13 @@
 					function LoadNewImage() {
 						var unique = new Date();
 						document.images.webcam.src = newImage.src;
-						newImage.src = "../images/1265849610942_20.jpg?time=" + unique.getTime();
+						newImage.src = "images/1265849610942_20.jpg?time=" + unique.getTime();
 					}
 
 					function InitialImage() {
 						var unique = new Date();
 						newImage.onload = LoadNewImage;
-						newImage.src = "../images/1265849610942_20.jpg?time=" + unique.getTime();
+						newImage.src = "images/1265849610942_20.jpg?time=" + unique.getTime();
 						document.images.webcam.onload="";
 					}
 				</script>

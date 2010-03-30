@@ -1,9 +1,10 @@
+<?php session_start(); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="pl">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-	<title>Register</title>
+	<title>Lappia Halli - New User</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
 	<link rel="stylesheet" href="../css/css.css" type="text/css">
@@ -32,7 +33,7 @@
 			</div>
 
 			<div id="bottom_menu">
-				<a href="../index.html">Home</a>
+				<a href="../index_second.php">Home</a>
 				<a href="html/costs.html">Costs</a>
 				<a href="html/au.html">About Us</a>
 				<a href="html/disc.html">Disclaimer</a>
@@ -40,66 +41,16 @@
 				<a href="html/help.html">Help</a>
 			</div>
 		</div>
-
-		<div id="lewy_pasek">
-			<div id="ad">
-			</div>
-		</div>
-
-		<div id="srodek_pasek">
-			<div id="text_field_1">
-				<div id="container_middle">
-					<div id="register_form">
-						<form action="reg_form.php" method="post">
-							<br/>
-							<br/>
-							<br/>
-							<br/>
-							<fieldset>
-								<br/>
-							<fieldset>
-								<legend>Login Information:</legend>
-								E-mail:
-								<br>
-								<input name="email" type="text" size="40">
-								<br>
-								Password:
-								<br>
-								<input name="password" type="password"size="40">
-								<br>
-								Repeat Password:
-								<br>
-								<input name="password2" type="password" size="40">
-							</fieldset>
-							<br>
-							<fieldset>
-								<legend>Contact Information</legend>
-								Name of Organisation:
-								<br>
-								<input name="name_of_organisation" type="text" size="40">
-								<br>
-								Contact Person:
-								<br>
-								<input name="contact_person" type="text" size="40">
-								<br>
-								Address:
-								<br>
-								<input name="Address" type="text" size="40">
-								<br>
-								Phone:
-								<br>
-								<input name="Phone" type="int" size="40">
-								<br>
-							</fieldset>
-							<br>
-							<input type="submit" name="submit" value="Register" id="submit">
-							</fieldset>
-						</form>
-					</div>
+	<div id="lewy_pasek">
+				<div id="ad">
 				</div>
 			</div>
-		</div>
-
+			<div id="srodek_pasek">
+				<div id="text_field_1">
+				<div id="middlemenu_container">
+				<div id="middlemenu"><div id="alert"><p><?php if(isset($_SESSION['success'])){ ?><?php echo $_SESSION['success']; unset($_SESSION['success']);?><?php }?></p></div></div></div>
+			</div>
+			</div>
 		<div id="prawy_pasek">
 			<div id="webcams">
 				<script type="text/javascript" language="JavaScript">
@@ -108,13 +59,13 @@
 					function LoadNewImage() {
 						var unique = new Date();
 						document.images.webcam.src = newImage.src;
-						newImage.src = "../images/1265849610942_20.jpg?time=" + unique.getTime();
+						newImage.src = "images/1265849610942_20.jpg?time=" + unique.getTime();
 					}
 
 					function InitialImage() {
 						var unique = new Date();
 						newImage.onload = LoadNewImage;
-						newImage.src = "../images/1265849610942_20.jpg?time=" + unique.getTime();
+						newImage.src = "images/1265849610942_20.jpg?time=" + unique.getTime();
 						document.images.webcam.onload="";
 					}
 				</script>
@@ -128,9 +79,6 @@
 					<img src="../images/1265849610942_20.jpg" name="webcam" width="300" height="280">
 				</div>
 			</div>
-		</div>
-
-	</div>
-
+</div>
 </body>
 </html>

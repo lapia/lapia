@@ -45,6 +45,7 @@ class Calendar
 			$this->month=$_SESSION['cmonth'];
 			$this->year=$_SESSION['cyear'];
 			$this->startmonth=$_SESSION['cstartmonth'];
+			
 		}
 		else //if don't exist put to session
 		{
@@ -96,7 +97,7 @@ class Calendar
 			$this->setDaysInmonth();
 			$firstday=$this->getFirstDayofmonth();
 			//$_SERVER['PHP_SELF']
-			echo "<form method='POST' action='".$_SERVER['PHP_SELF'] ."'>";
+			echo "<form method='POST' name='Calendar' action='".$_SERVER['PHP_SELF'] ."'>";
 			echo sprintf("<button type=\"submit\" value='last' name=changedate>%s</button>","<<");
 			echo sprintf("<button type=\"submit\" disabled=\"disabled\">%s %d</button>",$this->getMonthName(),$this->getYear());
 			echo sprintf("<button type=\"submit\" value='next' name=changedate>%s</button>",">>"); 

@@ -49,11 +49,12 @@ function daysInMonth( /* int */ monthNum, /* int* */ yearNum )
 function submitManuaChosers()
 {
 	//A = eval(document.frmOne.txtFirstNumber.value);
-	days=daysInMonth(document.ManuaChosers.areamonth.value,document.ManuaChosers.areayear.value)
+	days=daysInMonth(document.ManuaChosers.areamonth.value,document.ManuaChosers.areayear.value);
 	if(eval(document.ManuaChosers.areaday.value) > days){
 		alert('You set wrong date\n This mounth have only '+days);
 		document.getElementById("xx").disabled=true;
 		return false;
 	}
-  else document.ManuaChosers.submit();
+	else document.ManuaChosers.submit();		
 }
+

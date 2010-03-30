@@ -1,72 +1,14 @@
-<?php session_start();?>
-<?php
-//	if($_SESSION["logedin"] == 'false')  header('Location: http://localhost/Lapia/newuser.php');
-//	echo  '<br>logedin :'.$_SESSION["logedin"].'<br> newuser:'.$_SESSION['newuser'] .'<br>'; // potrzebne do przekierowania jeżeli chasło nieprawidłowe
-	$_SESSION['ShowRegisterForm']='-2'; // set show nonregistred user form
-
-?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-	<title>Lappia Halli - Privacy Policy</title>
+	<title>HomePage</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
 	<link rel="stylesheet" href="../css/css.css" type="text/css">
-
-	<style type="text/css">
-	<!--
-	button {
-		border-width:1px;
-		margin: 0 0 0 0;
-	 }
-	td.area {
-		width: 80px;
-		height: 20px;
-	}
-	td.area_cool1{
-		width: 40px;
-		padding: 0px 0px 0px 0px;
-		font-size: 12px;
-	}
-	#calendar {
-		position: absolute;
-		top: 40%; left: 50%;
-		border-style:solid;
-		border-width:1px;
-		width: 253px;
-		height: 147px;
-		margin: 0 0 0 0;
-		padding: 1 1 1 1;
-	}
-	#info {
-		position: absolute;
-		top: 60%; left: 10%;
-		border-style:solid;$aray[$i][0]
-		border-width:1px;
-		width: 253px;
-		height: 180px;
-
-	}
-	-->
-	</style>
-
 </head>
-
 <body>
-	<?php
-		include '../include/adduser.php';
-		include '../include/sqlconnect.php';
-		include '../include/calendar.php';
-		include '../include/login.php';
-		include '../include/area.php';
-		include '../include/manuachosersdate.php';
-		include '../include/genkey.php';
-		include '../include/formnonregister.php';
-
-		$dbconn = new SqlConnect("localhost","root","test1","LHR");
-		$dbconn->connectToDb();
-
-		//ini_set('display_errors',1);
-	?>
 
 	<div id="tlo">
 	</div>
@@ -76,7 +18,7 @@
 		<div id="gora_pasek">
 			<div id="container_top">
 				<div id="login_bar">
-					<form action="login.php" method="post">
+				<form action="login.php" method="post">
 						<p><label for="username">E-mail:</label> <input type="text" id="username" name="username"/></p>
 						<p><label for="password">Password:</label> <input type="password" id="password" name="password" /></p>
 						<p class="submit"><input type="submit" name="submit" value="Login" /></p>
@@ -85,6 +27,16 @@
 						<a href="lost_password.php">Lost Password?</a>
 						<a href="register_second.php">Register</a>
 					</div>
+
+					<!--<form action="" method="post">
+						E-mail:
+						<input name="username" type="text">
+						<br>
+						Password:
+						<input name="password" type="password">
+						<br>
+						<input type="submit" name="submit" value="Login">
+					</form>-->
 				</div>
 			</div>
 
@@ -97,18 +49,30 @@
 				<a href="help.php">Help</a>
 			</div>
 		</div>
-
-		<div id="lewy_pasek">
-			<div id="ad">
+	<div id="lewy_pasek">
+				<div id="ad">
+				</div>
 			</div>
-		</div>
+			<div id="srodek_pasek">
+			<div id="text_field_1">
+				<div id="container_middle">
+				<div id="alert"><p><?php echo "Email or Password incorrect!!!"?></p></div>
+					<div id="login_bar2">
 
-		<div id="srodek_pasek">
-				<div id="text_field_1">
-					<div id="text_field_2" style="width: 511px; height: 603px; overflow: auto; border: 0px solid #666; background-color: trnsparent; padding: 0px 10px 0px 10px; margin: 25px 0px 25px 0px">
-						<h1>Policys - we have them</h1>
+					<br/>
+					<br/>
+						<form action="login.php" method="post">
+						<p><label for="username">E-mail:</label> <input type="text" id="username" name="username"/></p>
+						<p><label for="password">Password:</label> <input type="password" id="password" name="password" /></p>
+						<p class="submit"><input type="submit" name="submit" value="Login" /></p>
+					</form>
+					</div>
+					<div id="pass_reg2">
+						<a href="lost_password.php">Lost Password?</a>
+						<a href="register_second.php">Register</a>
 					</div>
 				</div>
+			</div>
 		</div>
 
 		<div id="prawy_pasek">
@@ -142,10 +106,6 @@
 		</div>
 
 	</div>
-
-<?php if($_SESSION["logedin"] == 'false')
-echo "<script type='text/javascript'>document.location = 'http://localhost/~test/newuser.php'</script>"
-?>
 
 </body>
 </html>

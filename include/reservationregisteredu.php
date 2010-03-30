@@ -1,53 +1,5 @@
 <?php
-require_once "Mail.php";
-class SendMail
-{
-	private $recipients;
-	private $headers;
-	private $smtpinfo;
-	private $mailmsg;
-	private $mail_object;
-	
-	public function SendMail()
-	{
-		$this->smtpinfo["host"] = "smtp.gmail.com";
-		$this->smtpinfo["port"] = "587";
-		$this->smtpinfo["auth"] = true;
-		$this->smtpinfo["username"] = "lappihalli@gmail.com";
-		$this->smtpinfo["password"] = "testtesttest";
-		$this->SetHeaders();
-	}
-	public function setSmtpinfo($host,$port,$auth,$username,$password)
-	{
-		$this->smtpinfo["host"] = $host;
-		$this->smtpinfo["port"] = $port;
-		$this->smtpinfo["auth"] = $auth;
-		$this->smtpinfo["username"] = $username;
-		$this->smtpinfo["password"] = $password;
-	}
-	public function SetHeaders($from='lappihalli@gmail.com',$to='ludomirc@gmail.com',$subject='User feedback')
-	{
-		$this->recipients=$to;
-		$this->headers["From"] = $from;
-		$this->headers["To"] = $to;
-		$this->headers["Subject"] = $subject;
-	}
-	public function SendMesage()
-	{
-		/* SMTP server name, port, user/passwd */
-		/* Create the mail object using the Mail::factory method */
-		$mail_object =& Mail::factory("smtp", $this->smtpinfo);
-		/* Ok send mail */
-		$mail_object->send($this->recipients, $this->headers, $this->mailmsg);
-        	
-		if (PEAR::isError($mail))   echo("<p>" . $mail->getMessage() . "</p>");
-		else echo("<p>Message successfully sent!</p>");
-	
-	}
-	public function SetSubject($subject){ $this->headers["Subject"]=$subject;}
-	public function SetRecipients($to){$this->recipients=$to;$this->headers["To"] = $to;}
-	public function SetBodyMesage($mesage){$this->mailmsg=$mesage;}
-}
+include 'include/sendmesage.php';
 class ReservationRuser
 {
         private $y;
@@ -93,39 +45,17 @@ class ReservationRuser
         			mysql_query($query);
         		}
                 echo '<br> rezerwacja <br> :' . $query . mysql_error();
-        /*        
+               
+                $html = '<html><body><img src="rumianek.jpg"> <p>wlasnie skoncylem pisac klase do mailingu :).</p><br><img src="software-update-300x300.jpg"><br><p>another image</p></body></html>';
+                $imagegroup=array('software-update-300x300.jpg','rumianek.jpg',);
                 $smail = new SendMail();
-                $smail->SetRecipients("boromil@gmail.com");
-                $smail->SetBodyMesage("halo to wiadomość testowa");
-                $smail->SetSubject('teścik');
-                $smail->SendMesage();
-                //$this->SendMail();
-        */
-        }
-        private function SendMail()
-        {
-        	require_once "Mail.php";
-
-			$recipients = "ludomirc@gmail.com";
-			$headers["From"] = "lappihalli@gmail.com";
-			$headers["To"] = "ludomirc@gmail.com";
-			$headers["Subject"] = "User feedback";
-			$mailmsg = "Hello, This is a test.";
-			/* SMTP server name, port, user/passwd */
-			$smtpinfo["host"] = "smtp.gmail.com";
-			$smtpinfo["port"] = "587";
-			$smtpinfo["auth"] = true;
-			$smtpinfo["username"] = "lappihalli@gmail.com";
-			$smtpinfo["password"] = "testtesttest";
-			/* Create the mail object using the Mail::factory method */
-			$mail_object =& Mail::factory("smtp", $smtpinfo);
-			/* Ok send mail */
-			$mail_object->send($recipients, $headers, $mailmsg);
+                $smail->SetRecipients($_SESSION['username']);
+             	$smail->SetHtmlMesage($html);
+                $smail->SetGroupImages($imagegroup);
+                $smail->SetSubject('Lapiahally');
+                $smail->SendMesage(); 
         	
-			
-			if (PEAR::isError($mail))   echo("<p>" . $mail->getMessage() . "</p>");
-			else echo("<p>Message successfully sent!</p>");
-			
         }
+       
 }
 ?>

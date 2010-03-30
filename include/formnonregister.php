@@ -1,4 +1,5 @@
 <?php
+//include 'include/sendmesage.php';
 class FormNonRegister
 {
 	private $mail; 
@@ -82,7 +83,12 @@ class FormNonRegister
 			mysql_query($aquery);
 		}
 		echo '<br> nowe rezerwacja <br> :' . $aquery . mysql_error();
-		
+		$smail = new SendMail();
+        $smail->SetRecipients($_POST['mail']);
+        $smail->SetBodyMesage("Thank you for your booking. \nThe reservation will be confirmed by our administrator. \nYour reservation code :" .$this->key.
+        "\nData of reservation ".$_SESSION['areadate']."\nArea ".$_SESSION['areaarea']."\nTime ".$_SESSION['areatime']."\nDuration ".$_SESSION['areaduration']);
+        $smail->SetSubject('Lapiahally');
+        $smail->SendMesage(); 
 	}
 	private function ExplodeDate($date)
 	{

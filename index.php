@@ -76,15 +76,14 @@
 		<div id="gora_pasek">
 			<div id="container_top">
 				<div id="login_bar">
-					<!--<form action="#">
-						<p><label for="e-mail">E-mail:</label> <input type="text" id="e-mail" /></p>
-						<p><label for="password">Password:</label> <input type="password" id="password" /></p>
-						<p class="submit"><input type="submit" value="Login" /></p>
-					</form>-->
-					<?php
-						new Login();
-					?>
+					<form action="html/login.php" method="post">
+						<p><label for="username">E-mail:</label> <input type="text" id="username" name="username"/></p>
+						<p><label for="password">Password:</label> <input type="password" id="password" name="password" /></p>
+						<p class="submit"><input type="submit" name="submit" value="Login" /></p>
+					</form>
 					<div id="pass_reg">
+						<a href="html/lost_password.php">Lost Password?</a>
+						<a href="html/register_second.php">Register</a>
 					</div>
 				</div>
 			</div>
@@ -110,15 +109,20 @@
 						<div id="calender">
 							<?php
 								$cal=new Calendar();
-								$rol=new ManuaChosersDate($_POST['date']);
+
+								//infotab['free_time']; infotab['busy_period']
+								// ManuaChosersDate class requires a second parameter an associative array of messages
+								$infotab['free_time']="<br>reservations can be made<br>";
+								$infotab['busy_period']="<br>time is busy<br>";
+								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br> Reservations must be made at least 3 hours before letting the area<br>";
+
+								$rol=new ManuaChosersDate($_POST['date'],$infotab);
 								$rol->SetCalendar($cal);
 								$cal->sHowCalendar();
 							?>
 						</div>
-						<div id="middlearea">
-							<?php
-								$rol->ShowForm();
-							?>
+						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
+							<h1>linki</h1>
 						</div>
 					</div>
 
