@@ -228,7 +228,7 @@ div#alert p{
 	text-align: center;
 	color: red;
 	padding: 1.5em;
-	font-size:18pt;
+	font-size:12pt;
 }
 div#welcome_note p{
 	width: auto;
@@ -241,10 +241,11 @@ div#welcome_note p{
 }
 
 div#register_form{
-	font-size:14px;
-	position:relative;
-	float:left;
-	right:-110px;
+	width: auto;
+	font-size:12pt;
+	display: block
+	text-align: center;
+	padding: 50px 100px 50px 100px;
 }
 
 div#bottom_menu a{

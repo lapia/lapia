@@ -54,17 +54,13 @@
 			</div>
 			<div id="srodek_pasek">
 			<div id="text_field_1">
-				<div id="container_middle">
+
 					<div id="register_form">
 						<form action="reg_form2.php" onsubmit="return validate_form(this)" enctype="multipart/form-data" method="post">
-						<div id="alert">
-					<p><?php if(isset($_SESSION['already_err'])){ ?><?php echo $_SESSION['already_err']; unset($_SESSION['already_err']);?><?php }?></p>
-					<p><?php if(isset($_SESSION['success'])){ ?><?php echo $_SESSION['success']; unset($_SESSION['success']);?><?php }?><p>
-					</div>
-							<br/>
-							<br/>
-							<br/>
-							<br/>
+
+						<p><?php if(isset($_SESSION['already_err'])){ ?><?php echo $_SESSION['already_err']; unset($_SESSION['already_err']);?><?php }?></p>
+						<p><?php if(isset($_SESSION['success'])){ ?><?php echo $_SESSION['success']; unset($_SESSION['success']);?><?php }?><p>
+
 							<fieldset>
 								<br/>
 							<fieldset>
@@ -107,7 +103,7 @@
 							</fieldset>
 						</form>
 					</div>
-				</div>
+
 			</div>
 		</div>
 
