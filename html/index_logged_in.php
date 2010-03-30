@@ -89,19 +89,21 @@ if(!session_is_registered(username)){
 				<br />
 				<br />
 				<br />
-					<div id="welcome_note"><p>Welcome
-					<?php $con = mysql_connect("localhost","root","test1");
-						if (!$con) {
-							die('Could not connect: ' . mysql_error());
-						}
+					<div id="welcome_note">
+						<p>Welcome
+							<?php $con = mysql_connect("localhost","root","test1");
+								if (!$con) {
+									die('Could not connect: ' . mysql_error());
+								}
 
-						mysql_select_db("LHR", $con);
-						$querystr = "SELECT Contactperson FROM registereduser WHERE RegisteredEmailaddress = '".$_SESSION['username']."'";
-						$result = mysql_query($querystr);
-						$row = mysql_fetch_assoc($result);
-						echo $row['Contactperson']
-					?>
-		</p></div>
+								mysql_select_db("LHR", $con);
+								$querystr = "SELECT Contactperson FROM registereduser WHERE RegisteredEmailaddress = '".$_SESSION['username']."'";
+								$result = mysql_query($querystr);
+								$row = mysql_fetch_assoc($result);
+								echo $row['Contactperson']
+							?>
+						</p>
+					</div>
 
 					<div id="pass_reg">
 						<a href="Editprofile.html">Edit profile</a>
