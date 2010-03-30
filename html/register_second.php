@@ -54,56 +54,54 @@
 			</div>
 			<div id="srodek_pasek">
 			<div id="text_field_1">
+				<div id="register_form">
+					<form action="reg_form2.php" onsubmit="return validate_form(this)" enctype="multipart/form-data" method="post">
 
-					<div id="register_form">
-						<form action="reg_form2.php" onsubmit="return validate_form(this)" enctype="multipart/form-data" method="post">
+					<p><?php if(isset($_SESSION['already_err'])){ ?><?php echo $_SESSION['already_err']; unset($_SESSION['already_err']);?><?php }?></p>
+					<p><?php if(isset($_SESSION['success'])){ ?><?php echo $_SESSION['success']; unset($_SESSION['success']);?><?php }?><p>
 
-						<p><?php if(isset($_SESSION['already_err'])){ ?><?php echo $_SESSION['already_err']; unset($_SESSION['already_err']);?><?php }?></p>
-						<p><?php if(isset($_SESSION['success'])){ ?><?php echo $_SESSION['success']; unset($_SESSION['success']);?><?php }?><p>
-
-							<fieldset>
-								<br/>
-							<fieldset>
-								<legend>Login Information:</legend>
-								E-mail:
-								<br>
-								<input name="email" type="text" size="40">
-								<br>
-								Password:
-								<br>
-								<input name="password" type="password"size="40">
-								<br>
-								Repeat Password:
-								<br>
-								<input name="password2" type="password" size="40">
-							</fieldset>
+						<fieldset>
+							<br/>
+						<fieldset>
+							<legend>Login Information:</legend>
+							E-mail:
 							<br>
-							<fieldset>
-								<legend>Contact Information</legend>
-								Name of Organisation:
-								<br>
-								<input name="name_of_organisation" type="text" size="40">
-								<br>
-								Contact Person:
-								<br>
-								<input name="contact_person" type="text" size="40">
-								<br>
-								Address:
-								<br>
-								<input name="Address" type="text" size="40">
-								<br>
-								Phone:
-								<br>
-								<input name="Phone" type="int" size="40">
-								<br>
-							</fieldset>
+							<input name="email" type="text" size="40">
 							<br>
-							<input type="submit" name="register" value="Register" id="submit">
-							<input type="reset" value="Reset" name= "reset"/>
-							</fieldset>
-						</form>
-					</div>
-
+							Password:
+							<br>
+							<input name="password" type="password"size="40">
+							<br>
+							Repeat Password:
+							<br>
+							<input name="password2" type="password" size="40">
+						</fieldset>
+						<br>
+						<fieldset>
+							<legend>Contact Information</legend>
+							Name of Organisation:
+							<br>
+							<input name="name_of_organisation" type="text" size="40">
+							<br>
+							Contact Person:
+							<br>
+							<input name="contact_person" type="text" size="40">
+							<br>
+							Address:
+							<br>
+							<input name="Address" type="text" size="40">
+							<br>
+							Phone:
+							<br>
+							<input name="Phone" type="int" size="40">
+							<br>
+						</fieldset>
+						<br>
+						<input type="submit" name="register" value="Register" id="submit">
+						<input type="reset" value="Reset" name= "reset"/>
+						</fieldset>
+					</form>
+				</div>
 			</div>
 		</div>
 
