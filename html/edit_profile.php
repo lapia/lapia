@@ -1,3 +1,5 @@
+<?php  session_start(); ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="pl">
@@ -61,33 +63,40 @@
 		</div>
 
 		<div id="srodek_pasek">
-			<div id="text_field_1">
 				<div id="container_middle">
 					<div id="register_form">
-<?php
-					$con = mysql_connect("localhost","root","test1");
-					if (!$con)
-						{
-							die('Could not connect: ' . mysql_error());
-						}
+					<?php
+						$con = mysql_connect("localhost","root","test1");
+						if (!$con)
+							{
+								die('Could not connect: ' . mysql_error());
+							}
 
-					mysql_select_db("LHR", $con);
+						mysql_select_db("LHR", $con);
 
-					$sql="SELECT * FROM registereduser WHERE RegisteredEmailaddress = '".$_SESSION['username']."' ";
-					//echo $sql;
-					$result=mysql_query($sql);
-					$row1 = mysql_fetch_assoc($result);
-					$_SESSION['row1'] = $row1;
+						$sql="SELECT * FROM registereduser WHERE RegisteredEmailaddress = '".$_SESSION['username']."' ";
+						//echo $sql;
+						$result=mysql_query($sql);
+						$row1 = mysql_fetch_assoc($result);
+						$_SESSION['row1'] = $row1;
 					?>
-						<form action="edit.php" onsubmit="return validate_form(this)" enctype="multipart/form-data" method="post">
-						<div id="alert">
-					<p><?php if(isset($_SESSION['already_err'])){ ?><?php echo $_SESSION['already_err']; unset($_SESSION['already_err']);?><?php }?></p>
-					<p><?php if(isset($_SESSION['success'])){ ?><?php echo $_SESSION['success']; unset($_SESSION['success']);?><?php }?><p>
-					</div>
-							<br/>
-							<br/>
-							<br/>
-							<br/>
+					<form action="edit.php" onsubmit="return validate_form(this)" enctype="multipart/form-data" method="post">
+
+							<p>
+								<?php if(isset($_SESSION['already_err'])) {
+									?>
+									<?php echo $_SESSION['already_err'];
+									unset($_SESSION['already_err']);?>
+								<?php }?>
+							</p>
+							<p>
+								<?php if(isset($_SESSION['success'])) {
+									?>
+									<?php echo $_SESSION['success'];
+									unset($_SESSION['success']);?>
+								<?php }?>
+							<p>
+
 							<fieldset>
 								<br/>
 							<fieldset>
@@ -125,11 +134,10 @@
 								<br>
 							</fieldset>
 							<br>
-							<input type="submit" name="register" value="Register" id="submit">
+							<input type="submit" name="register" value="Update" id="submit">
 							<input type="reset" value="Reset" name= "reset"/>
 							</fieldset>
 						</form>
-					</div>
 				</div>
 			</div>
 		</div>
