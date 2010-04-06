@@ -121,7 +121,7 @@
 								$rol=new ManuaChosersDate($_POST['date'],$infotab);
 								$rol->SetCalendar($cal);
 								$cal->sHowCalendar();
-							?>y
+							?>
 						</div>
 						<div id="cancelarea" style="font-size: 10pt; text-align: centered;">
 							<?php
