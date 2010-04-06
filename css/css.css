@@ -91,6 +91,13 @@ div#middlearea{
 	padding: 80px 0px 0px 0px;
 }
 
+div#middlearea h1 a{
+	color: blue;
+	text-align: left;
+	text-decoration: overline;
+	font-size: 14pt;
+}
+
 div#cancelarea{
 	width: 200px;
 	height: 210px;

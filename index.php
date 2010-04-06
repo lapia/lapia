@@ -123,6 +123,7 @@
 						</div>
 						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
 							<h1><a href="html/cancel.php">Cancel Reservation</a></h1>
+							<h1><a href="#">Unregister User Reservation Page</a></h1>
 						</div>
 					</div>
 
