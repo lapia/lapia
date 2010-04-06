@@ -65,15 +65,16 @@ class cancel1
         }
         public function ShowCancel($r="",$d="")
         {
-			$query  = "SELECT RegisteredEmailaddress from LHR.registereduser RU, LHR.reservation R where RU.idRegistereduser=R.idRegistereduser;";
-			$result = mysql_query($query);
-			$query1  = "SELECT Statingtime from LHR.registereduser RU, LHR.reservation R where RU.idRegistereduser=R.idRegistereduser;";
+			$pas=htmlspecialchars($_POST["code"]);
+			$query  = "SELECT RegisteredEmailaddress from LHR.registereduser RU, LHR.reservation R where RU.idRegistereduser=R.idRegistereduser and R.reservecode='".$pas."' ;";
+			$result = mysql_query($query) or dir(mysql_error());
+			$query1  = "SELECT Statingtime from LHR.registereduser RU, LHR.reservation R where RU.idRegistereduser=R.idRegistereduser and R.reservecode='".$pas."';";
 			$result1 = mysql_query($query1);
-			$query2  = "select subtime(Endingtime,Statingtime) from LHR.reservation;";
+			$query2  = "select subtime(Endingtime,Statingtime) from LHR.registereduser RU, LHR.reservation R where RU.idRegistereduser=R.idRegistereduser and R.reservecode='".$pas."';";
 			$result2 = mysql_query($query2);
-			$query3 = "SELECT area from LHR.registereduser RU, LHR.reservation R where RU.idRegistereduser=R.idRegistereduser;";
+			$query3 = "SELECT area from LHR.registereduser RU, LHR.reservation R where RU.idRegistereduser=R.idRegistereduser and R.reservecode='".$pas."';";
 			$result3 = mysql_query($query3);
-			$query4  = "SELECT Reservecode from LHR.registereduser RU, LHR.reservation R where RU.idRegistereduser=R.idRegistereduser;";
+			$query4  = "SELECT Reservecode from LHR.registereduser RU, LHR.reservation R where RU.idRegistereduser=R.idRegistereduser and R.reservecode='".$pas."';";
 			$result4 = mysql_query($query4);
 
 			while($row = mysql_fetch_row($result4))
