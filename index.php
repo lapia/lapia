@@ -92,7 +92,7 @@
 				<a href="#">Home Page</a>
 				<a href="html/costs.php">Costs</a>
 				<a href="html/aboutus.php">About Us</a>
-				<a href="html/disclamer.php">Disclaimer</a>
+				<a href="html/faq.php">FAQ</a>
 				<a href="html/privacypolicy.php">Privacy Policy</a>
 				<a href="html/help.php">Help</a>
 			</div>
@@ -122,7 +122,7 @@
 							?>
 						</div>
 						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
-							<h1>linki</h1>
+							<h1><a href="html/cancel.php">Cancel Reservation</a></h1>
 						</div>
 					</div>
 

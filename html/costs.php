@@ -92,7 +92,7 @@
 				<a href="../index.php">Home Page</a>
 				<a href="costs.php">Costs</a>
 				<a href="aboutus.php">About Us</a>
-				<a href="disclamer.php">Disclaimer</a>
+				<a href="faq.php">FAQ</a>
 				<a href="privacypolicy.php">Privacy Policy</a>
 				<a href="help.php">Help</a>
 			</div>

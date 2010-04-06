@@ -80,12 +80,12 @@
 			</div>
 
 			<div id="bottom_menu">
-				<a href="#">Home Page</a>
-				<a href="html/costs.php">Costs</a>
-				<a href="html/aboutus.php">About Us</a>
-				<a href="html/disclamer.php">Disclaimer</a>
-				<a href="html/privacypolicy.php">Privacy Policy</a>
-				<a href="html/help.php">Help</a>
+				<a href="../index.php">Home Page</a>
+				<a href="costs.php">Costs</a>
+				<a href="aboutus.php">About Us</a>
+				<a href="faq.php">FAQ</a>
+				<a href="privacypolicy.php">Privacy Policy</a>
+				<a href="help.php">Help</a>
 			</div>
 		</div>
 

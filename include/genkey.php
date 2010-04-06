@@ -21,7 +21,7 @@ class GenKey{
 	private function CheckCode($table,$col,$code)
 	{
 		$query="select * from $table where $col='$code'";
-		echo "<br>". $query;
+	//	echo "<br>". $query;
 		if(mysql_num_rows(mysql_query($query))) return false;
 		return true;
 	}

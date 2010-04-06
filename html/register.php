@@ -32,12 +32,12 @@
 			</div>
 
 			<div id="bottom_menu">
-				<a href="../index.html">Home</a>
-				<a href="html/costs.html">Costs</a>
-				<a href="html/au.html">About Us</a>
-				<a href="html/disc.html">Disclaimer</a>
-				<a href="html/pp.html">Privacy Policy</a>
-				<a href="html/help.html">Help</a>
+				<a href="../index.php">Home Page</a>
+				<a href="costs.php">Costs</a>
+				<a href="aboutus.php">About Us</a>
+				<a href="faq.php">FAQ</a>
+				<a href="privacypolicy.php">Privacy Policy</a>
+				<a href="help.php">Help</a>
 			</div>
 		</div>
 

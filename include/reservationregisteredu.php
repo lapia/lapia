@@ -38,13 +38,13 @@ class ReservationRuser
                 
                 $subquery="(select idRegistereduser from registereduser where RegisteredEmailaddress='".$_SESSION['username']."')";
                 $query="insert into Reservation( Reservecode,idRegistereduser,area,Statingtime,Endingtime,Startingdate,Endingdate,TimeStemp) values('".$this->key."',".$subquery.",'".$area."','$ts','$tf','$ds','$df','$tstemp')";
-        		echo $query;
+        	//	echo $query;
         		mysql_query($query);
         		if($area_b == 'B'){
         			$query="insert into Reservation( Reservecode,idRegistereduser,area,Statingtime,Endingtime,Startingdate,Endingdate,TimeStemp) values('".$this->key."',".$subquery.",'".$area_b."','$ts','$tf','$ds','$df','$tstemp')";
         			mysql_query($query);
         		}
-                echo '<br> rezerwacja <br> :' . $query . mysql_error();
+           //    echo '<br> rezerwacja <br> :' . $query . mysql_error();
                
                 $html = '<html><body><img src="rumianek.jpg"> <p>wlasnie skoncylem pisac klase do mailingu :).</p><br><img src="software-update-300x300.jpg"><br><p>another image</p></body></html>';
                 $imagegroup=array('software-update-300x300.jpg','rumianek.jpg',);

@@ -91,6 +91,24 @@ div#middlearea{
 	padding: 80px 0px 0px 0px;
 }
 
+div#cancelarea{
+	width: 200px;
+	height: 210px;
+	margin: 0px auto;
+	padding: 50px 0px 0px 0px;
+	font-size:14px;
+	text-align: left;
+}
+
+div#cancelarea label1{
+	padding: 0px 0px 0px 0px;
+}
+
+div#cancelarea label{
+	float:right;
+	padding: 0px 0px 0px 0px;
+}
+
 div#colorimage_container{
 	float: left;
 	width: 181px;

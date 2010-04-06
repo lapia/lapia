@@ -7,7 +7,7 @@
 ?>
 
 <head>
-	<title>Lappia Halli - Reservation</title>
+	<title>Lappia Halli - Cancel Registration Page</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
 	<link rel="stylesheet" href="../css/css.css" type="text/css">
@@ -61,11 +61,13 @@
 		include '../include/manuachosersdate.php';
 		include '../include/genkey.php';
 		include '../include/formnonregister.php';
+		include '../include/cancel1.php';
 
 		$dbconn = new SqlConnect("localhost","root","test1","LHR");
 		$dbconn->connectToDb();
 
 		//ini_set('display_errors',1);
+
 	?>
 
 	<div id="tlo">
@@ -76,14 +78,14 @@
 		<div id="gora_pasek">
 			<div id="container_top">
 				<div id="login_bar">
-					<form action="login.php" method="post">
+					<form action="html/login.php" method="post">
 						<p><label for="username">E-mail:</label> <input type="text" id="username" name="username"/></p>
 						<p><label for="password">Password:</label> <input type="password" id="password" name="password" /></p>
 						<p class="submit"><input type="submit" name="submit" value="Login" /></p>
 					</form>
 					<div id="pass_reg">
-						<a href="lost_password.php">Lost Password?</a>
-						<a href="register_second.php">Register</a>
+						<a href="html/lost_password.php">Lost Password?</a>
+						<a href="html/register_second.php">Register</a>
 					</div>
 				</div>
 			</div>
@@ -114,16 +116,17 @@
 								// ManuaChosersDate class requires a second parameter an associative array of messages
 								$infotab['free_time']="<br>reservations can be made<br>";
 								$infotab['busy_period']="<br>time is busy<br>";
-								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br>Reservations must be made at least<br> 3 hours before letting the area<br><br>";
+								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br> Reservations must be made at least 3 hours before letting the area<br>";
 
 								$rol=new ManuaChosersDate($_POST['date'],$infotab);
 								$rol->SetCalendar($cal);
 								$cal->sHowCalendar();
-							?>
+							?>y
 						</div>
-						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
+						<div id="cancelarea" style="font-size: 10pt; text-align: centered;">
 							<?php
-								$rol->ShowForm();
+								$mail= new cancel1();
+								$mail->cancel();
 							?>
 						</div>
 					</div>
@@ -149,13 +152,13 @@
 					function LoadNewImage() {
 						var unique = new Date();
 						document.images.webcam.src = newImage.src;
-						newImage.src = "images/1265849610942_20.jpg?time=" + unique.getTime();
+						newImage.src = "../images/1265849610942_20.jpg?time=" + unique.getTime();
 					}
 
 					function InitialImage() {
 						var unique = new Date();
 						newImage.onload = LoadNewImage;
-						newImage.src = "images/1265849610942_20.jpg?time=" + unique.getTime();
+						newImage.src = "../images/1265849610942_20.jpg?time=" + unique.getTime();
 						document.images.webcam.onload="";
 					}
 				</script>
