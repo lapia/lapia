@@ -329,24 +329,25 @@ div#center_top{
 */
 
 button.cleft{
-
+	border-style:groove;
 }
 
 button.cdate{
-
+	border-style:groove;
 }
 button.cright{
-
+	border-style:groove;
 }
 button.cdisabled{
+	border-style:groove;
 
 }
 button.cselected{
-
+	border-style:groove;
 }
 button.ctoday{
-
+	border-style:groove;
 }
 button.cenabled{
-
+	border-style:groove;
 }
