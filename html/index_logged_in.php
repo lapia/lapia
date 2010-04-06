@@ -106,7 +106,7 @@ if(!session_is_registered(username)){
 					</div>
 
 					<div id="pass_reg">
-						<a href="editprofile.php">Edit profile</a>
+						<a href="edit_profile.php">Edit profile</a>
 						<a href="logout.php">Logout</a>
 					</div>
 				</div>
