@@ -109,11 +109,11 @@
 						<h1 style="text-align: center">FAQ:</h1>
 						<p class="left">Welcome to the frequently asked question section page.</p>
 						<p class="left">Listed below are a few questions from our esteemed customers and our resolute to ensure that a proper service is rendered at all time.</p>
-						<ul>
+						<ol>
 							<li>What happens if I cancel a reservation made earlier, does this further affect my chances to re-booking later on?</li>
 							<li>Are there any security measures put in place to ascertain safety? For an example, a first aid service.</li>
 							<li>How many reservations can I make?</li>
-						</ul>
+						</ol>
 					</div>
 				</div>
 		</div>
