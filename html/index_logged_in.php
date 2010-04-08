@@ -148,11 +148,11 @@ if(!session_is_registered(username)){
 					</div>
 
 					<div id="colorimage_container">
-						<div id="colorimage">
+						<div id="colorimage" style="font-size: 10pt;">
 							<?php
 								$area=new Area($_POST['date']);
 
-								echo "<br>check:" .$_POST['next_step'];
+								//echo "<br>check:" .$_POST['next_step'];
 								$dbconn->disocnnect();
 							?>
 						</div>

@@ -133,7 +133,7 @@
 							<?php
 								$area=new Area($_POST['date']);
 
-								echo "<br>check:" .$_POST['next_step'];
+								//echo "<br>check:" .$_POST['next_step'];
 								$dbconn->disocnnect();
 							?>
 						</div>

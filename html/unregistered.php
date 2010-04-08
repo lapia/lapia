@@ -122,9 +122,7 @@
 							?>
 						</div>
 						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
-							<?php
-								$rol->ShowForm();
-							?>
+							<a href='../index.php' style="font-size: 18pt">go to main</a>
 						</div>
 					</div>
 
@@ -133,7 +131,7 @@
 							<?php
 								$area=new Area($_POST['date']);
 
-								echo "<br>check:" .$_POST['next_step'];
+								//echo "<br>check:" .$_POST['next_step'];
 								$dbconn->disocnnect();
 							?>
 						</div>
