@@ -105,8 +105,11 @@
 
 		<div id="srodek_pasek">
 				<div id="text_field_1">
-					<div id="text_field_2" style="width: 511px; height: 603px; overflow: auto; border: 0px solid #666; background-color: trnsparent; padding: 0px 10px 0px 10px; margin: 25px 0px 25px 0px">
-						<h1>Everything About Us!</h1>
+					<div id="text_field_2" style="width: 511px; height: 603px; overflow: auto; border: 0px solid #666; background-color: trnsparent; padding: 0px 10px 0px 10px; margin: 25px 0px 25px 0px; text-align:left">
+						<h1 style="text-align: center">ABOUT US:</h1>
+						<p class="left">Lappia Halli is a lapland owned gymnasium located in the heart of the northern region of Finland, Tornio to be specific.</p>
+						<p class="left">The hall is built to render a foot-balling service to all sport like minds in a condusive sporting atmosphere with its main objective to expand the opportunities and demand faced with by the sporting world and leisure in Lapland.</p>
+						<p class="left">Lappia Halli presents a well treated spacious football field to host various foot ball tournament putting in place, a dynamic/secured management facilities to schedule accurately its bookings.  The camera embedded option ensures its assurance of safety to monitor its current activity as it goes on there in.</p>
 					</div>
 				</div>
 		</div>

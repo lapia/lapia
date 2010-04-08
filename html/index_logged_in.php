@@ -5,12 +5,7 @@ if(!session_is_registered(username)){
 }
 ?>
 
-<?php
-//	if($_SESSION["logedin"] == 'false')  header('Location: http://localhost/Lapia/newuser.php');
-//	echo  '<br>logedin :'.$_SESSION["logedin"].'<br> newuser:'.$_SESSION['newuser'] .'<br>'; // potrzebne do przekierowania jeżeli chasło nieprawidłowe
-	$_SESSION['ShowRegisterForm']='-2'; // set show nonregistred user form
 
-?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">

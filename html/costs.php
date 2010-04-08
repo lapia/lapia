@@ -105,8 +105,9 @@
 
 		<div id="srodek_pasek">
 				<div id="text_field_1">
-					<div id="text_field_2" style="width: 511px; height: 603px; overflow: auto; border: 0px solid #666; background-color: trnsparent; padding: 0px 10px 0px 10px; margin: 25px 0px 25px 0px">
-						<h1>Costs - there are always some of those...</h1>
+					<div id="text_field_2" style="width: 511px; height: 603px; overflow: auto; border: 0px solid #666; background-color: trnsparent; padding: 0px 10px 0px 10px; margin: 25px 0px 25px 0px; text-align:left">
+						<h1 style="text-align: center">COST:</h1>
+						<p class="left">The cost of rendering services to customers/users usually calculated by the choices of hours made by individual. For an appropriate list of costs which varies, contact the management or admin at <a href="mailto:lappihalli@gmail.com">lappihalli@gmail.com</a>.</p>
 					</div>
 				</div>
 		</div>

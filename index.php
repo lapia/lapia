@@ -1,11 +1,3 @@
-<?php session_start();?>
-<?php
-//	if($_SESSION["logedin"] == 'false')  header('Location: http://localhost/Lapia/newuser.php');
-//	echo  '<br>logedin :'.$_SESSION["logedin"].'<br> newuser:'.$_SESSION['newuser'] .'<br>'; // potrzebne do przekierowania jeżeli chasło nieprawidłowe
-	$_SESSION['ShowRegisterForm']='-2'; // set show nonregistred user form
-
-?>
-
 <head>
 	<title>Lappia Halli - Home Page</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -123,7 +115,7 @@
 						</div>
 						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
 							<h1><a href="html/cancel.php">Cancel Reservation</a></h1>
-							<h1><a href="#">Unregister User Reservation Page</a></h1>
+							<h1><a href="html/unregistered.php">Unregister User Reservation Page</a></h1>
 						</div>
 					</div>
 

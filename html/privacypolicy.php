@@ -105,8 +105,17 @@
 
 		<div id="srodek_pasek">
 				<div id="text_field_1">
-					<div id="text_field_2" style="width: 511px; height: 603px; overflow: auto; border: 0px solid #666; background-color: trnsparent; padding: 0px 10px 0px 10px; margin: 25px 0px 25px 0px">
-						<h1>Policys - we have them</h1>
+					<div id="text_field_2" style="width: 511px; height: 603px; overflow: auto; border: 0px solid #666; background-color: trnsparent; padding: 0px 10px 0px 10px; margin: 25px 0px 25px 0px; text-align:left">
+						<h1 style="text-align: center">PRIVACY POLICY:</h1>
+						<p class="left">Lappia Halli’s Privacy Policy:</p>
+						<p class="left">Your trust is of utmost importance to us and by being transparent as best as we can. We would be glad to render our services making sure every of the detail provided by you is kept private.</p>
+						<p class="left">We have a guiding rule set aside to ensure the effectiveness of our pledge and these policies which are in 4 sections are listed below:</p>
+						<ol>
+							<li>The information we receive:<br><p>When we receive info through your consent such as e-mail, phone number, card info e.t.c under no condition except if instructed by you do we disclose them.</p></li>
+							<li>How we use your information:<br><p>After receiving your supply of info, we match the date of choice to the available dates and if this is vacant an authorization is made but your details are never disclosed to any other party.</p></li>
+							<li>How you can view, change or delete:<br><p>You have the sole responsibility to manage your account and play around whatever bookings you have made. Whatever you do to your account is highly in your care as there are different options to choose.</p></li>
+							<li>How to protect information:<br><p>We do our maximum best to protect your details you must also help us.</p></li>
+						</ol>
 					</div>
 				</div>
 		</div>

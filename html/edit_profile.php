@@ -78,6 +78,7 @@
 						//echo $sql;
 						$result=mysql_query($sql);
 						$row1 = mysql_fetch_assoc($result);
+
 						$_SESSION['row1'] = $row1;
 					?>
 					<form action="edit.php" onsubmit="return validate_form(this)" enctype="multipart/form-data" method="post">
