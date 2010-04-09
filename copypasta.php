@@ -7,6 +7,18 @@
 </head>
 <body>
 
+	<div id="login_bar">
+		<form action="copypastalogin.php" method="post">
+			<p><label for="username">E-mail:</label> <input type="text" id="username" name="username"/></p>
+			<p><label for="password">Password:</label> <input type="password" id="password" name="password" /></p>
+			<p class="submit"><input type="submit" name="submit" value="Login" /></p>
+		</form>
+		<div id="pass_reg">
+			<a href="html/lost_password.php">Lost Password?</a>
+			<a href="html/register_second.php">Register</a>
+		</div>
+	</div>
+
 	<div id="register_form">
 		<?php
 			$con = mysql_connect("localhost","root","test1");

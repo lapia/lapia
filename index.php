@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <head>
 	<title>Lappia Halli - Home Page</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
