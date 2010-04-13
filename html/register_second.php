@@ -80,7 +80,7 @@
 							<br>
 							<input name="email" type="text" size="40">
 							<br>
-							Password:
+							Password [6 - 12 chars]:
 							<br>
 							<input name="password" type="password"size="40">
 							<br>
