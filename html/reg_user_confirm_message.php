@@ -136,16 +136,16 @@
 									new ReservationRuser();
 									$_SESSION['FIRST_OPEN_SITE']=0;
 								}
-								echo "<br> dziękuje za rezewację <br>";
+								echo "<br>Thank you for the reservation.<br>";
 							}
 							else
 							{
-								echo '<h1> nie zarejestrowany uzytkownik</h1>';
+								echo '<h1>unregistered user</h1>';
 								if(!isset($_SESSION['FIRST_OPEN_SITE'])){
 									new FormNonRegister();
 									$_SESSION['FIRST_OPEN_SITE']=0;
 								}
-								echo "<br> dziękuje za rezewację <br>";
+								echo "<br>Thank you for the reservation.<br>";
 
 							}
 							?>

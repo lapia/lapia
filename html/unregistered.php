@@ -110,19 +110,22 @@
 						<div id="calender">
 							<?php
 								$cal=new Calendar();
+
+								//infotab['free_time']; infotab['busy_period']
+								// ManuaChosersDate class requires a second parameter an associative array of messages
+								$infotab['free_time']="<br>reservations can be made<br>";
+								$infotab['busy_period']="<br>time is busy<br>";
+								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br>Reservations must be made at least<br> 3 hours before letting the area<br><br>";
+
+								$rol=new ManuaChosersDate($_POST['date'],$infotab);
+								$rol->SetCalendar($cal);
 								$cal->sHowCalendar();
-								if(isset($_SESSION['username'])) {
-									new ReservationRuser();
-									echo "<br>Than you for the reservation<br>";
-								}
-								else {
-									echo "<h2>Unregisterd User</h2>";
-									new FormNonRegister();
-								}
 							?>
 						</div>
 						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
-							<a href='../index.php' style="font-size: 18pt">go to main</a>
+							<?php
+								$rol->ShowForm();
+							?>
 						</div>
 					</div>
 
