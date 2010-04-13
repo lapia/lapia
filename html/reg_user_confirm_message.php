@@ -76,20 +76,29 @@
 		<div id="gora_pasek">
 			<div id="container_top">
 				<div id="login_bar">
-					<form action="login.php" method="post">
-						<p><label for="username">E-mail:</label> <input type="text" id="username" name="username"/></p>
-						<p><label for="password">Password:</label> <input type="password" id="password" name="password" /></p>
-						<p class="submit"><input type="submit" name="submit" value="Login" /></p>
-					</form>
-					<div id="pass_reg">
-						<a href="lost_password.php">Lost Password?</a>
-						<a href="register_second.php">Register</a>
+				<br />
+				<br />
+				<br />
+					<div id="welcome_note">
+						<p>Welcome
+							<?php $con = mysql_connect("localhost","root","test1");
+								if (!$con) {
+									die('Could not connect: ' . mysql_error());
+								}
+
+								mysql_select_db("LHR", $con);
+								$querystr = "SELECT Contactperson FROM registereduser WHERE RegisteredEmailaddress = '".$_SESSION['username']."'";
+								$result = mysql_query($querystr);
+								$row = mysql_fetch_assoc($result);
+								echo $row['Contactperson']
+							?>
+						</p>
 					</div>
 				</div>
 			</div>
 
 			<div id="bottom_menu">
-				<a href="../index.php">Home Page</a>
+				<a href="../index_logged_in.php">Home Page</a>
 				<a href="costs.php">Costs</a>
 				<a href="aboutus.php">About Us</a>
 				<a href="faq.php">FAQ</a>
@@ -112,10 +121,6 @@
 
 								//infotab['free_time']; infotab['busy_period']
 								// ManuaChosersDate class requires a second parameter an associative array of messages
-								$infotab['free_time']="<br>reservations can be made<br>";
-								$infotab['busy_period']="<br>time is busy<br>";
-								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br>Reservations must be made at least<br> 3 hours before letting the area<br><br>";
-
 								$rol->SetCalendar($cal);
 								$cal->sHowCalendar();
 							?>
