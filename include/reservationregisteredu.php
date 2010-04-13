@@ -1,5 +1,5 @@
 <?php
-include 'include/sendmesage.php';
+include 'sendmesage.php';
 class ReservationRuser
 {
         private $y;
@@ -32,10 +32,10 @@ class ReservationRuser
                 if($_SESSION['areaarea'] == 'A&B')
                 {
                 	$area='A';
-                	$area_b='B';		
+                	$area_b='B';
                 }
                 else $area=$_SESSION['areaarea'];
-                
+
                 $subquery="(select idRegistereduser from registereduser where RegisteredEmailaddress='".$_SESSION['username']."')";
                 $query="insert into Reservation( Reservecode,idRegistereduser,area,Statingtime,Endingtime,Startingdate,Endingdate,TimeStemp) values('".$this->key."',".$subquery.",'".$area."','$ts','$tf','$ds','$df','$tstemp')";
         	//	echo $query;
@@ -45,7 +45,7 @@ class ReservationRuser
         			mysql_query($query);
         		}
            //    echo '<br> rezerwacja <br> :' . $query . mysql_error();
-               
+
                 $html = '<html><body><img src="rumianek.jpg"> <p>wlasnie skoncylem pisac klase do mailingu :).</p><br><img src="software-update-300x300.jpg"><br><p>another image</p></body></html>';
                 $imagegroup=array('software-update-300x300.jpg','rumianek.jpg',);
                 $smail = new SendMail();
@@ -53,9 +53,9 @@ class ReservationRuser
              	$smail->SetHtmlMesage($html);
                 $smail->SetGroupImages($imagegroup);
                 $smail->SetSubject('Lapiahally');
-                $smail->SendMesage(); 
-        	
+                $smail->SendMesage();
+
         }
-       
+
 }
 ?>

@@ -74,6 +74,7 @@ class ManuaChosersDate
 			echo "</form>";
 
 			echo "<FORM METHOD='LINK' action='../html/reg_user_confirm_message.php'>";
+			//echo "<FORM METHOD='LINK' action='../test.php'>";
 			if($test && !$this->disablebutton){
 				echo "<button type='submit' name='next_step' id='xx' value='true'>Go to reservation</button>";
 				//"fruits"  => array("a" => "orange", "b" => "banana", "c" => "apple"),

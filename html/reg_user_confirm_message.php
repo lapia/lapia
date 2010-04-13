@@ -4,6 +4,8 @@
 //	echo  '<br>logedin :'.$_SESSION["logedin"].'<br> newuser:'.$_SESSION['newuser'] .'<br>'; // potrzebne do przekierowania jeżeli chasło nieprawidłowe
 	$_SESSION['ShowRegisterForm']='-2'; // set show nonregistred user form
 
+	//ini_set('display_errors',1);
+
 ?>
 
 <head>
@@ -57,10 +59,11 @@
 		include '../include/sqlconnect.php';
 		include '../include/calendar.php';
 		include '../include/login.php';
-		include '../include/area.php';
+		include	'../include/area.php';
 		include '../include/manuachosersdate.php';
 		include '../include/genkey.php';
 		include '../include/formnonregister.php';
+		include '../include/reservationregisteredu.php';
 
 		$dbconn = new SqlConnect("localhost","root","test1","LHR");
 		$dbconn->connectToDb();
@@ -118,25 +121,46 @@
 						<div id="calender">
 							<?php
 								$cal=new Calendar();
-
-								//infotab['free_time']; infotab['busy_period']
-								// ManuaChosersDate class requires a second parameter an associative array of messages
-								$rol->SetCalendar($cal);
+								$cal->ButtonOff();
+								$cal->setBacklightDate($_SESSION['areadate']);
 								$cal->sHowCalendar();
+
 							?>
 						</div>
 						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
+						<?php
+							if(isset($_SESSION['username']))
+							{
+								if(!isset($_SESSION['FIRST_OPEN_SITE']))
+								{
+									new ReservationRuser();
+									$_SESSION['FIRST_OPEN_SITE']=0;
+								}
+								echo "<br> dziękuje za rezewację <br>";
+							}
+							else
+							{
+								echo '<h1> nie zarejestrowany uzytkownik</h1>';
+								if(!isset($_SESSION['FIRST_OPEN_SITE'])){
+									new FormNonRegister();
+									$_SESSION['FIRST_OPEN_SITE']=0;
+								}
+								echo "<br> dziękuje za rezewację <br>";
 
+							}
+							?>
+							<a href='../index.php' style="font-size: 18pt">go to main</a>
 						</div>
 					</div>
 
 					<div id="colorimage_container">
 						<div id="colorimage">
 							<?php
+							if(isset($_POST['date'])){
 								$area=new Area($_POST['date']);
-
-								//echo "<br>check:" .$_POST['next_step'];
-								$dbconn->disocnnect();
+								$_SESSION['areadate'] =$_POST['date'];
+							}
+							else $area=new Area($_SESSION['areadate']);
 							?>
 						</div>
 					</div>
