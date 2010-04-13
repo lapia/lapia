@@ -76,19 +76,34 @@ td.area_cool1{
 </style>
 </head>
 <body>
-<a href='index.php'>go to reservation</a>
+<a href='index.php'> return to reservation</a>
 <?php
+/*
+ * $_SESSION['FIRST_OPEN_SITE'] This prevents the execution of the value of re-booking
+ *
+ */
 	$cal=new Calendar();
+	$cal->ButtonOff();
+	$cal->setBacklightDate($_SESSION['areadate']);
 	$cal->sHowCalendar();
 if(isset($_SESSION['username']))
 {
-	new ReservationRuser();
-	echo "<br>Than you for the reservation<br>";
+	if(!isset($_SESSION['FIRST_OPEN_SITE']))
+	{
+		new ReservationRuser();
+		$_SESSION['FIRST_OPEN_SITE']=0;
+	}
+	echo "<br> dziękuje za rezewację <br>";
 }
 else
 {
-	echo '<h1>Unregisterd User</h1>';
-	new FormNonRegister();
+	echo '<h1> nie zarejestrowany uzytkownik</h1>';
+	if(!isset($_SESSION['FIRST_OPEN_SITE'])){
+		new FormNonRegister();
+		$_SESSION['FIRST_OPEN_SITE']=0;
+	}
+	echo "<br> dziękuje za rezewację <br>";
+
 }
 ?>
 <div id='area'>
@@ -96,23 +111,24 @@ else
 <?php
 	if(isset($_POST['date'])){
 		$area=new Area($_POST['date']);
+		$_SESSION['areadate'] =$_POST['date'];
 	}
 	else $area=new Area($_SESSION['areadate']);
 ?>
 </div>
 </div>
 <?php $dbconn->disocnnect();?>
-<a href='index.php'>go to reservation</a>
+<a href='index.php'> return to reservation</a>
 <?php
 
-//foreach($_SESSION as $sesja=>$wartosc){
-//	if (is_array($wartosc)){
-//		echo "zawartosc tablicy";
-//		foreach($wartosc as $tablica=>$pole);
-//			echo "<p>".$tablica." = ".$pole."</p>";
-//	}
-//	echo "<p>".$sesja." = ".$wartosc."</p>";
-//}
+foreach($_SESSION as $sesja=>$wartosc){
+	if (is_array($wartosc)){
+		echo "zawartosc tablicy";
+		foreach($wartosc as $tablica=>$pole);
+			echo "<p>".$tablica." = ".$pole."</p>";
+	}
+	echo "<p>".$sesja." = ".$wartosc."</p>";
+}
 ?>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <?php
 //include 'include/sendmesage.php';
+echo "<script src='include/checkform.js' type='text/javascript'></script>";
 class FormNonRegister
 {
 	private $mail; 
@@ -112,7 +113,7 @@ class FormNonRegister
 	function showNonRegisterForm($mesage="")
 	{
 		echo "$mesage<br>";
-		echo "<form action='".$_SERVER['PHP_SELF']."' method=post>";
+		echo "<form action='".$_SERVER['PHP_SELF']."' method=post onSubmit='return ValidateForm()' name='nonRegisteredUser'>";
 		echo "Email: <input type=text name=mail><br>";
 		echo "Name of Organization: <input type=text name=noforganization><br>";
 		echo "Contact persopn: <input type=text name=cpersopn><br>";
