@@ -11,6 +11,7 @@ class ManuaChosersDate
 	private $area;
 	private $infotab;
 	private $disablebutton;
+	private $phpfile;
 	public function ManuaChosersDate($date,$infotab)
 	{
 		$this->disablebutton=FALSE;
@@ -53,7 +54,7 @@ class ManuaChosersDate
 		$_SESSION['areaduration']=$this->duration;
 		$_SESSION['areaarea']=$this->area;
 	}
-	public function ShowForm()
+	public function ShowForm($phpfile)
 	{
 
 			$test=false;
@@ -73,7 +74,9 @@ class ManuaChosersDate
 			echo "<INPUT TYPE=hidden NAME=choserdate VALUE='send'>";
 			echo "</form>";
 
-			echo "<FORM METHOD='LINK' action='../html/reg_user_confirm_message.php'>";
+			$this->phpfile=$phpfile;
+			echo "<FORM METHOD='LINK' action='../html/".$phpfile."'>";
+			//echo "<FORM METHOD='LINK' action='../html/reg_user_confirm_message.php'>";
 			//echo "<FORM METHOD='LINK' action='../test.php'>";
 			if($test && !$this->disablebutton){
 				echo "<button type='submit' name='next_step' id='xx' value='true'>Go to reservation</button>";

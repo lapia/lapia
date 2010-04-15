@@ -106,7 +106,7 @@
 								<br>
 								<input name="email" type="text" size="40" value="<? $row1= $_SESSION["row1"]; print $row1["RegisteredEmailaddress"] ?>">
 								<br>
-								Password:
+								Password [6 - 12 chars]:
 								<br>
 								<input name="password" type="password"size="40" value="<?$row1= $_SESSION["row1"]; print $row1["password"] ?>">
 								<br>

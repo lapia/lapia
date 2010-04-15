@@ -142,7 +142,9 @@ if(!session_is_registered(username)){
 						</div>
 						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
 							<?php
-								$rol->ShowForm();
+								$phpfile = "reg_user_confirm_message.php";
+
+								$rol->ShowForm($phpfile);
 							?>
 						</div>
 					</div>
