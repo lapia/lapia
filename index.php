@@ -122,12 +122,17 @@
 								$result = mysql_query($sql);
 
 								while ($db_field = mysql_fetch_assoc($result)) {
-									print "<p class='events'>".$db_field['Title'].":".$db_field['Content']. "</p>";
+									print "<p class='events'>".$db_field['Title'].": ".$db_field['Content']. "</p>";
 								}
 							?>
-							<p class="links"><a href="index.php">More</a></p>
+							<p class="more"><a href="index.php">More</a></p>
 							<p class="links"><a href="html/unregistered.php">Make Reservation</a></p>
 							<p class="links"><a href="html/cancel.php">Cancel Reservation</a></p>
+							<br>
+							<p class="ckay">COLOUR KEY:</p>
+							<p class="ckay">Green = unreserved</p>
+							<p class="ckay">Red = reserved</p>
+							<p class="ckay">Yellow = unconfirmed reservation</p>
 						</div>
 					</div>
 
