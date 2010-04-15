@@ -116,7 +116,7 @@
 							?>
 						</div>
 						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
-							<p style="text-align:left; font-size: 14pt; padding-left: 35px; margin-bottom: 5px">Upcoming events:</p>
+							<p style="text-align:left; font-size: 14pt; padding-left: 60px; margin-bottom: 5px">Upcoming events:</p>
 							<?php
 								$sql = "SELECT * FROM UpcomingEvents";
 								$result = mysql_query($sql);

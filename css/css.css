@@ -95,7 +95,7 @@ div#middlearea p.links{
 	color: blue;
 	text-align: left;
 	font-size: 14pt;
-	padding: 0px 0px 0px 35px;
+	padding: 0px 0px 0px 60px;
 	margin: 3px 0px 3px 0px;
 }
 
@@ -104,9 +104,9 @@ div#middlearea p.links a{
 }
 
 div#middlearea p.more{
-	text-align: left;
+	text-align: right;
 	font-size: 8pt;
-	padding: 0px 0px 5px 25px;
+	padding: 0px 120px 5px 0px;
 	margin: 3px 0px 3px 0px;
 }
 
@@ -118,14 +118,14 @@ div#middlearea p.more a{
 div#middlearea p.events{
 	text-align:left;
 	font-size: 8pt;
-	padding-left: 35px;
+	padding-left: 60px;
 	margin: 3px 0px 3px 0px;
 }
 
 div#middlearea p.ckay{
 	text-align:left;
 	font-size: 8pt;
-	padding-left: 15px;
+	padding-left: 40px;
 	margin: 3px 0px 3px 0px;
 }
 
