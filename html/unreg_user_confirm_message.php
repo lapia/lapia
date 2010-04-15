@@ -4,10 +4,12 @@
 //	echo  '<br>logedin :'.$_SESSION["logedin"].'<br> newuser:'.$_SESSION['newuser'] .'<br>'; // potrzebne do przekierowania jeżeli chasło nieprawidłowe
 	$_SESSION['ShowRegisterForm']='-2'; // set show nonregistred user form
 
+	//ini_set('display_errors',1);
+
 ?>
 
 <head>
-	<title>Lappia Halli - Unregisterd Reservation</title>
+	<title>Lappia Halli - Reservation</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
 	<link rel="stylesheet" href="../css/css.css" type="text/css">
@@ -77,20 +79,29 @@
 		<div id="gora_pasek">
 			<div id="container_top">
 				<div id="login_bar">
-					<form action="login.php" method="post">
-						<p><label for="username">E-mail:</label> <input type="text" id="username" name="username"/></p>
-						<p><label for="password">Password:</label> <input type="password" id="password" name="password" /></p>
-						<p class="submit"><input type="submit" name="submit" value="Login" /></p>
-					</form>
-					<div id="pass_reg">
-						<a href="lost_password.php">Lost Password?</a>
-						<a href="register_second.php">Register</a>
+				<br />
+				<br />
+				<br />
+					<div id="welcome_note">
+						<p>Welcome
+							<?php $con = mysql_connect("localhost","root","test1");
+								if (!$con) {
+									die('Could not connect: ' . mysql_error());
+								}
+
+								mysql_select_db("LHR", $con);
+								$querystr = "SELECT Contactperson FROM registereduser WHERE RegisteredEmailaddress = '".$_SESSION['username']."'";
+								$result = mysql_query($querystr);
+								$row = mysql_fetch_assoc($result);
+								echo $row['Contactperson']
+							?>
+						</p>
 					</div>
 				</div>
 			</div>
 
 			<div id="bottom_menu">
-				<a href="../index.php">Home Page</a>
+				<a href="../index_logged_in.php">Home Page</a>
 				<a href="costs.php">Costs</a>
 				<a href="aboutus.php">About Us</a>
 				<a href="faq.php">FAQ</a>
@@ -110,34 +121,46 @@
 						<div id="calender">
 							<?php
 								$cal=new Calendar();
-
-								//infotab['free_time']; infotab['busy_period']
-								// ManuaChosersDate class requires a second parameter an associative array of messages
-								$infotab['free_time']="<br>reservations can be made<br>";
-								$infotab['busy_period']="<br>time is busy<br>";
-								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br>Reservations must be made at least<br> 3 hours before letting the area<br><br>";
-
-								$rol=new ManuaChosersDate($_POST['date'],$infotab);
-								$rol->SetCalendar($cal);
+								$cal->ButtonOff();
+								$cal->setBacklightDate($_SESSION['areadate']);
 								$cal->sHowCalendar();
+
 							?>
 						</div>
 						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
-							<?php
-								$phpfile = "unreg_user_confirm_message.php";
+						<?php
+							if(isset($_SESSION['username']))
+							{
+								if(!isset($_SESSION['FIRST_OPEN_SITE']))
+								{
+									new ReservationRuser();
+									$_SESSION['FIRST_OPEN_SITE']=0;
+								}
+								echo "<br>Thank you for the reservation.<br>";
+							}
+							else
+							{
+								echo '<h1>unregistered user</h1>';
+								if(!isset($_SESSION['FIRST_OPEN_SITE'])){
+									new FormNonRegister();
+									$_SESSION['FIRST_OPEN_SITE']=0;
+								}
+								echo "<br>Thank you for the reservation.<br>";
 
-								$rol->ShowForm($phpfile);
+							}
 							?>
+							<a href='../index.php' style="font-size: 18pt">go to main</a>
 						</div>
 					</div>
 
 					<div id="colorimage_container">
 						<div id="colorimage">
 							<?php
+							if(isset($_POST['date'])){
 								$area=new Area($_POST['date']);
-
-								//echo "<br>check:" .$_POST['next_step'];
-								$dbconn->disocnnect();
+								$_SESSION['areadate'] =$_POST['date'];
+							}
+							else $area=new Area($_SESSION['areadate']);
 							?>
 						</div>
 					</div>

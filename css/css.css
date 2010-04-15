@@ -91,11 +91,24 @@ div#middlearea{
 	padding: 80px 0px 0px 0px;
 }
 
-div#middlearea h1 a{
+div#middlearea p.links{
 	color: blue;
 	text-align: left;
-	text-decoration: overline;
+	text-decoration: none;
 	font-size: 14pt;
+	padding: 0px 0px 0px 35px;
+	margin: 3px 0px 3px 0px;
+}
+
+div#middlearea p.links a{
+	text-decoration: none;
+}
+
+div#middlearea p.events{
+	text-align:left;
+	font-size: 8pt;
+	padding-left: 35px;
+	margin: 3px 0px 3px 0px;
 }
 
 div#cancelarea{

@@ -116,8 +116,18 @@
 							?>
 						</div>
 						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
-							<h1><a href="html/cancel.php">Cancel Reservation</a></h1>
-							<h1><a href="html/unregistered.php">Unregister User Reservation Page</a></h1>
+							<p style="text-align:left; font-size: 14pt; padding-left: 35px;">Upcoming events:</p>
+							<?php
+								$sql = "SELECT * FROM UpcomingEvents";
+								$result = mysql_query($sql);
+
+								while ($db_field = mysql_fetch_assoc($result)) {
+									print "<p class='events'>".$db_field['Title'].":".$db_field['Content']. "</p>";
+								}
+							?>
+							<p class="links"><a href="index.php">More</a></p>
+							<p class="links"><a href="html/unregistered.php">Make Reservation</a></p>
+							<p class="links"><a href="html/cancel.php">Cancel Reservation</a></p>
 						</div>
 					</div>
 
