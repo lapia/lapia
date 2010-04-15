@@ -114,6 +114,10 @@ div#middlearea p.more a{
 	color: green;
 	text-decoration: none;
 }
+div#middlearea p.more a:visited{
+	color: green;
+	text-decoration: none;
+}
 
 div#middlearea p.events{
 	text-align:left;
