@@ -1,10 +1,16 @@
 <?php session_start();?>
+<?php
+//	if($_SESSION["logedin"] == 'false')  header('Location: http://localhost/Lapia/newuser.php');
+//	echo  '<br>logedin :'.$_SESSION["logedin"].'<br> newuser:'.$_SESSION['newuser'] .'<br>'; // potrzebne do przekierowania jeżeli chasło nieprawidłowe
+	$_SESSION['ShowRegisterForm']='-2'; // set show nonregistred user form
+
+?>
 
 <head>
-	<title>Lappia Halli - Home Page</title>
+	<title>Lappia Halli - Costs</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
-	<link rel="stylesheet" href="css/css.css" type="text/css">
+	<link rel="stylesheet" href="../css/css.css" type="text/css">
 
 	<style type="text/css">
 	<!--
@@ -47,14 +53,14 @@
 
 <body>
 	<?php
-		include 'include/adduser.php';
-		include 'include/sqlconnect.php';
-		include 'include/calendar.php';
-		include 'include/login.php';
-		include 'include/area.php';
-		include 'include/manuachosersdate.php';
-		include 'include/genkey.php';
-		include 'include/formnonregister.php';
+		include '../include/adduser.php';
+		include '../include/sqlconnect.php';
+		include '../include/calendar.php';
+		include '../include/login.php';
+		include '../include/area.php';
+		include '../include/manuachosersdate.php';
+		include '../include/genkey.php';
+		include '../include/formnonregister.php';
 
 		$dbconn = new SqlConnect("localhost","root","test1","LHR");
 		$dbconn->connectToDb();
@@ -70,25 +76,25 @@
 		<div id="gora_pasek">
 			<div id="container_top">
 				<div id="login_bar">
-					<form action="html/login.php" method="post">
+					<form action="login.php" method="post">
 						<p><label for="username">E-mail:</label> <input type="text" id="username" name="username"/></p>
 						<p><label for="password">Password:</label> <input type="password" id="password" name="password" /></p>
 						<p class="submit"><input type="submit" name="submit" value="Login" /></p>
 					</form>
 					<div id="pass_reg">
-						<a href="html/lost_password.php">Lost Password?</a>
-						<a href="html/register_second.php">Register</a>
+						<a href="lost_password.php">Lost Password?</a>
+						<a href="register_second.php">Register</a>
 					</div>
 				</div>
 			</div>
 
 			<div id="bottom_menu">
-				<a href="#">Home Page</a>
-				<a href="html/costs.php">Costs</a>
-				<a href="html/aboutus.php">About Us</a>
-				<a href="html/faq.php">FAQ</a>
-				<a href="html/privacypolicy.php">Privacy Policy</a>
-				<a href="html/help.php">Help</a>
+				<a href="../index.php">Home Page</a>
+				<a href="costs.php">Costs</a>
+				<a href="aboutus.php">About Us</a>
+				<a href="faq.php">FAQ</a>
+				<a href="privacypolicy.php">Privacy Policy</a>
+				<a href="help.php">Help</a>
 			</div>
 		</div>
 
@@ -99,24 +105,8 @@
 
 		<div id="srodek_pasek">
 				<div id="text_field_1">
-					<div id="calender_container">
-						<div id="calender">
-							<?php
-								$cal=new Calendar();
-
-								//infotab['free_time']; infotab['busy_period']
-								// ManuaChosersDate class requires a second parameter an associative array of messages
-								$infotab['free_time']="<br>reservations can be made<br>";
-								$infotab['busy_period']="<br>time is busy<br>";
-								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br> Reservations must be made at least 3 hours before letting the area<br>";
-
-								$rol=new ManuaChosersDate($_POST['date'],$infotab);
-								$rol->SetCalendar($cal);
-								$cal->sHowCalendar();
-							?>
-						</div>
-						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
-							<p style="text-align:left; font-size: 14pt; padding-left: 60px; margin-bottom: 5px">Upcoming events:</p>
+					<div id="text_field_2" style="width: 511px; height: 603px; overflow: auto; border: 0px solid #666; background-color: trnsparent; padding: 0px 10px 0px 10px; margin: 25px 0px 25px 0px; text-align:left">
+						<h1 style="text-align: center">Past and upcoming events:</h1>
 							<?php
 								$sql = "SELECT * FROM UpcomingEvents";
 								$result = mysql_query($sql);
@@ -124,27 +114,8 @@
 								while ($db_field = mysql_fetch_assoc($result)) {
 									print "<p class='events'>".$db_field['Title'].": ".$db_field['Content']. "</p>";
 								}
-							?>
-							<p class="more"><a href="html/more_events.php">More</a></p>
-							<p class="links"><a href="html/unregistered.php">Make Reservation</a></p>
-							<p class="links"><a href="html/cancel.php">Cancel Reservation</a></p>
-							<br>
-							<p class="ckay">COLOUR KEY:</p>
-							<p class="ckay">Green = unreserved</p>
-							<p class="ckay">Yellow = unconfirmed reservation</p>
-							<p class="ckay">Red = reserved</p>
-						</div>
-					</div>
-
-					<div id="colorimage_container">
-						<div id="colorimage">
-							<?php
-								$area=new Area($_POST['date']);
-
-								//echo "<br>check:" .$_POST['next_step'];
 								$dbconn->disocnnect();
 							?>
-						</div>
 					</div>
 				</div>
 		</div>
@@ -157,24 +128,24 @@
 					function LoadNewImage() {
 						var unique = new Date();
 						document.images.webcam.src = newImage.src;
-						newImage.src = "images/1265849610942_20.jpg?time=" + unique.getTime();
+						newImage.src = "../images/1265849610942_20.jpg?time=" + unique.getTime();
 					}
 
 					function InitialImage() {
 						var unique = new Date();
 						newImage.onload = LoadNewImage;
-						newImage.src = "images/1265849610942_20.jpg?time=" + unique.getTime();
+						newImage.src = "../images/1265849610942_20.jpg?time=" + unique.getTime();
 						document.images.webcam.onload="";
 					}
 				</script>
 
 				<div id="webcam1">
 					<!--<h3>A</h3>-->
-					<img src="images/1265849610942_20.jpg" name="webcam" width="300" height="280">
+					<img src="../images/1265849610942_20.jpg" name="webcam" width="300" height="280">
 				</div>
 				<div id="webcam2">
 					<!--<h3>A</h3>-->
-					<img src="images/1265849610942_20.jpg" name="webcam" width="300" height="280">
+					<img src="../images/1265849610942_20.jpg" name="webcam" width="300" height="280">
 				</div>
 			</div>
 		</div>

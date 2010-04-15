@@ -93,7 +93,7 @@
 								$querystr = "SELECT Contactperson FROM registereduser WHERE RegisteredEmailaddress = '".$_SESSION['username']."'";
 								$result = mysql_query($querystr);
 								$row = mysql_fetch_assoc($result);
-								echo $row['Contactperson']
+								echo $row['Contactperson'];
 							?>
 						</p>
 					</div>
@@ -101,7 +101,7 @@
 			</div>
 
 			<div id="bottom_menu">
-				<a href="../index_logged_in.php">Home Page</a>
+				<a href="index_logged_in.php">Home Page</a>
 				<a href="costs.php">Costs</a>
 				<a href="aboutus.php">About Us</a>
 				<a href="faq.php">FAQ</a>
@@ -149,7 +149,7 @@
 
 							}
 							?>
-							<a href='../index.php' style="font-size: 18pt">go to main</a>
+							<a href='index_logged_in.php' style="font-size: 18pt">go to main</a>
 						</div>
 					</div>
 
