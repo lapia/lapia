@@ -78,7 +78,7 @@
 
 		<div id="gora_pasek">
 			<div id="container_top">
-				<div id="login_bar">
+				<div id="logout_bar">
 				<br />
 				<br />
 				<br />
@@ -93,9 +93,14 @@
 								$querystr = "SELECT Contactperson FROM registereduser WHERE RegisteredEmailaddress = '".$_SESSION['username']."'";
 								$result = mysql_query($querystr);
 								$row = mysql_fetch_assoc($result);
-								echo $row['Contactperson'];
+								echo $row['Contactperson']
 							?>
 						</p>
+					</div>
+
+					<div id="pass_reg">
+						<a href="edit_profile.php">Edit profile</a>
+						<a href="logout.php">Logout</a>
 					</div>
 				</div>
 			</div>
