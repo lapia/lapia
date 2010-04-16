@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
-	header("location:../index_second.php");
+	header("location:../index.php");
 }
 ?>
 
