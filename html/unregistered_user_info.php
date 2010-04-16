@@ -19,7 +19,7 @@ if (isset ($_POST['register'])){
 	$count = mysql_num_rows($result);
 
 	if ($count > 0){
-		$_SESSION['already_err'] = "Email address already existed";
+		$_SESSION['already_err'] = "<p class='kkay'>Email address already exists!</p>";
 		//echo "<script type='text/javascript'>document.location ='register_second.php'</script>";
 		header('Location:unreg_user_confirm_message.php');
 		exit;

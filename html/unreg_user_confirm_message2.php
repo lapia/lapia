@@ -126,7 +126,7 @@
 									<?php }?>
 								</p>
 							</div>
-							<a href='../index.php' style="font-size: 18pt">go to main</a>
+							<a href='../index.php' style="font-size: 18pt">go back</a>
 						</div>
 					</div>
 
