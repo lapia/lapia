@@ -12,6 +12,7 @@ class ManuaChosersDate
 	private $infotab;
 	private $disablebutton;
 	private $passingtime;
+	private $phpfile;
 	public function ManuaChosersDate($date,$infotab,$passingtime)
 	{
 		$this->disablebutton=FALSE;
@@ -56,7 +57,7 @@ class ManuaChosersDate
 		$_SESSION['areaduration']=$this->duration;
 		$_SESSION['areaarea']=$this->area;
 	}
-	public function ShowForm()
+	public function ShowForm($phpfile)
 	{
 
 			$test=false;
