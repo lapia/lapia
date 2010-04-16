@@ -54,7 +54,19 @@
 			<div id="srodek_pasek">
 			<div id="text_field_1">
 				<div id="container_middle">
-				<div id="alert"><p><?php echo "Forgot your password? Input you email below"?></p></div>
+				<div id="alert">
+					<p>
+						<?php echo "Forgot your password? Input you email below"?>
+					</p>
+					<p>
+						<?php
+							if(isset($_SESSION['lost_already_err'])){
+								echo $_SESSION['lost_already_err'];
+								unset($_SESSION['lost_already_err']);
+							}
+						?>
+					</p>
+				</div>
 					<div id="login_bar2">
 
 					<br/>

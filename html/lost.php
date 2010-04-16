@@ -13,12 +13,22 @@ $result=mysql_query($sql);
 $row = mysql_fetch_assoc($result);
 $value="Hello, your lost password is <font color = \"Blue\">".$row['password']."</font>";
 
-$sendmail = new SendMail();
-$sendmail ->SetRecipients($_POST['username']);
-$sendmail ->SetBodyMesage($value);
-$sendmail ->SetSubject('Lost Password');
-$sendmail ->SendMesage();
+if ($row == 0){
+		$_SESSION['lost_already_err'] = "Email address Does not exist in our database";
+		echo "<script type='text/javascript'>document.location ='lost_password.php'</script>";
+		exit;}
+else{
+		$sendmail = new SendMail();
+		$sendmail ->SetRecipients($_POST['username']);
+		$sendmail ->SetBodyMesage($value);
+		$sendmail ->SetSubject('Lost Password');
+		$sendmail ->SendMesage();
+
+		$_SESSION['lost_success'] = "Your password has been sent to your email address.";
+		echo"<script type='text/javascript'>document.location ='lost_password_confirm.php'</script>";
+}
 mysql_close($con);
+
 ?>
 <?php
 /*

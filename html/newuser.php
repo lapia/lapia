@@ -47,18 +47,29 @@
 			</div>
 			<div id="srodek_pasek">
 				<div id="text_field_1">
-				<div id="middlemenu_container">
-					<div id="middlemenu">
-						<div id="alert">
-							<p>
-								<?php if(isset($_SESSION['success'])){ ?>
-									<?php echo $_SESSION['success']; unset($_SESSION['success']);?>
-								<?php }?>
-							</p>
+					<div id="middlemenu_container">
+						<div id="middlemenu">
+							<div id="alert">
+								<p>
+									<?php
+										if(isset($_SESSION['success'])) {
+											echo $_SESSION['success'];
+											unset($_SESSION['success']);
+										}
+									?>
+								</p>
+								<p>
+									<?php
+										if(isset($_SESSION['edit'])) {
+											echo $_SESSION['edit'];
+											unset($_SESSION['edit']);
+										}
+									?>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 			</div>
 		<div id="prawy_pasek">
 			<div id="webcams">

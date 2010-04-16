@@ -149,7 +149,7 @@
 
 							}
 							?>
-							<a href='index_logged_in.php' style="font-size: 16pt">go to main</a>
+							<a href='index_logged_in.php' style="font-size: 16pt">go back</a>
 						</div>
 					</div>
 

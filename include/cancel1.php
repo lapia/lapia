@@ -41,11 +41,9 @@ class cancel1
 								$query= "DELETE FROM LHR.reservation WHERE idReservation ='".$pas."'";
 								mysql_query($query);
 								$html = '<html><body><p>wlasnie skoncylem pisac klase do mailingu :).</p><p>another image</p></body></html>';
-           //     $imagegroup=array('software-update-300x300.jpg','rumianek.jpg',);
                 $smail = new SendMail();
                 $smail->SetRecipients($_SESSION['emailemail']);
              	$smail->SetHtmlMesage($html);
-          //      $smail->SetGroupImages($imagegroup);
                 $smail->SetSubject('Lapiahally');
             $smail->SendMesage();
 			}

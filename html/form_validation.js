@@ -95,5 +95,18 @@ function validate_form(thisform) {
 			Phone.focus();
 			return false;
 		}
+		if (validate_null(email, "Email Address field is empty.") == false) { email.focus(); return false; }
+if (validate_null(password, "Password field is empty.") == false) { password.focus(); return false; }
+if (validate_null(password2, "Second Password field is empty.") == false) { password2.focus(); return false; }
+if (validate_null(name_of_organisation, " Organization name field is empty.") == false) { name_of_organisation.focus(); return false; }
+if (validate_null(contact_person, "Contact person field is empty.") == false) { contact_person.focus(); return false; }
+if (validate_null(Address, "Address field is empty.") == false)  { Address.focus(); return false; }
+if (validate_null(Phone, " Phone number field is empty.") == false) {Phone.focus(); return false;}
+function validate_psw2(field,alerttxt){with (field){
+if(field.value.length > 12){ alert(alerttxt); return false;}
+else{ return true;}}}
+
+if (validate_psw2(password, "Invalid password. Maximum length is 12 characters.") == false ) { password.focus(); return false; }
 	}
 }
+

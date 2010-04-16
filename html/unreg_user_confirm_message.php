@@ -79,7 +79,7 @@
 		<div id="gora_pasek">
 			<div id="container_top">
 				<div id="login_bar">
-					<form action="html/login.php" method="post">
+					<form action="login.php" method="post">
 						<p><label for="username">E-mail:</label> <input type="text" id="username" name="username"/></p>
 						<p><label for="password">Password:</label> <input type="password" id="password" name="password" /></p>
 						<p class="submit"><input type="submit" name="submit" value="Login" /></p>
@@ -185,7 +185,8 @@
 
 							}
 							?>
-							<a href='../index.php' style="font-size: 16pt;">go back</a>
+							<br>
+							<p><a href='../index.php'>go back</a></p>
 						</div>
 					</div>
 

@@ -46,7 +46,19 @@
 			<div id="srodek_pasek">
 			<div id="text_field_1">
 				<div id="container_middle">
-				<div id="alert"><br /><p><?php echo "Your password has been sent to the email address you provided"?></p></div>
+					<div id="alert">
+						<p>
+							<?php echo "Forgot your password? Input you email below"?>
+						</p>
+						<p>
+							<?php
+								if(isset($_SESSION['lost_success'])) {
+									echo $_SESSION['lost_success'];
+									unset($_SESSION['lost_success']);
+								}
+							?>
+						</p>
+				</div>
 					<div id="login_bar2">
 
 					<br/>
