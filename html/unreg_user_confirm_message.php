@@ -118,7 +118,7 @@
 
 							?>
 						</div>
-						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
+						<div id="middlearea" style="font-size: 10pt; text-align: centered; padding:  0px 0px 0px 0px;">
 						<?php
 							if(isset($_SESSION['username']))
 							{
@@ -127,20 +127,65 @@
 									new ReservationRuser();
 									$_SESSION['FIRST_OPEN_SITE']=0;
 								}
-								echo "<br>Thank you for the reservation.<br>";
+								//echo "<br>Thank you for the reservation.<br>";
 							}
 							else
 							{
-								echo '<h1>unregistered user</h1>';
+								?>
+								<form action="unregistered_user_info.php" onsubmit="return validate_form(this)" enctype="multipart/form-data" method="post">
+
+								<p class="ckay">
+									<?php if(isset($_SESSION['already_err'])) {
+										?>
+										<?php echo $_SESSION['already_err'];
+										unset($_SESSION['already_err']);?>
+									<?php }?>
+								</p>
+								<p class="ckay">
+									<?php if(isset($_SESSION['success'])) {
+										?>
+										<?php echo $_SESSION['success'];
+										unset($_SESSION['success']);?>
+									<?php }?>
+
+									</fieldset>
+									<br>
+										Name of Organisation:
+										<br>
+										<input class="toleft" name="name_of_organisation" type="text" size="40">
+										<br>
+										Contact Person:
+										<br>
+										<input class="toleft" name="contact_person" type="text" size="40">
+										<br>
+										Address:
+										<br>
+										<input class="toleft" name="Address" type="text" size="40">
+										<br>
+										E-mail:
+										<br>
+										<input class="toleft" name="email" type="text" size="40">
+										<br>
+										Phone:
+										<br>
+										<input class="toleft" name="Phone" type="int" size="40">
+										<br>
+										<br>
+									<input type="submit" name="register" value="Submit" id="submit">
+									<input type="reset" value="Reset" name= "reset"/>
+									</fieldset>
+								</form>
+								<?php
+								//echo '<h1>unregistered user</h1>';
 								if(!isset($_SESSION['FIRST_OPEN_SITE'])){
 									new FormNonRegister();
 									$_SESSION['FIRST_OPEN_SITE']=0;
 								}
-								echo "<br>Thank you for the reservation.<br>";
+								//echo "<br>Thank you for the reservation.<br>";
 
 							}
 							?>
-							<a href='../index.php' style="font-size: 18pt">go to main</a>
+							<a href='../index.php' style="font-size: 16pt;">go back</a>
 						</div>
 					</div>
 

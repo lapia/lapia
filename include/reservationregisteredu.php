@@ -1,5 +1,5 @@
 <?php
-include 'sendmesage.php';
+include '../include/sendmesage.php';
 class ReservationRuser
 {
         private $y;

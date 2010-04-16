@@ -133,6 +133,14 @@ div#middlearea p.ckay{
 	margin: 3px 0px 3px 0px;
 }
 
+div#middlearea p.kkay{
+	color: red;
+	text-align:left;
+	font-size: 8pt;
+	padding-left: 40px;
+	margin: 3px 0px 3px 0px;
+}
+
 div#cancelarea{
 	width: 200px;
 	height: 210px;
@@ -306,6 +314,10 @@ div#register_form{
 	display: block
 	text-align: center;
 	padding: 50px 100px 50px 100px;
+}
+
+div#register_form input.toleft {
+	padding: 50px 0px 50px 0px;
 }
 
 div#editprofile_form{
