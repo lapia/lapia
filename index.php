@@ -1,60 +1,23 @@
 <?php session_start();?>
 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<title>Lappia Halli - Home Page</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
 	<link rel="stylesheet" href="css/css.css" type="text/css">
-
-	<style type="text/css">
-	<!--
-	button {
-		border-width:1px;
-		margin: 0 0 0 0;
-	 }
-	td.area {
-		width: 80px;
-		height: 20px;
-	}
-	td.area_cool1{
-		width: 40px;
-		padding: 0px 0px 0px 0px;
-		font-size: 12px;
-	}
-	#calendar {
-		position: absolute;
-		top: 40%; left: 50%;
-		border-style:solid;
-		border-width:1px;
-		width: 253px;
-		height: 147px;
-		margin: 0 0 0 0;
-		padding: 1 1 1 1;
-	}
-	#info {
-		position: absolute;
-		top: 60%; left: 10%;
-		border-style:solid;$aray[$i][0]
-		border-width:1px;
-		width: 253px;
-		height: 180px;
-
-	}
-	-->
-	</style>
-
 </head>
 
 <body>
 	<?php
-		include 'include/adduser.php';
-		include 'include/sqlconnect.php';
-		include 'include/calendar.php';
-		include 'include/login.php';
-		include 'include/area.php';
-		include 'include/manuachosersdate.php';
-		include 'include/genkey.php';
-		include 'include/formnonregister.php';
+		include './include/adduser.php';
+		include './include/sqlconnect.php';
+		include './include/calendar.php';
+		include './include/login.php';
+		include './include/area.php';
+		include './include/manuachosersdate.php';
+		include './include/genkey.php';
+		include './include/formnonregister.php';
 
 		$dbconn = new SqlConnect("localhost","root","test1","LHR");
 		$dbconn->connectToDb();
@@ -83,7 +46,7 @@
 			</div>
 
 			<div id="bottom_menu">
-				<a href="#">Home Page</a>
+				<a href="./index.php">Home Page</a>
 				<a href="html/costs.php">Costs</a>
 				<a href="html/aboutus.php">About Us</a>
 				<a href="html/faq.php">FAQ</a>
@@ -108,7 +71,7 @@
 								// ManuaChosersDate class requires a second parameter an associative array of messages
 								$infotab['free_time']="<br>reservations can be made<br>";
 								$infotab['busy_period']="<br>time is busy<br>";
-								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br> Reservations must be made at least 3 hours before letting the area<br>";
+								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br> Reservations must be made at least<br> 24 hours before letting the area<br>";
 
 								$rol=new ManuaChosersDate($_POST['date'],$infotab);
 								$rol->SetCalendar($cal);

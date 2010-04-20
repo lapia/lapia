@@ -1,5 +1,5 @@
 <?php
-class Calendar 
+class Calendar
 {
 	private $days; //how many days in month
 	private $year;
@@ -16,33 +16,33 @@ class Calendar
         $this->backlight['mounth']=0;
         $this->backlight['day']=0;
         $this->button="";
-		
+
         $this->cday=date("j");
 		$this->day=0;
 		if(!isset($_POST['date'])) $_POST['date']=$_SESSION['lastdate'];
 		else $_SESSION['lastdate']=$_POST['date'];
-		
+
 		if(isset($_SESSION['cmonth'])) //sprawdzam czy istnieje cmonth w danych sesji
 		{
 			//ustawiam dni w zaleznosci od wcisnietego przycisku
 			if($_POST['changedate'] == 'next')
 			{
-				if( $_SESSION["cmonth"] == 12) 
+				if( $_SESSION["cmonth"] == 12)
 				{
 					$_SESSION["cmonth"]=1;
-					$_SESSION["cyear"]+=1; 
-					
+					$_SESSION["cyear"]+=1;
+
 				}
 				else $_SESSION["cmonth"]+=1;
 				$_POST['date']=$_SESSION['cyear'].'-'.$_SESSION['cmonth'].'-'.'01';
 			}
 			else if ($_POST['changedate'] == 'last')
-			{ 
-				if( $_SESSION["cmonth"] == 1) 
+			{
+				if( $_SESSION["cmonth"] == 1)
 				{
 					$_SESSION["cmonth"]=12;
-					$_SESSION["cyear"]-=1; 
-					
+					$_SESSION["cyear"]-=1;
+
 				}
 				$_SESSION["cmonth"]-=1;
 				$_POST['date']=$_SESSION['cyear'].'-'.$_SESSION['cmonth'].'-'.'01';
@@ -50,21 +50,21 @@ class Calendar
 			$this->month=$_SESSION['cmonth'];
 			$this->year=$_SESSION['cyear'];
 			$this->startmonth=$_SESSION['cstartmonth'];
-			
+
 		}
 		else //if don't exist put to session
 		{
 			$this->year=date("Y");
 			$this->startmonth=$this->month=date("n");
-			
+
 			$_SESSION["cmonth"]=$this->getMonth();
 			$_SESSION["cyear"]=$this->getYear();
 			$_SESSION['cstartmonth']=$this->getStartMonth();
 		}
-		
+
 		$this->setDaysInmonth();
 	}
-	public function setBacklightDate($date) 
+	public function setBacklightDate($date)
    	{
                 $this->backlight['year']=substr($date,0,4);
                 $this->backlight['mounth']=substr($date,5,2);
@@ -94,47 +94,47 @@ class Calendar
 	public function setMonth($mnth){$this->month=$mnth;}
 	public function getStartMonth() {return $this->startmonth;}
 	public function getCday(){ return $this->cday; }
-	public function setCday($cd){ $this->cday=$cd; }	
+	public function setCday($cd){ $this->cday=$cd; }
 	public function getDaysInmonth(){ return $this->days;}
 	public function getMonthName()
 	{
     	$strTime=mktime(1,1,1,$this->month,1,$this->year);
     	return date("M",$strTime);
-	} 
+	}
 	public function getDaysInmonthManual($mnth){
 		$year=$this->year;
 		if($mnth = 1) $year--;
 		else if($mnth = 12) $year++;
 		return cal_days_in_month(CAL_GREGORIAN, $mnth, $year);
 	}
-	public function setDaysInmonth(){ 
+	public function setDaysInmonth(){
 		return $this->days=cal_days_in_month(CAL_GREGORIAN, $this->month, $this->year);
 	}
 	public function SetDate($year,$month,$day){
 		 $this->month=$month;
 		 $this->year=$year;
 		 $this->day=$day;
-		 
+
 	}
 	public function sHowCalendar()
 	{
-			
+
 			$this->setDaysInmonth();
 			$firstday=$this->getFirstDayofmonth();
 			//$_SERVER['PHP_SELF']
 			echo "<form method='POST' name='Calendar' action='".$_SERVER['PHP_SELF'] ."'>";
 			echo sprintf("<button type=\"submit\" value='last' ".$this->button." name=changedate class='cleft'>%s</button>","<<");
 			echo sprintf("<button type=\"submit\" disabled=\"disabled\" class='cdate' >%s %d</button>",$this->getMonthName(),$this->getYear());
-			
-			echo sprintf("<button type=\"submit\" ".$this->button." value='next' name=changedate class='cright'>%s</button>",">>"); 
-			echo "<br>"; 
-			
+
+			echo sprintf("<button type=\"submit\" ".$this->button." value='next' name=changedate class='cright'>%s</button>",">>");
+			echo "<br style='padding: 0px, 0px, 0px, 0px; margin: 0px, 0px, 0px, 0px;'>";
+
 			$i;
 			$dayslastmonth=$this->getDaysInmonthManual($this->month-1); //ustawiam miesiac na wczesniejszy aby obliczyc ostatnie dni bylego miesica
 			if($firstday == 1)
 			{
 				for($i=1,$dayslastmonth-=6; $i <= 7; $i++,$dayslastmonth++) echo "<button disabled='disabled' class='cdisabled'>",sprintf("%02d",$dayslastmonth),'</button>';
-				echo '<br>';
+				echo "<br style='padding: 0px, 0px, 0px, 0px; margin: 0px, 0px, 0px, 0px;'>";
 				$diferentdays=$i;
 			}
 			else
@@ -154,10 +154,10 @@ class Calendar
 			for($i; $i < $this->days+$diferentdays ;$i++ )
 			{
 				$day=$i-$diferentdays+1;
-				
-		//		if($expiration_date < $today) echo sprintf("<button type='submit' disabled='disabled'>%02d</button>",$day); 
+
+		//		if($expiration_date < $today) echo sprintf("<button type='submit' disabled='disabled'>%02d</button>",$day);
 				if((substr($_POST['date'],8,2) ==  $day && !isset($_POST['changedate']) && $_POST['callendar']=='send' ) || $this->checkBacklight($day,$this->month,$this->getYear()) == true  )//|| ($this->day == $day))
-				{ 
+				{
 					echo '<button style="background-color:red" name=date'.sprintf("%02d-%02d-%02d",$this->year,$this->month,$day).'type="submit" disabled="disabled" class="cselected">';
 					echo '<font color=white>';
 					echo sprintf("%02d",$day);
@@ -166,18 +166,18 @@ class Calendar
 				}
 				else if($this->cday == $day && $this->startmonth == $this->month) //curent day
 				{
-					echo sprintf("<button type=\"submit\" name=date value='".date("Y-m")."-%02d' ".$this->button." class='ctoday'>",$day); 
+					echo sprintf("<button type=\"submit\" name=date value='".date("Y-m")."-%02d' ".$this->button." class='ctoday'>",$day);
 					echo '<font color=red>';
 					echo sprintf("%02d",$day);
 					echo '</font>';
 					echo '</button>';
 				}else echo sprintf("<button type=\"submit\" name=date value='%02d-%02d-%02d' ".$this->button." class='cenabled'>%02d</button>",$this->year,$this->month,$day,$day);
-				if(($i%7)==0) echo '<br>';
+				if(($i%7)==0) echo "<br style='padding: 0px, 0px, 0px, 0px; margin: 0px, 0px, 0px, 0px;'>";
 			}
-			
+
 			for($i,$y=1; $i <= 42;$i++,$y++){
 				echo '<button disabled="disabled" class="cdisabled">',sprintf("%02d",$y),'</button>';
-				if(($i%7)==0) echo '<br>';
+				if(($i%7)==0) echo "<br style='padding: 0px, 0px, 0px, 0px; margin: 0px, 0px, 0px, 0px;'>";
 			}
 			echo '<INPUT TYPE=hidden NAME=callendar VALUE="send">';
 			echo '</form>';

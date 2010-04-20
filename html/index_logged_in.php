@@ -5,55 +5,12 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 }
 ?>
 
-
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
 <head>
 	<title>Lappia Halli - Your Acount</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
 	<link rel="stylesheet" href="../css/css.css" type="text/css">
-
-	<style type="text/css">
-	<!--
-	button {
-		border-width:1px;
-		margin: 0 0 0 0;
-	 }
-	td.area {
-		width: 80px;
-		height: 20px;
-	}
-	td.area_cool1{
-		width: 40px;
-		padding: 0px 0px 0px 0px;
-		font-size: 12px;
-	}
-	#calendar {
-		position: absolute;
-		top: 40%; left: 50%;
-		border-style:solid;
-		border-width:1px;
-		width: 253px;
-		height: 147px;
-		margin: 0 0 0 0;
-		padding: 1 1 1 1;
-	}
-	#info {
-		position: absolute;
-		top: 60%; left: 10%;
-		border-style:solid;$aray[$i][0]
-		border-width:1px;
-		width: 253px;
-		height: 180px;
-
-	}
-	-->
-	</style>
-
 </head>
 
 <body>
@@ -86,12 +43,7 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 				<br />
 					<div id="welcome_note">
 						<p>Welcome
-							<?php $con = mysql_connect("localhost","root","test1");
-								if (!$con) {
-									die('Could not connect: ' . mysql_error());
-								}
-
-								mysql_select_db("LHR", $con);
+							<?php
 								$querystr = "SELECT Contactperson FROM registereduser WHERE RegisteredEmailaddress = '".$_SESSION['username']."'";
 								$result = mysql_query($querystr);
 								$row = mysql_fetch_assoc($result);
@@ -133,7 +85,7 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 								// ManuaChosersDate class requires a second parameter an associative array of messages
 								$infotab['free_time']="<br>reservations can be made<br>";
 								$infotab['busy_period']="<br>time is busy<br>";
-								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br>Reservations must be made at least<br> 3 hours before letting the area<br><br>";
+								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br> Reservations must be made at least<br> 24 hours before letting the area<br>";
 
 								$rol=new ManuaChosersDate($_POST['date'],$infotab);
 								$rol->SetCalendar($cal);

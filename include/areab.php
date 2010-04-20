@@ -1,5 +1,5 @@
 <?php
-class Area 
+class Area
 {
 	private $adate;
 	private $acoll;
@@ -13,7 +13,7 @@ class Area
 		$this->acolorc2c3=$colorc2c3;
 		$this->acolorreservednotchack=$colorreservednotchack;
 		$this->acolorreserved=$colorreserved;
-		
+
 		if($_SESSION["area"]!='set')
 		{
 			$_SESSION["area"]='set';
@@ -21,7 +21,7 @@ class Area
 			$this->ShowArea();
 		}
 		else if($_POST['changedate'] != 'next' && $_POST['changedate'] != 'last'){
-				
+
 				$_SESSION["areadate"]=$this->adate=$date;
 				$this->ShowArea();
 		}else{
@@ -37,33 +37,33 @@ class Area
 		$result=mysql_query($query);
 		if(!mysql_num_rows($result))
 		{
-			$query="select r.Statingtime,r.area,r.Rstat,reg.Contactperson from Reservation r, Unregistereduser reg where r.idUnregistereduser=reg.idUnregistereduser and Startingdate='".$date."' order by Statingtime";	
+			$query="select r.Statingtime,r.area,r.Rstat,reg.Contactperson from Reservation r, Unregistereduser reg where r.idUnregistereduser=reg.idUnregistereduser and Startingdate='".$date."' order by Statingtime";
 			$result=mysql_query($query);
 		}
-		
+
 		$array;
 		$i=0;
 	 	while($row = mysql_fetch_array($result, MYSQL_NUM)){
 	 		$array[$i]=$row;
-	 		$i++;                                     
+	 		$i++;
         }
         $this->coll=$i;
-		return  $array;                		
+		return  $array;
 	}
 	private function ChangeColor($time, $area)
 	{
-			
+
 		$tmp=$this->getReservationTable($this->adate);
 		for($i=0; $i < $this->coll ; $i++)
 		{
-			if(substr($tmp[$i][0],0,5) == $time && $area == $tmp[$i][1])	
+			if(substr($tmp[$i][0],0,5) == $time && $area == $tmp[$i][1])
 			{
 				$color;
 				if($tmp[$i][2] == 1) $color=$this->acolorreserved;
 				else if( $tmp[$i][2]==0) $color=$this->acolorreservednotchack;
 				return "<td BGCOLOR='".$color."'>".$tmp[$i][3]."</td>\n";
 			}
-			
+
 		}
 		return null;
 	}
@@ -71,7 +71,7 @@ class Area
 	 *+------+-------------+------------+---------+-------+
 	 *| area | Statingtime | Endingtime | cperson | Rstat |
 	 *+------+-------------+------------+---------+-------+
-	 *| A    | 00:00:00    | 01:00:00   | x       |  NULL | 
+	 *| A    | 00:00:00    | 01:00:00   | x       |  NULL |
 	 *+------+-------------+------------+---------+-------+
 	 */
 	public function ShowArea()
@@ -98,12 +98,12 @@ class Area
                     	if(($tmpstr=$this->ChangeColor($ltime, 'B')) != null) $mtable.=$tmpstr;
                     	else $mtable .= '<td class="area" BGCOLOR='.$this->acolorc2c3.'> </td>'."\n";
                     break;
-                }	
+                }
 	        }
             $mtable .= "</tr>\n";
 		}
         $mtable .= "</table>";
         echo $mtable;
-     }	
+     }
 }
 ?>

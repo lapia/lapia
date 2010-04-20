@@ -1,10 +1,10 @@
 <?php
 include '../include/sendmesage.php';
 
-class cancel1
+class email
 {
 
-        public function cancel1()
+        public function email()
         {
 
                if(isset($_POST['inemail']))
@@ -36,17 +36,19 @@ class cancel1
 		{
 			if(isset($_POST['cancel']))
 			{
-								echo "<font color='green'>You reservation was removed.</font>";
 								$pas=htmlspecialchars($_POST["code"]);
-								$query= "DELETE FROM LHR.reservation WHERE idReservation ='".$pas."'";
+								echo "<font color='green'>Your reservation was removed<br></font>";
+								$query= "DELETE FROM LHR.Reservation WHERE idReservation ='".$pas."'";
 								mysql_query($query);
-								$html = '<html><body><p>wlasnie skoncylem pisac klase do mailingu :).</p><p>another image</p></body></html>';
-                $smail = new SendMail();
-                $smail->SetRecipients($_SESSION['emailemail']);
-             	$smail->SetHtmlMesage($html);
-                $smail->SetSubject('Lapiahally');
-            $smail->SendMesage();
+
+								$html = '<html><body>   <p>You don\'t see this image.</p></body></html>';
+								$smail = new SendMail();
+								$smail->SetRecipients($_SESSION["emailemail"]);
+								$smail->SetHtmlMesage($html);
+								$smail->SetSubject('Lapiahally');
+								$smail->SendMesage();
 			}
+
 
 		}
         public function ShowWrong($r="",$d="")
@@ -64,16 +66,18 @@ class cancel1
         public function ShowCancel($r="",$d="")
         {
 			$pas=htmlspecialchars($_POST["code"]);
-			$query  = "SELECT RegisteredEmailaddress from LHR.registereduser RU, LHR.reservation R where RU.idRegistereduser=R.idRegistereduser and R.reservecode='".$pas."' ;";
+			$query  = "SELECT RegisteredEmailaddress from LHR.registereduser RU, LHR.Reservation R where RU.idRegistereduser=R.idRegistereduser and R.Reservecode='".$pas."' ;";
 			$result = mysql_query($query) or dir(mysql_error());
-			$query1  = "SELECT Statingtime from LHR.registereduser RU, LHR.reservation R where RU.idRegistereduser=R.idRegistereduser and R.reservecode='".$pas."';";
+			$query1  = "SELECT Statingtime from LHR.registereduser RU, LHR.Reservation R where RU.idRegistereduser=R.idRegistereduser and R.reservecode='".$pas."';";
 			$result1 = mysql_query($query1);
-			$query2  = "select subtime(Endingtime,Statingtime) from LHR.registereduser RU, LHR.reservation R where RU.idRegistereduser=R.idRegistereduser and R.reservecode='".$pas."';";
+			$query2  = "select subtime(Endingtime,Statingtime) from LHR.registereduser RU, LHR.Reservation R where RU.idRegistereduser=R.idRegistereduser and R.Reservecode='".$pas."';";
 			$result2 = mysql_query($query2);
-			$query3 = "SELECT area from LHR.registereduser RU, LHR.reservation R where RU.idRegistereduser=R.idRegistereduser and R.reservecode='".$pas."';";
+			$query3 = "SELECT area from LHR.registereduser RU, LHR.Reservation R where RU.idRegistereduser=R.idRegistereduser and R.reservecode='".$pas."';";
 			$result3 = mysql_query($query3);
-			$query4  = "SELECT Reservecode from LHR.registereduser RU, LHR.reservation R where RU.idRegistereduser=R.idRegistereduser and R.reservecode='".$pas."';";
+			$query4  = "SELECT Reservecode from LHR.registereduser RU, LHR.Reservation R where RU.idRegistereduser=R.idRegistereduser and R.Reservecode='".$pas."';";
 			$result4 = mysql_query($query4);
+			//$this->check();
+
 
 			while($row = mysql_fetch_row($result4))
 			{
@@ -101,14 +105,15 @@ class cancel1
 				echo "Area :<label>$Ares</label> <br>";
 			}
 
-						echo	"<form action='".$_SERVER['PHP_SELF']."' method=post>";
+
+						echo "<form action='".$_SERVER['PHP_SELF']."' method=post>";
 						$login=htmlspecialchars($_POST["email"]);
-						$pass1=htmlspecialchars($_POST["code"]);
-						$query5="SELECT idReservation from LHR.reservation R, LHR.registereduser RU where RU.RegisteredEmailaddress='".$login."' and R.Reservecode='".$pass1."';";
+						$passw=htmlspecialchars($_POST["code"]);
+						$query5="SELECT idReservation from LHR.Reservation R, LHR.registereduser RU where RU.RegisteredEmailaddress='".$login."' and R.Reservecode='".$passw."';";
 						$result5=mysql_query($query5);
 						$rec= mysql_fetch_assoc($result5);
 
-						echo "<input type=hidden name=code value='".$splaszczenie['idReservation']."' />";
+						echo "<input type=hidden name=code value='".$rec['idReservation']."' />";
 						echo "<center><input type=submit name=cancel value=Cancel reservation!></center>";
             echo "</form>";
 
@@ -128,7 +133,7 @@ class cancel1
         {
                 $log=htmlspecialchars($_POST["email"]);
                 $pass=htmlspecialchars($_POST["code"]);
-                $query="SELECT idReservation from LHR.reservation R, LHR.registereduser RU where RU.RegisteredEmailaddress='".$log."' and R.Reservecode='".$pass."';";
+                $query="SELECT idReservation from LHR.Reservation R, LHR.registereduser RU where RU.RegisteredEmailaddress='".$log."' and R.Reservecode='".$pass."';";
 
                 $result=mysql_query($query);
                 if(mysql_num_rows($result)){
@@ -139,5 +144,8 @@ class cancel1
                 else  $_SESSION['userid']=0; //user not email
                 return false;
         }
+
+
+
 }
 ?>

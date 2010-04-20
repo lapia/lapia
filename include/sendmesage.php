@@ -6,7 +6,7 @@
 *$smail->SetHtmlMesage($html);
 *$smail->SetImage('rumianek.jpg');
 *$smail->SetSubject('Lapiahally');
-*$smail->SendMesage(); 
+*$smail->SendMesage();
 -------------------------------------------------
 /gropu of images
 *$html = '<html><body><img src="rumianek.jpg"> <p>wlasnie skoncylem pisac klase do mailingu :).</p><br><img src="software-update-300x300.jpg"><br><p>another image</p></body></html>';
@@ -16,10 +16,11 @@
 *$smail->SetHtmlMesage($html);
 *$smail->SetGroupImage($imagegroup);
 *$smail->SetSubject('Lapiahally');
-$smail->SendMesage(); 
+$smail->SendMesage();
 */
 require_once "Mail.php";
 require_once "Mail/mime.php";
+
 class SendMail
 {
 	private $recipients;
@@ -28,7 +29,7 @@ class SendMail
 	private $mailmsg;
 	private $mail_object;
 	private $mine;
-	
+
 	public function SendMail()
 	{
 		$this->smtpinfo["host"] = "smtp.gmail.com";
@@ -63,13 +64,13 @@ class SendMail
 		$this->headers = $this->mine->headers($this->headers);
 		$this->mailmsg=$this->mine->get();
 		$mail_object->send($this->recipients, $this->headers, $this->mailmsg);
-        	
+
 		if (PEAR::isError($mail_object))   echo("<p>" . $mail_object->getMessage() . "</p>");
 		else echo("<p>Message successfully sent!</p>");
-	
+
 	}
 	public function SetHtmlMesage($htmlbody)
-	{	
+	{
 		$crlf = "\n";
 		$this->mine = new Mail_mime($crlf);
 		$this->mine->setHTMLBody($htmlbody);
@@ -79,7 +80,7 @@ class SendMail
 	{
 		$start=strlen($pathandimage)-3;
 		$type=substr($pathandimage,$start,3);
-		
+
 		$this->mine->addHTMLImage($pathandimage, 'image/'.$type);
 	}
 	/*array image with patch arr[]='path/imagename'*/

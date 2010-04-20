@@ -1,9 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<?php session_start();?>
+<?php
+//	if($_SESSION["logedin"] == 'false')  header('Location: http://localhost/Lapia/newuser.php');
+//	echo  '<br>logedin :'.$_SESSION["logedin"].'<br> newuser:'.$_SESSION['newuser'] .'<br>'; // potrzebne do przekierowania jeżeli chasło nieprawidłowe
+	$_SESSION['ShowRegisterForm']='-2'; // set show nonregistred user form
 
+?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title>HomePage</title>
+	<title>Lappia Halli - Password recovery confirm</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
 	<link rel="stylesheet" href="../css/css.css" type="text/css">
@@ -39,11 +44,11 @@
 				<a href="help.php">Help</a>
 			</div>
 		</div>
-	<div id="lewy_pasek">
-				<div id="ad">
-				</div>
+		<div id="lewy_pasek">
+			<div id="ad">
 			</div>
-			<div id="srodek_pasek">
+		</div>
+		<div id="srodek_pasek">
 			<div id="text_field_1">
 				<div id="container_middle">
 					<div id="alert">
@@ -58,13 +63,6 @@
 								}
 							?>
 						</p>
-				</div>
-					<div id="login_bar2">
-
-					<br/>
-					<br/>
-					</div>
-					<div id="pass_reg2">
 					</div>
 				</div>
 			</div>

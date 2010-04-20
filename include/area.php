@@ -6,7 +6,7 @@ class UserRecord
 	public $area;
 	public $rstat;
 	public function UserRecord($cperson,$area,$rstat=0)
-	{	
+	{
 		$this->cperson=$cperson;
 		$this->area=$area;
 		if($rstat == NULL) $this->rsta=NULL;
@@ -17,7 +17,7 @@ class UserRecord
 	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
 	*| area | Statingtime | Endingtime | Startingdate | Endingdate | cperson | idAdminuser | Reservecode |
 	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
-	*| A    | 08:00:00    | 18:00:00   | 2010-03-05   | 2010-03-05 | x       |        NULL | NULL        | 
+	*| A    | 08:00:00    | 18:00:00   | 2010-03-05   | 2010-03-05 | x       |        NULL | NULL        |
 	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
 	*/
 class DataTable
@@ -47,7 +47,7 @@ public function DataTable($result)
 						if($this->areaA[$i] == NULL) $this->areaA[$i]=array();
 						array_push($this->areaA[$i],$tmpobject);
 					}
-					else 
+					else
 					{
 						if($this->areaB[$i] == NULL) $this->areaB[$i]=array();
 						array_push($this->areaB[$i],$tmpobject);
@@ -56,7 +56,7 @@ public function DataTable($result)
 		}
 	}
 }
-class Area 
+class Area
 {
 	private $adate;
 	private $acoll;
@@ -70,7 +70,7 @@ class Area
 		$this->acolorc2c3=$colorc2c3;
 		$this->acolorreservednotchack=$colorreservednotchack;
 		$this->acolorreserved=$colorreserved;
-		
+
 		if($_SESSION["area"]!='set')
 		{
 			$_SESSION["area"]='set';
@@ -78,7 +78,7 @@ class Area
 			$this->ShowArea();
 		}
 		else if($_POST['changedate'] != 'next' && $_POST['changedate'] != 'last'){
-				
+
 				$_SESSION["areadate"]=$this->adate=$date;
 				$this->ShowArea();
 		}else{
@@ -86,7 +86,7 @@ class Area
 			$this->ShowArea();
 		}
 	}
-	private function getReservationTable($sdate) 
+	private function getReservationTable($sdate)
 	{
 	$y=substr($sdate,0,4);
 		$m=substr($sdate,5,2);
@@ -99,24 +99,24 @@ class Area
 		$result=mysql_query($query);
 	//	echo "<br> AREA query<br> $query<br>".mysql_errno();
 		$dtable= new DataTable($result);
-		return  $dtable;                		
+		return  $dtable;
 	}
-	
+
 	/*
 	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
 	*| area | Statingtime | Endingtime | Startingdate | Endingdate | cperson | idAdminuser | Reservecode |
 	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
-	*| A    | 08:00:00    | 18:00:00   | 2010-03-05   | 2010-03-05 | x       |        NULL | NULL        | 
+	*| A    | 08:00:00    | 18:00:00   | 2010-03-05   | 2010-03-05 | x       |        NULL | NULL        |
 	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
 	*/
 	public function ShowArea()
 	{
-		
+
 		$dtab= $this->getReservationTable($this->adate);
 		$mtable="<table>";
 		$mtable.= "<caption>".$this->adate.'</caption>'."\n";
         $mtable.="<tr><td></td><th>A</th><th>B</th></tr>";
-	 
+
 	   	for($i=0;$i <= 23;$i++)
         {
         	$mtable .= "<tr>\n";
@@ -160,13 +160,13 @@ class Area
                     	else $mtable.=" BGCOLOR='$this->acolorc2c3'>";
                     	$mtable.="</td>";
                     break;
-                }	
+                }
 	        }
             $mtable .= "</tr>\n";
 		}
         $mtable .= "</table>";
         echo $mtable;
-     }	
+     }
      public function ChangeColor($change)
      {
      	if($change == 0) return " BGCOLOR='$this->acolorreservednotchack'>";

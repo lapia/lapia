@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title>Lappia Halli - Help</title>
+	<title>Lappia Halli - Disclamer</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
 	<link rel="stylesheet" href="../css/css.css" type="text/css">
@@ -31,7 +31,7 @@
 				<a href="../index.php">Home Page</a>
 				<a href="costs.php">Costs</a>
 				<a href="aboutus.php">About Us</a>
-				<a href="faq.php">FAQ</a>
+				<a href="disclamer.php">Disclaimer</a>
 				<a href="privacypolicy.php">Privacy Policy</a>
 				<a href="help.php">Help</a>
 			</div>
@@ -44,9 +44,8 @@
 
 		<div id="srodek_pasek">
 				<div id="text_field_1">
-					<div id="text_field_2" style="width: 511px; height: 603px; overflow: auto; border: 0px solid #666; background-color: trnsparent; padding: 0px 10px 0px 10px; margin: 25px 0px 25px 0px; text-align:left">
-						<h1 style="text-align: center">HELP:</h1>
-						<p class="left">For help contact the admin at <a href="mailto:lappihalli@gmail.com">lappihalli@gmail.com</a>.</p>
+					<div id="text_field_2" style="width: 511px; height: 603px; overflow: auto; border: 0px solid #666; background-color: trnsparent; padding: 0px 10px 0px 10px; margin: 25px 0px 25px 0px">
+						<h1>Disclamer For You Good Sir</h1>
 					</div>
 				</div>
 		</div>

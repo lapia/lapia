@@ -78,8 +78,8 @@ div#calender_container{
 }
 
 div#calendar{
-	width: 350px;
-	height: 310px;
+	width: 238px;
+	height: 140px;
 	margin: 0px auto;
 	padding: 20px 0px 0px 0px;
 }
@@ -375,25 +375,144 @@ div#center_top{
 */
 
 button.cleft{
-	border-style:groove;
+	height: 20px;
+	width: 36px;
+	background-image:url('../images/cleft.png');
+	background-repeat:no-repeat;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	border-style:none;
 }
 
 button.cdate{
-	border-style:groove;
+	height: 20px;
+	width: 166px;
+	color: red;
+	background-image:url('../images/cdate.png');
+	background-repeat:no-repeat;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	border-style:none;
 }
 button.cright{
-	border-style:groove;
+	height: 20px;
+	width: 36px;
+	background-image:url('../images/cright.png');
+	background-repeat:no-repeat;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	border-style:none;
 }
 button.cdisabled{
-	border-style:groove;
-
+	height: 20px;
+	width: 34px;
+	background-image:url('../images/cdisabled.png');
+	background-repeat:no-repeat;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	border-style:none;
 }
 button.cselected{
-	border-style:groove;
+	height: 20px;
+	width: 34px;
+	background-image:url('../images/cselected.png');
+	background-repeat:no-repeat;
+	padding:0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	border-style:none;
 }
 button.ctoday{
-	border-style:groove;
+	height: 20px;
+	width: 34px;
+	background-image:url('../images/ctoday.png');
+	background-repeat:no-repeat;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	border-style:none;
 }
 button.cenabled{
-	border-style:groove;
+	height: 20px;
+	width: 34px;
+	background-image:url('../images/cenabled.png');
+	background-repeat:no-repeat;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	border-style:none;
+}
+button.mcbuttonena{
+	height: 20px;
+	width: 118px;
+	background-image:url('../images/mcbuttonene.png');
+	background-repeat:no-repeat;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	border-style:none;
+}
+
+button.mcbuttondisa{
+	height: 20px;
+	width: 118px;
+	background-image:url('../images/mcbuttondisa.png');
+	background-repeat:no-repeat;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	border-style:none;
+}
+
+td.area_cool {
+	/*height: 18px;
+	width: 35px;
+	background-image:url('../images/area_cool.png');*/
+	background-repeat:no-repeat;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	border-style:none;
+}
+
+td.areagrean {
+	height: 18px;
+	width: 70px;
+	background-image:url('../images/areagreen.png');
+	background-repeat:no-repeat;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	border-style:none;
+}
+
+td.areared {
+	height: 18px;
+	width: 70px;
+	background-image:url('../images/areared.png');
+	background-repeat:no-repeat;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	border-style:none;
+}
+
+td.areabyellow {
+	height: 18px;
+	width: 70px;
+	background-image:url('../images/areayellow.png');
+	background-repeat:no-repeat;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	border-style:none;
+}
+
+td.area_cool1{
+	width: 35px;
+	height: 18px;
+	background-image:url('../images/area_cool.png');
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	font-size: 12px;
+	text-align: center;
+}
+
+td.area {
+	height: 18px;
+	width: 70px;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	border-style:none;
 }

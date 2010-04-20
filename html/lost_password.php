@@ -6,10 +6,7 @@
 
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
 <head>
 	<title>Lappia Halli - Password recovery</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -72,9 +69,14 @@
 					<br/>
 					<br/>
 						<form action="lost.php" method="post">
-						<p><label for="username">E-mail:</label> <input type="text" id="username" name="username"/></p>
-						<p class="submit"><input type="submit" name="submit" value="submit" /></p>
-					</form>
+							<p>
+								<label for="username">E-mail:</label>
+								<input type="text" id="username" name="username"/>
+							</p>
+							<p class="submit">
+								<input type="submit" name="submit" value="submit" />
+							</p>
+						</form>
 					</div>
 					<div id="pass_reg2">
 					</div>

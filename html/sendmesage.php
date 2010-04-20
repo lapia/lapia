@@ -1,6 +1,7 @@
 <?php
 require_once "Mail.php";
 require_once "Mail/mime.php";
+
 class SendMail
 {
 private $recipients;

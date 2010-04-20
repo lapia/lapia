@@ -1,5 +1,5 @@
 <?php
-echo "<script src='include/submitform.js' type='text/javascript'></script>";
+echo "<script src='../include/submitform.js' type='text/javascript'></script>";
 class ManuaChosersDate
 {
 	private $y;
@@ -81,12 +81,12 @@ class ManuaChosersDate
 			//echo "<FORM METHOD='LINK' action='../html/reg_user_confirm_message.php'>";
 			//echo "<FORM METHOD='LINK' action='../test.php'>";
 			if($test && !$this->disablebutton){
-				echo "<button type='submit' name='next_step' id='xx' value='true'>Go to reservation</button>";
+				echo "<button class='mcbuttonena' type='submit' name='next_step' id='xx' value='true'>Go to reservation</button>";
 				//"fruits"  => array("a" => "orange", "b" => "banana", "c" => "apple"),
 				$reservation=array('date' => $_SESSION['areadate'], 'time' => $_SESSION['areatime'],'duration' => $_SESSION['areaduration'],'area'=>$_SESSION['areaarea']);
 				$_SESSION['reservation']=$reservation;
 			}
-			else echo "<button type='submit' disabled='disabled' name='next_step' value='false'>Go to reservation</button>";
+			else echo "<button class='mcbuttondisa' type='submit' disabled='disabled' name='next_step' value='false'>Go to reservation</button>";
 			echo "</FORM>";
 		/*
 		areaday
