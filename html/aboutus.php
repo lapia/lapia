@@ -1,4 +1,12 @@
+<?php session_start();?>
+<?php
+//	if($_SESSION["logedin"] == 'false')  header('Location: http://localhost/Lapia/newuser.php');
+//	echo  '<br>logedin :'.$_SESSION["logedin"].'<br> newuser:'.$_SESSION['newuser'] .'<br>'; // potrzebne do przekierowania jeżeli chasło nieprawidłowe
+	$_SESSION['ShowRegisterForm']='-2'; // set show nonregistred user form
 
+?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<title>Lappia Halli - About Us</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />

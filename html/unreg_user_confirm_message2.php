@@ -6,8 +6,8 @@
 	//ini_set('display_errors',1);
 
 ?>
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 	<title>Lappia Halli - Reservation</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -21,14 +21,11 @@
 		include '../include/sqlconnect.php';
 		include '../include/calendar.php';
 		include '../include/login.php';
-		include '../include/area.php';
+		include	'../include/area.php';
 		include '../include/manuachosersdate.php';
 		include '../include/genkey.php';
 		include '../include/formnonregister.php';
 		include '../include/reservationregisteredu.php';
-
-		$dbconn = new SqlConnect("localhost","root","test1","LHR");
-		$dbconn->connectToDb();
 
 		//ini_set('display_errors',1);
 	?>
@@ -100,7 +97,6 @@
 								$_SESSION['areadate'] =$_POST['date'];
 							}
 							else $area=new Area($_SESSION['areadate']);
-							$dbconn->disocnnect();
 							?>
 						</div>
 					</div>

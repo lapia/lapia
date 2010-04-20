@@ -1,23 +1,23 @@
 <?php session_start();?>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html>
 <head>
 	<title>Lappia Halli - Home Page</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
 	<link rel="stylesheet" href="css/css.css" type="text/css">
 </head>
-
 <body>
 	<?php
-		include './include/adduser.php';
-		include './include/sqlconnect.php';
-		include './include/calendar.php';
-		include './include/login.php';
-		include './include/area.php';
-		include './include/manuachosersdate.php';
-		include './include/genkey.php';
-		include './include/formnonregister.php';
+		include 'include/adduser.php';
+		include 'include/sqlconnect.php';
+		include 'include/calendar.php';
+		include 'include/login.php';
+		include 'include/area.php';
+		include 'include/manuachosersdate.php';
+		include 'include/genkey.php';
+		include 'include/formnonregister.php';
 
 		$dbconn = new SqlConnect("localhost","root","test1","LHR");
 		$dbconn->connectToDb();
@@ -73,7 +73,7 @@
 								$infotab['busy_period']="<br>time is busy<br>";
 								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br> Reservations must be made at least<br> 24 hours before letting the area<br>";
 
-								$rol=new ManuaChosersDate($_POST['date'],$infotab);
+								$rol=new ManuaChosersDate($_POST['date'],$infotab,24);
 								$rol->SetCalendar($cal);
 								$cal->sHowCalendar();
 							?>
@@ -82,7 +82,8 @@
 							<p style="text-align:left; font-size: 14pt; padding-left: 60px; margin-bottom: 5px">Upcoming events:</p>
 							<?php
 								$sql = "SELECT * FROM UpcomingEvents";
-								$result = mysql_query($sql);
+								$resource=&$dbconn->getResource();
+								$result = mysql_query($sql,$resource);
 
 								while ($db_field = mysql_fetch_assoc($result)) {
 									print "<p class='events'>".$db_field['Title'].": ".$db_field['Content']. "</p>";
@@ -102,10 +103,11 @@
 					<div id="colorimage_container">
 						<div id="colorimage">
 							<?php
+
 								$area=new Area($_POST['date']);
 
 								//echo "<br>check:" .$_POST['next_step'];
-								$dbconn->disocnnect();
+
 							?>
 						</div>
 					</div>

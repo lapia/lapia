@@ -15,7 +15,7 @@ class SqlConnect {
 	}
 	public function connectToDb()
 	{
-		$this->link= mysql_connect($this->host,$this->user,$this->password)or die("can't connect to db server"); //połączenie z bazą danych
+		$this->link= mysql_connect($this->host,$this->user,$this->password)or die("can't tonnect to db server"); //połączenie z bazą danych
 		mysql_select_db($this->db)or die("There was an error selecting database");
 	}
 	public function disocnnect() { mysql_close() or die("disocnect error") ;}

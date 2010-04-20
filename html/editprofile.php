@@ -6,15 +6,50 @@
 
 ?>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 	<title>Lappia Halli - Edit Profile</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
 	<link rel="stylesheet" href="../css/css.css" type="text/css">
-</head>
-<body>
+	<style type="text/css">
+	<!--
+	button {
+		border-width:1px;
+		margin: 0 0 0 0;
+	 }
+	td.area {
+		width: 80px;
+		height: 20px;
+	}
+	td.area_cool1{
+		width: 40px;
+		padding: 0px 0px 0px 0px;
+		font-size: 12px;
+	}
+	#calendar {
+		position: absolute;
+		top: 40%; left: 50%;
+		border-style:solid;
+		border-width:1px;
+		width: 253px;
+		height: 147px;
+		margin: 0 0 0 0;
+		padding: 1 1 1 1;
+	}
+	#info {
+		position: absolute;
+		top: 60%; left: 10%;
+		border-style:solid;$aray[$i][0]
+		border-width:1px;
+		width: 253px;
+		height: 180px;
 
+	}
+	-->
+	</style>
 </head>
 
 <body>

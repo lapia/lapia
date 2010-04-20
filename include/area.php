@@ -1,5 +1,6 @@
 <?php
 //DA2010-03-21
+
 class UserRecord
 {
 	public $cperson;
@@ -64,8 +65,13 @@ class Area
 	private $acolorc2c3;
 	private $acolorreservednotchack;
 	private $acolorreserved;
+	private $dbconn;
 	public function Area($date/*YYYY-MM-DD*/,$colorc1='c9cfc4',$colorc2c3='86c856',$colorreservednotchack='fbf963',$colorreserved='red')
 	{
+		
+		$this->dbconn = new SqlConnect("localhost","root","sqq2q2","LHR");
+		$this->dbconn->connectToDb();
+		
 		$this->acolorc1=$colorc1;
 		$this->acolorc2c3=$colorc2c3;
 		$this->acolorreservednotchack=$colorreservednotchack;
@@ -96,9 +102,12 @@ class Area
 		$query_part2="select r.area, r.Statingtime, r.Endingtime,r.Startingdate,r.Endingdate,nru.Contactperson cperson, r.idAdminuser,r.Reservecode from Reservation r ,Unregistereduser nru where r.idUnregistereduser=nru.idUnregistereduser and Startingdate between '".$edate."' and '".$sdate."' and Endingdate!= '".$edate."'";
 		$query_part1="select r.area, r.Statingtime, r.Endingtime,r.Startingdate,r.Endingdate,ru.Contactperson cperson,r.idAdminuser,r.Reservecode from Reservation r ,registereduser ru where r.idRegistereduser=ru.idRegistereduser and Startingdate between '".$edate."' and '".$sdate."' and Endingdate!= '".$edate."'";
 		$query= $query_part1 . " union all " . $query_part2 ." order by Startingdate,Statingtime";
-		$result=mysql_query($query);
+		$resource=&$this->dbconn->getResource();
+		$result=mysql_query($query,$resource);
 	//	echo "<br> AREA query<br> $query<br>".mysql_errno();
 		$dtable= new DataTable($result);
+		mysql_free_result($result);
+		$this->dbconn->disocnnect();
 		return  $dtable;
 	}
 

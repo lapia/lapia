@@ -4,8 +4,8 @@
 	$_SESSION['ShowRegisterForm']='-2'; // set show nonregistred user form
 
 ?>
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 	<title>Lappia Halli - Unregisterd Reservation</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -19,14 +19,12 @@
 		include '../include/sqlconnect.php';
 		include '../include/calendar.php';
 		include '../include/login.php';
-		include '../include/area.php';
+		include	'../include/area.php';
 		include '../include/manuachosersdate.php';
 		include '../include/genkey.php';
 		include '../include/formnonregister.php';
 		include '../include/reservationregisteredu.php';
 
-		$dbconn = new SqlConnect("localhost","root","test1","LHR");
-		$dbconn->connectToDb();
 
 		//ini_set('display_errors',1);
 	?>
@@ -77,10 +75,11 @@
 								// ManuaChosersDate class requires a second parameter an associative array of messages
 								$infotab['free_time']="<br>reservations can be made<br>";
 								$infotab['busy_period']="<br>time is busy<br>";
-								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br>Reservations must be made at least<br> 24 hours before letting the area<br><br>";
+								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br>Reservations must be made at least<br> 3 hours before letting the area<br><br>";
 
-								$rol=new ManuaChosersDate($_POST['date'],$infotab);
+								$rol=new ManuaChosersDate($_POST['date'],$infotab,24);
 								$rol->SetCalendar($cal);
+								if($_POST['choserdate']) $cal->setBacklightDate($_SESSION['areadate']);
 								$cal->sHowCalendar();
 							?>
 						</div>
@@ -99,7 +98,7 @@
 								$area=new Area($_POST['date']);
 
 								//echo "<br>check:" .$_POST['next_step'];
-								$dbconn->disocnnect();
+								
 							?>
 						</div>
 					</div>

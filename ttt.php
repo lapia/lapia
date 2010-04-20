@@ -55,7 +55,7 @@ td.area_cool1{
 	include 'include/sqlconnect.php';
 	include 'include/calendar.php';
 	include 'include/login.php';
-	include 'include/area.php';
+	include	'include/area.php';
 	include 'include/manuachosersdate.php';
 	include 'include/genkey.php';
 	include 'include/formnonregister.php';
@@ -68,9 +68,7 @@ td.area_cool1{
 	$rol=new ManuaChosersDate($_POST['date']);
 	$rol->SetCalendar($cal);
 	$cal->sHowCalendar();
-
-	$phpfile = "reg_user_confirm_message.php";
-	$rol->ShowForm($phpfile);
+	$rol->ShowForm();
 
 	$area=new Area($_POST['date']);
 
@@ -88,7 +86,7 @@ td.area_cool1{
 	$dbconn->disocnnect();
 ?>
 <?php if($_SESSION["logedin"] == 'false')
-echo "<script type='text/javascript'>document.location = 'http://localhost/~noob/newuser.php'</script>"
+echo "<script type='text/javascript'>document.location = 'http://localhost/Lapia/newuser.php'</script>"
 ?>
 </body>
 </html>

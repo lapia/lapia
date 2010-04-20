@@ -130,7 +130,7 @@ margin-right: 0px;
 <th><input name="date2" type="text" class="loginput" id="email" value="Plase Enter End Date" /></th>
 <th>yyyy-mm-dd</th>
 <th></th>
-<th>Only show£º</th>
+<th>Only showï¿½ï¿½</th>
 
 <th></th>
 

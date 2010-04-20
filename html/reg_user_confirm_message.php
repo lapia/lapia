@@ -7,8 +7,8 @@
 	//ini_set('display_errors',1);
 
 ?>
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 	<title>Lappia Halli - Reservation</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -22,13 +22,12 @@
 		include '../include/sqlconnect.php';
 		include '../include/calendar.php';
 		include '../include/login.php';
-		include '../include/area.php';
+		include	'../include/area.php';
 		include '../include/manuachosersdate.php';
 		include '../include/genkey.php';
-		include '../include/formnonregister.php';
-		include '../include/reservationregisteredu.php';
+		include 'reservationregisteredu.php';
 
-		$dbconn = new SqlConnect("localhost","root","test1","LHR");
+		$dbconn = new SqlConnect("localhost","root","sqq2q2","LHR");
 		$dbconn->connectToDb();
 
 		//ini_set('display_errors',1);
@@ -49,9 +48,11 @@
 						<p>Welcome
 							<?php
 								$querystr = "SELECT Contactperson FROM registereduser WHERE RegisteredEmailaddress = '".$_SESSION['username']."'";
-								$result = mysql_query($querystr);
+								$resource=&$dbconn->getResource();
+								$result = mysql_query($querystr,$resource);
 								$row = mysql_fetch_assoc($result);
-								echo $row['Contactperson']
+								echo $row['Contactperson'];
+								mysql_free_result($result);
 							?>
 						</p>
 					</div>
@@ -92,25 +93,16 @@
 						</div>
 						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
 						<?php
-							if(isset($_SESSION['username']))
-							{
 								if(!isset($_SESSION['FIRST_OPEN_SITE']))
 								{
 									new ReservationRuser();
 									$_SESSION['FIRST_OPEN_SITE']=0;
+									echo "<br>Thank you for the reservation.<br>";
 								}
-								echo "<br>Thank you for the reservation.<br>";
-							}
-							else
-							{
-								echo '<h1>unregistered user</h1>';
-								if(!isset($_SESSION['FIRST_OPEN_SITE'])){
-									new FormNonRegister();
-									$_SESSION['FIRST_OPEN_SITE']=0;
-								}
-								echo "<br>Thank you for the reservation.<br>";
+								
+							
 
-							}
+							
 							?>
 							<a href='index_logged_in.php' style="font-size: 16pt">go back</a>
 						</div>
@@ -119,12 +111,12 @@
 					<div id="colorimage_container">
 						<div id="colorimage">
 							<?php
+						
 							if(isset($_POST['date'])){
-								$area=new Area($_POST['date']);
+								new Area($_POST['date']);
 								$_SESSION['areadate'] =$_POST['date'];
 							}
-							else $area=new Area($_SESSION['areadate']);
-							$dbconn->disocnnect();
+							else new Area($_SESSION['areadate']);
 							?>
 						</div>
 					</div>
@@ -162,7 +154,6 @@
 		</div>
 
 	</div>
-
 <?php if($_SESSION["logedin"] == 'false')
 echo "<script type='text/javascript'>document.location = 'http://localhost/~test/newuser.php'</script>"
 ?>

@@ -5,8 +5,8 @@
 	$_SESSION['ShowRegisterForm']='-2'; // set show nonregistred user form
 
 ?>
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 	<title>Lappia Halli - Costs</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -16,7 +16,14 @@
 
 <body>
 	<?php
+		include '../include/adduser.php';
 		include '../include/sqlconnect.php';
+		include '../include/calendar.php';
+		include '../include/login.php';
+		include '../include/area.php';
+		include '../include/manuachosersdate.php';
+		include '../include/genkey.php';
+		include '../include/formnonregister.php';
 
 		$dbconn = new SqlConnect("localhost","root","test1","LHR");
 		$dbconn->connectToDb();

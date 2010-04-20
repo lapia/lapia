@@ -379,7 +379,7 @@ button.cleft{
 	width: 36px;
 	background-image:url('../images/cleft.png');
 	background-repeat:no-repeat;
-	padding: 0px 0px 0px 0px;
+	padding: margin: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 	border-style:none;
 }
@@ -390,7 +390,7 @@ button.cdate{
 	color: red;
 	background-image:url('../images/cdate.png');
 	background-repeat:no-repeat;
-	padding: 0px 0px 0px 0px;
+	padding: margin: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 	border-style:none;
 }
@@ -399,7 +399,7 @@ button.cright{
 	width: 36px;
 	background-image:url('../images/cright.png');
 	background-repeat:no-repeat;
-	padding: 0px 0px 0px 0px;
+	padding: margin: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 	border-style:none;
 }
@@ -408,7 +408,7 @@ button.cdisabled{
 	width: 34px;
 	background-image:url('../images/cdisabled.png');
 	background-repeat:no-repeat;
-	padding: 0px 0px 0px 0px;
+	padding: margin: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 	border-style:none;
 }
@@ -417,7 +417,7 @@ button.cselected{
 	width: 34px;
 	background-image:url('../images/cselected.png');
 	background-repeat:no-repeat;
-	padding:0px 0px 0px 0px;
+	padding: margin: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 	border-style:none;
 }
@@ -426,7 +426,7 @@ button.ctoday{
 	width: 34px;
 	background-image:url('../images/ctoday.png');
 	background-repeat:no-repeat;
-	padding: 0px 0px 0px 0px;
+	padding: margin: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 	border-style:none;
 }
@@ -435,7 +435,7 @@ button.cenabled{
 	width: 34px;
 	background-image:url('../images/cenabled.png');
 	background-repeat:no-repeat;
-	padding: 0px 0px 0px 0px;
+	padding: margin: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 	border-style:none;
 }
@@ -444,7 +444,7 @@ button.mcbuttonena{
 	width: 118px;
 	background-image:url('../images/mcbuttonene.png');
 	background-repeat:no-repeat;
-	padding: 0px 0px 0px 0px;
+	padding: margin: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 	border-style:none;
 }
@@ -454,7 +454,7 @@ button.mcbuttondisa{
 	width: 118px;
 	background-image:url('../images/mcbuttondisa.png');
 	background-repeat:no-repeat;
-	padding: 0px 0px 0px 0px;
+	padding: margin: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 	border-style:none;
 }

@@ -4,8 +4,8 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 	header("location:../index.php");
 }
 ?>
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 	<title>Lappia Halli - Your Acount</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -20,12 +20,15 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 		include '../include/calendar.php';
 		include '../include/login.php';
 		include '../include/area.php';
-		include '../include/manuachosersdate.php';
+		include 'manuachosersdate.php';
 		include '../include/genkey.php';
 		include '../include/formnonregister.php';
+		
+		$_SESSION['ShowRegisterForm']='0'; // set show nonregistred user form 
+		if(isset($_SESSION['FIRST_OPEN_SITE'])){
+			unset($_SESSION['FIRST_OPEN_SITE']);
+		}
 
-		$dbconn = new SqlConnect("localhost","root","test1","LHR");
-		$dbconn->connectToDb();
 
 		//ini_set('display_errors',1);
 	?>
@@ -44,10 +47,16 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 					<div id="welcome_note">
 						<p>Welcome
 							<?php
+								$dbconn = new SqlConnect("localhost","root","sqq2q2","LHR");
+								$dbconn->connectToDb();
+								
 								$querystr = "SELECT Contactperson FROM registereduser WHERE RegisteredEmailaddress = '".$_SESSION['username']."'";
-								$result = mysql_query($querystr);
+								$resource=&$dbconn->getResource();
+								$result = mysql_query($querystr,$resource);
 								$row = mysql_fetch_assoc($result);
-								echo $row['Contactperson']
+								echo $row['Contactperson'];
+								mysql_free_result($result);
+								$dbconn->disocnnect();
 							?>
 						</p>
 					</div>
@@ -87,16 +96,17 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 								$infotab['busy_period']="<br>time is busy<br>";
 								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br> Reservations must be made at least<br> 24 hours before letting the area<br>";
 
-								$rol=new ManuaChosersDate($_POST['date'],$infotab);
-								$rol->SetCalendar($cal);
+								$rol=new ManuaChosersDate($_POST['date'],$infotab,24);
+								$rol->SetCalendar($cal);								
+								if($_POST['choserdate']) $cal->setBacklightDate($_SESSION['areadate']);
 								$cal->sHowCalendar();
 							?>
 						</div>
 						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
 							<?php
-								$phpfile = "reg_user_confirm_message.php";
-
-								$rol->ShowForm($phpfile);
+								//$phpfile = "reg_user_confirm_message.php";
+									
+								$rol->ShowForm('reg_user_confirm_message.php');
 							?>
 						</div>
 					</div>
@@ -105,9 +115,6 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 						<div id="colorimage" style="font-size: 10pt;">
 							<?php
 								$area=new Area($_POST['date']);
-
-								//echo "<br>check:" .$_POST['next_step'];
-								$dbconn->disocnnect();
 							?>
 						</div>
 					</div>
@@ -145,6 +152,5 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 		</div>
 
 	</div>
-
 </body>
 </html>

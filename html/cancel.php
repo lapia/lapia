@@ -5,13 +5,13 @@
 	$_SESSION['ShowRegisterForm']='-2'; // set show nonregistred user form
 
 ?>
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 	<title>Lappia Halli - Cancel Reservation Page</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
-	<link rel="stylesheet" href="../css/css.css" type="text/css">	</style>
+	<link rel="stylesheet" href="../css/css.css" type="text/css">
 </head>
 
 <body>
@@ -26,9 +26,7 @@
 		include '../include/formnonregister.php';
 		include '../include/cancel1.php';
 
-		$dbconn = new SqlConnect("localhost","root","test1","LHR");
-		$dbconn->connectToDb();
-
+		
 		//ini_set('display_errors',1);
 
 	?>
@@ -81,8 +79,9 @@
 								$infotab['busy_period']="<br>time is busy<br>";
 								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br> Reservations must be made at least<br> 24 hours before letting the area<br>";
 
-								$rol = new ManuaChosersDate($_POST['date'],$infotab);
+								$rol = new ManuaChosersDate($_POST['date'],$infotab,24);
 								$rol->SetCalendar($cal);
+								if($_POST['choserdate']) $cal->setBacklightDate($_SESSION['areadate']);
 								$cal->sHowCalendar();
 							?>
 						</div>
@@ -100,7 +99,7 @@
 							<?php
 								$area = new Area($_POST['date']);
 
-								$dbconn->disocnnect();
+								
 							?>
 						</div>
 					</div>
