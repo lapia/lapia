@@ -214,9 +214,10 @@ div#container_top{
 }
 
 div#login_bar{
+	margin-top:1%;
 	float:right;
 	margin-right: 20px;
-	width:auto;
+	width:250px;
 	font-size:14px;
 }
 div#login_bar2{
@@ -257,9 +258,10 @@ div#login_bar2 .submit input {
 }
 
 div#bottom_menu{
+	
 	float:left;
-	position:relative;
-	right:-80px;
+	position:fixed;
+	right:40%;
 	top:120px;
 }
 

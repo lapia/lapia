@@ -4,7 +4,7 @@ session_start();
 include 'sendmesage.php';
 include 'sqlconnect.php';
 
-$dbconn = new SqlConnect("localhost","root","sqq2q2","LHR");
+$dbconn = new SqlConnect("localhost","root","test1","LHR");
 $dbconn->connectToDb();
 $resource=&$dbconn->getResource();
 
@@ -26,15 +26,17 @@ else{
 		*$smail->SetHtmlMesage($html);
 		*$smail->SetGroupImage($imagegroup);
 		*$smail->SetSubject('Lapiahally');
-		*$smail->SendMesage(); 
+		*$smail->SendMesage();
 		*/
+		//$emails = 'boromil@gmail.com';
+		//$emails = $_POST['username'];
 		$smail = new SendMail();
-		$smail->SetRecipients($_POST['username']);
+		$smail->SetRecipients($_POST["username"]);
 		$smail->SetHtmlMesage($value);
 		$smail->SetSubject('Lapiahally');
-		$smail->SendMesage(); 
-		
-		$_SESSION['lost_success'] = "Your password has been sent to your email address.";
+		$smail->SendMesage();
+
+		$_SESSION['lost_success'] = "Your password has been sent to your email address.".$_POST['username'].phpversion();
 		echo"<script type='text/javascript'>document.location ='lost_password_confirm.php'</script>";
 }
 ?>

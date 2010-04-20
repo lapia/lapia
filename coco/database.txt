@@ -1,0 +1,27 @@
+CREATE TABLE `time_table` (
+  `time_id` int(11) NOT NULL auto_increment,
+  `duration` time NOT NULL,
+  `date` date NOT NULL,
+  `time` varchar(40) NOT NULL,
+  `date2` varchar(40) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `status` varchar(40) NOT NULL,
+  `authcode` varchar(40) NOT NULL,
+  `type` varchar(40) NOT NULL,
+  PRIMARY KEY  (`time_id`),
+ 
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- 导出表中的数据 `time_table`
+--
+
+INSERT INTO `time_table` (`time_id`, `duration`, `date`, `time`, `date2`, `email`, `name`, `status`, `authcode`, `type`) VALUES
+(1, '30:00:00', '2009-10-14', '08:00', '13:00', 'kate@hotmail.com', 'kate', 'authorized', 'sdf456', 'a'),
+(2, '00:03:00', '2009-10-11', '09:00', '13:00', 'zone@hotmail.com', 'zone', 'authorized', 'wer489', 'b'),
+(3, '00:03:00', '2009-10-11', '09:00', '13:00', 'poll@yahoo.com', 'poll', 'denied', 'qwe153', 'a'),
+(4, '00:03:00', '2009-10-11', '09:00', '13:00', 'jone@yahoo.com', 'jone', 'pending', 'zxc444', 'b'),
+(5, '00:03:00', '2009-10-12', '09:00', '13:00', 'shala@yahoo.com', 'shala', 'pending', 'fgh153', 'a'),
+(6, '00:03:00', '2009-10-13', '09:00', '13:00', 'telisa', 'telisa', 'denied', 'wer777', 'b');
+

@@ -68,10 +68,10 @@ class Area
 	private $dbconn;
 	public function Area($date/*YYYY-MM-DD*/,$colorc1='c9cfc4',$colorc2c3='86c856',$colorreservednotchack='fbf963',$colorreserved='red')
 	{
-		
-		$this->dbconn = new SqlConnect("localhost","root","sqq2q2","LHR");
+
+		$this->dbconn = new SqlConnect("localhost","root","test1","LHR");
 		$this->dbconn->connectToDb();
-		
+
 		$this->acolorc1=$colorc1;
 		$this->acolorc2c3=$colorc2c3;
 		$this->acolorreservednotchack=$colorreservednotchack;

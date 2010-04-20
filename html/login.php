@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../include/sqlconnect.php';
-$con = new SqlConnect("localhost","root","sqq2q2","LHR");
+$con = new SqlConnect("localhost","root","test1","LHR");
 $con ->connectToDb();
 if (!$con)
   {

@@ -11,11 +11,11 @@ if (isset ($_POST['register'])){
 	$Organisation = $_POST['name_of_organisation'];
 	$phone = $_POST['Phone'];
 	$update_user = $_POST['email'];
-	
-	$dbconn = new SqlConnect("localhost","root","sqq2q2","LHR");
+
+	$dbconn = new SqlConnect("localhost","root","test1","LHR");
 	$dbconn->connectToDb();
 	$resource=&$dbconn->getResource();
-	
+
 	$sql = "SELECT* FROM Unregistereduser WHERE UnregisteredEmailaddress = '".$Email."' ";
 	$result = mysql_query($sql,$resource);
 	$count = mysql_num_rows($result);

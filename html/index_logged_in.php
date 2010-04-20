@@ -4,7 +4,7 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 	header("location:../index.php");
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 	<title>Lappia Halli - Your Acount</title>
@@ -23,8 +23,8 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 		include 'manuachosersdate.php';
 		include '../include/genkey.php';
 		include '../include/formnonregister.php';
-		
-		$_SESSION['ShowRegisterForm']='0'; // set show nonregistred user form 
+
+		$_SESSION['ShowRegisterForm']='0'; // set show nonregistred user form
 		if(isset($_SESSION['FIRST_OPEN_SITE'])){
 			unset($_SESSION['FIRST_OPEN_SITE']);
 		}
@@ -47,9 +47,9 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 					<div id="welcome_note">
 						<p>Welcome
 							<?php
-								$dbconn = new SqlConnect("localhost","root","sqq2q2","LHR");
+								$dbconn = new SqlConnect("localhost","root","test1","LHR");
 								$dbconn->connectToDb();
-								
+
 								$querystr = "SELECT Contactperson FROM registereduser WHERE RegisteredEmailaddress = '".$_SESSION['username']."'";
 								$resource=&$dbconn->getResource();
 								$result = mysql_query($querystr,$resource);
@@ -97,7 +97,7 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br> Reservations must be made at least<br> 24 hours before letting the area<br>";
 
 								$rol=new ManuaChosersDate($_POST['date'],$infotab,24);
-								$rol->SetCalendar($cal);								
+								$rol->SetCalendar($cal);
 								if($_POST['choserdate']) $cal->setBacklightDate($_SESSION['areadate']);
 								$cal->sHowCalendar();
 							?>
@@ -105,7 +105,7 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
 							<?php
 								//$phpfile = "reg_user_confirm_message.php";
-									
+
 								$rol->ShowForm('reg_user_confirm_message.php');
 							?>
 						</div>

@@ -9,10 +9,10 @@ class ReservationRuser
         private $dbconn;
         public function ReservationRuser()
         {
-        	
-        		$this->dbconn = new SqlConnect("localhost","root","sqq2q2","LHR");
+
+        		$this->dbconn = new SqlConnect("localhost","root","test1","LHR");
 				$this->dbconn->connectToDb();
-				
+
                 $this->ExplodeDate($_SESSION['areadate']);
                 $this->AddReservation();
         }
@@ -24,8 +24,8 @@ class ReservationRuser
         }
         private function AddReservation()
         {
-        	
-        		
+
+
                 $area=$area_b="";
         		$gkey=new GenKey($_SESSION['username'],'Reservation','Reservecode',6);
                 $this->key=$gkey->GetCode();
@@ -42,9 +42,9 @@ class ReservationRuser
                 	$area_b='B';
                 }
                 else $area=$_SESSION['areaarea'];
-				
+
                 $resource=&$this->dbconn->getResource();
-				
+
                 $subquery="(select idRegistereduser from registereduser where RegisteredEmailaddress='".$_SESSION['username']."')";
                 $query="insert into Reservation( Reservecode,idRegistereduser,area,Statingtime,Endingtime,Startingdate,Endingdate,TimeStemp) values('".$this->key."',".$subquery.",'".$area."','$ts','$tf','$ds','$df','$tstemp')";
         		echo $query;
@@ -54,11 +54,11 @@ class ReservationRuser
         			mysql_query($query,$resource);
         		}
            //    echo '<br> rezerwacja <br> :' . $query . mysql_error();
-				
-        		
+
+
 				$this->dbconn->disocnnect();
-    
-        		
+
+
                 $html = '<html><body><img src="rumianek.jpg"> <p>wlasnie skoncylem pisac klase do mailingu :).</p><br><img src="software-update-300x300.jpg"><br><p>another image</p></body></html>';
                 $imagegroup=array('software-update-300x300.jpg','rumianek.jpg',);
                 $smail = new SendMail();

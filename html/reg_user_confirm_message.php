@@ -27,7 +27,7 @@
 		include '../include/genkey.php';
 		include 'reservationregisteredu.php';
 
-		$dbconn = new SqlConnect("localhost","root","sqq2q2","LHR");
+		$dbconn = new SqlConnect("localhost","root","test1","LHR");
 		$dbconn->connectToDb();
 
 		//ini_set('display_errors',1);
@@ -99,10 +99,10 @@
 									$_SESSION['FIRST_OPEN_SITE']=0;
 									echo "<br>Thank you for the reservation.<br>";
 								}
-								
-							
 
-							
+
+
+
 							?>
 							<a href='index_logged_in.php' style="font-size: 16pt">go back</a>
 						</div>
@@ -111,7 +111,7 @@
 					<div id="colorimage_container">
 						<div id="colorimage">
 							<?php
-						
+
 							if(isset($_POST['date'])){
 								new Area($_POST['date']);
 								$_SESSION['areadate'] =$_POST['date'];

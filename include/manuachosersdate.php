@@ -16,9 +16,9 @@ class ManuaChosersDate
 	private $dbconn;
 	public function ManuaChosersDate($date,$infotab,$passingtime)
 	{
-		$this->dbconn = new SqlConnect("localhost","root","sqq2q2","LHR");
+		$this->dbconn = new SqlConnect("localhost","root","test1","LHR");
 		$this->dbconn->connectToDb();
-		
+
 		$this->disablebutton=FALSE;
 		$this->infotab=$infotab;
 		$this->passingtime=$passingtime;
