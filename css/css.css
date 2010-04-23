@@ -9,6 +9,7 @@ body{
 	background:White;
 	text-align: center;
 	min-width: 1200px;
+	background-image:url(../images/bg.jpg);
 	background-repeat:repeat;
 }
 
@@ -214,10 +215,9 @@ div#container_top{
 }
 
 div#login_bar{
-	margin-top:1%;
 	float:right;
 	margin-right: 20px;
-	width:250px;
+	width:auto;
 	font-size:14px;
 }
 div#login_bar2{
@@ -258,10 +258,9 @@ div#login_bar2 .submit input {
 }
 
 div#bottom_menu{
-	
+
 	float:left;
-	position:fixed;
-	right:40%;
+	position: relative;
 	top:120px;
 }
 
