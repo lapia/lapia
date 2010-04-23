@@ -17,7 +17,14 @@
 <body>
 	<?php
 		include '../include/ad.php';
-		include './sqlconnect.php';
+		include '../include/adduser.php';
+		include '../include/sqlconnect.php';
+		include '../include/calendar.php';
+		include '../include/login.php';
+		include '../include/area.php';
+		include 'manuachosersdate.php';
+		include '../include/genkey.php';
+		include '../include/formnonregister.php';
 	?>
 	<div id="tlo">
 	</div>
@@ -58,7 +65,8 @@
 				<div id="text_field_1">
 					<div id="text_field_2" style="width: 511px; height: 603px; overflow: auto; border: 0px solid #666; background-color: trnsparent; padding: 0px 10px 0px 10px; margin: 25px 0px 25px 0px; text-align:left">
 						<?php
-							&ad = ;
+							$ad = new AdminForm();
+							$ad->ShowFrom();
 						?>
 					</div>
 				</div>
