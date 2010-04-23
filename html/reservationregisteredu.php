@@ -47,7 +47,7 @@ class ReservationRuser
 
                 $subquery="(select idRegistereduser from registereduser where RegisteredEmailaddress='".$_SESSION['username']."')";
                 $query="insert into Reservation( Reservecode,idRegistereduser,area,Statingtime,Endingtime,Startingdate,Endingdate,TimeStemp) values('".$this->key."',".$subquery.",'".$area."','$ts','$tf','$ds','$df','$tstemp')";
-        		echo $query;
+        		//echo $query;
         		mysql_query($query,$resource);
         		if($area_b == 'B'){
         			$query="insert into Reservation( Reservecode,idRegistereduser,area,Statingtime,Endingtime,Startingdate,Endingdate,TimeStemp) values('".$this->key."',".$subquery.",'".$area_b."','$ts','$tf','$ds','$df','$tstemp')";

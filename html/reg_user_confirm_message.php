@@ -7,7 +7,7 @@
 	//ini_set('display_errors',1);
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 	<title>Lappia Halli - Reservation</title>
@@ -99,10 +99,6 @@
 									$_SESSION['FIRST_OPEN_SITE']=0;
 									echo "<br>Thank you for the reservation.<br>";
 								}
-
-
-
-
 							?>
 							<a href='index_logged_in.php' style="font-size: 16pt">go back</a>
 						</div>
