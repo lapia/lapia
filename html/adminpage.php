@@ -34,14 +34,29 @@
 		<div id="gora_pasek">
 			<div id="container_top">
 				<div id="login_bar">
-					<form action="login.php" method="post">
-						<p><label for="username">E-mail:</label> <input type="text" id="username" name="username"/></p>
-						<p><label for="password">Password:</label> <input type="password" id="password" name="password" /></p>
-						<p class="submit"><input type="submit" name="submit" value="Login" /></p>
-					</form>
+				<br />
+				<br />
+				<br />
+					<div id="welcome_note">
+						<p>Welcome
+							<?php
+								$dbconn = new SqlConnect("localhost","root","test1","LHR");
+								$dbconn->connectToDb();
+
+								$querystr = "SELECT Contactperson FROM registereduser WHERE RegisteredEmailaddress = '".$_SESSION['username']."'";
+								$resource=&$dbconn->getResource();
+								$result = mysql_query($querystr,$resource);
+								$row = mysql_fetch_assoc($result);
+								echo $row['Contactperson'];
+								mysql_free_result($result);
+								$dbconn->disocnnect();
+							?>
+						</p>
+					</div>
+
 					<div id="pass_reg">
-						<a href="lost_password.php">Lost Password?</a>
-						<a href="register_second.php">Register</a>
+						<a href="edit_profile.php">Edit profile</a>
+						<a href="logout.php">Logout</a>
 					</div>
 				</div>
 			</div>
