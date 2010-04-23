@@ -5,7 +5,7 @@
 	$_SESSION['ShowRegisterForm']='-2'; // set show nonregistred user form
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 	<title>Lappia Halli - Cancel Reservation Page</title>
@@ -26,7 +26,7 @@
 		include '../include/formnonregister.php';
 		include '../include/cancel1.php';
 
-		
+
 		//ini_set('display_errors',1);
 
 	?>
@@ -45,8 +45,8 @@
 						<p class="submit"><input type="submit" name="submit" value="Login" /></p>
 					</form>
 					<div id="pass_reg">
-						<a href="html/lost_password.php">Lost Password?</a>
-						<a href="html/register_second.php">Register</a>
+						<a href="lost_password.php">Lost Password?</a>
+						<a href="register_second.php">Register</a>
 					</div>
 				</div>
 			</div>
@@ -98,8 +98,6 @@
 						<div id="colorimage">
 							<?php
 								$area = new Area($_POST['date']);
-
-								
 							?>
 						</div>
 					</div>

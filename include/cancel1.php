@@ -1,5 +1,5 @@
 <?php
-include 'sendmesage.php';
+include '../include/sendmesage.php';
 
 class email
 {
@@ -65,26 +65,19 @@ class email
         }
         public function ShowCancel($r="",$d="")
         {
-			
-        	
-        	$dbconn = new SqlConnect("localhost","root","sqq2q2","LHR");
-			$dbconn->connectToDb();
-			$resource=&$dbconn->getResource();
-			
-        	
-        	$pas=htmlspecialchars($_POST["code"]);
+			$pas=htmlspecialchars($_POST["code"]);
 			$query  = "SELECT RegisteredEmailaddress from LHR.registereduser RU, LHR.Reservation R where RU.idRegistereduser=R.idRegistereduser and R.Reservecode='".$pas."' ;";
-			$result = mysql_query($query,$resource) or dir(mysql_error());
+			$result = mysql_query($query) or dir(mysql_error());
 			$query1  = "SELECT Statingtime from LHR.registereduser RU, LHR.Reservation R where RU.idRegistereduser=R.idRegistereduser and R.reservecode='".$pas."';";
-			$result1 = mysql_query($query1,$resource);
+			$result1 = mysql_query($query1);
 			$query2  = "select subtime(Endingtime,Statingtime) from LHR.registereduser RU, LHR.Reservation R where RU.idRegistereduser=R.idRegistereduser and R.Reservecode='".$pas."';";
-			$result2 = mysql_query($query2,$resource);
+			$result2 = mysql_query($query2);
 			$query3 = "SELECT area from LHR.registereduser RU, LHR.Reservation R where RU.idRegistereduser=R.idRegistereduser and R.reservecode='".$pas."';";
-			$result3 = mysql_query($query3,$resource);
+			$result3 = mysql_query($query3);
 			$query4  = "SELECT Reservecode from LHR.registereduser RU, LHR.Reservation R where RU.idRegistereduser=R.idRegistereduser and R.Reservecode='".$pas."';";
-			$result4 = mysql_query($query4,$resource);
+			$result4 = mysql_query($query4);
 			//$this->check();
-			
+
 
 			while($row = mysql_fetch_row($result4))
 			{
@@ -117,11 +110,9 @@ class email
 						$login=htmlspecialchars($_POST["email"]);
 						$passw=htmlspecialchars($_POST["code"]);
 						$query5="SELECT idReservation from LHR.Reservation R, LHR.registereduser RU where RU.RegisteredEmailaddress='".$login."' and R.Reservecode='".$passw."';";
-						$result5=mysql_query($query5,$resource);
+						$result5=mysql_query($query5);
 						$rec= mysql_fetch_assoc($result5);
-						
-						$dbconn->disocnnect();
-						
+
 						echo "<input type=hidden name=code value='".$rec['idReservation']."' />";
 						echo "<center><input type=submit name=cancel value=Cancel reservation!></center>";
             echo "</form>";
@@ -139,18 +130,12 @@ class email
 
         }
         public function cHackemail()
-        {		
-        		$dbconn = new SqlConnect("localhost","root","sqq2q2","LHR");
-				$dbconn->connectToDb();
-				$resource=&$dbconn->getResource();
-                
-				$log=htmlspecialchars($_POST["email"]);
+        {
+                $log=htmlspecialchars($_POST["email"]);
                 $pass=htmlspecialchars($_POST["code"]);
                 $query="SELECT idReservation from LHR.Reservation R, LHR.registereduser RU where RU.RegisteredEmailaddress='".$log."' and R.Reservecode='".$pass."';";
 
-                $result=mysql_query($query,$resource);
-                
-                $dbconn->disocnnect();
+                $result=mysql_query($query);
                 if(mysql_num_rows($result)){
                         $row = mysql_fetch_assoc($result);
                         $_SESSION['userid']=$row['idcancel'];
