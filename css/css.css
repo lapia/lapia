@@ -77,6 +77,11 @@ div#text_field_2 p{
 	color: #DAF4F0;
 }
 
+div#text_field_2 li{
+	font-size: 12pt;
+	color: #CFECEC;
+}
+
 div#calender_container{
 	float: left;
 	width: 350px;

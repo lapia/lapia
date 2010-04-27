@@ -36,7 +36,7 @@ else{
 		$smail->SetSubject('Lapiahally');
 		$smail->SendMesage();
 
-		$_SESSION['lost_success'] = "Your password has been sent to your email address.".$_POST['username'].phpversion();
+		$_SESSION['lost_success'] = "Your password has been sent to your email address.";
 		echo"<script type='text/javascript'>document.location ='lost_password_confirm.php'</script>";
 }
 ?>
