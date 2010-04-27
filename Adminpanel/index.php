@@ -287,7 +287,7 @@ div.Footer{
 	{
 		$cal=new Calendar();
 
-		$adm=new AdminForm("on");
+		$adm=new AdminForm();
 		$adm->SetDate($_POST['date']);
 
 		echo "<div class=\"adminform\">";
