@@ -70,6 +70,13 @@ div#tekst_field_2{
 	margin: 0px auto;
 }
 
+div#text_field_2 h1{
+	color: #CFECEC;
+}
+div#text_field_2 p{
+	color: #DAF4F0;
+}
+
 div#calender_container{
 	float: left;
 	width: 350px;
