@@ -7,7 +7,7 @@
 ?>
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 	<title>Lappia Halli - Edit Profile</title>
@@ -38,7 +38,7 @@
 			</div>
 
 			<div id="bottom_menu">
-				<a href="../index.php">Home Page</a>
+				<a href="index_logged_in.php">Home Page</a>
 				<a href="costs.php">Costs</a>
 				<a href="aboutus.php">About Us</a>
 				<a href="faq.php">FAQ</a>
