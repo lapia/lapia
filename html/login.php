@@ -34,7 +34,7 @@ $_SESSION['username'] = $_POST['username'];
 $_SESSION['password'] = $_POST['password'];
 //session_register("password");
 if($isAdmin == TRUE)
-	echo "<script type='text/javascript'>document.location ='adminpage.php'</script>";
+	echo "<script type='text/javascript'>document.location =\"../Adminpanel/index.php?action=euser\"</script>";
 else
 	echo "<script type='text/javascript'>document.location ='index_logged_in.php'</script>";
 }
