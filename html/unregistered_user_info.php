@@ -28,8 +28,7 @@ if (isset ($_POST['register'])){
 		exit;
 	}
 	else{
-		$query="INSERT INTO Unregistereduser (UnregisteredEmailaddress, Address, Contactperson, Organizationname, Phone)
-		VALUES ('".$Email."','".$Address."','".$Contactperson."','".$Organisation."','".$phone."')";
+		$query="INSERT INTO Unregistereduser (UnregisteredEmailaddress, Address, Contactperson, Organizationname, Phone) VALUES ('".$Email."','".$Address."','".$Contactperson."','".$Organisation."','".$phone."')";
 		mysql_query($query,$resource);
 		$_SESSION['success'] = "Thank you for your booking.<br>The reservation will be confirmed<br>by our administrator.<br><br>You will be contacted by email soon.";
 		//echo "<script type='text/javascript'>document.location ='newuser.php'</script>";
