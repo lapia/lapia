@@ -135,13 +135,10 @@
 									</fieldset>
 								</form>
 								<?php
-								//echo '<h1>unregistered user</h1>';
 								if(!isset($_SESSION['FIRST_OPEN_SITE'])){
 									new FormNonRegister();
 									$_SESSION['FIRST_OPEN_SITE']=0;
 								}
-								//echo "<br>Thank you for the reservation.<br>";
-
 							}
 							?>
 							<br>

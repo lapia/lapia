@@ -216,11 +216,10 @@ class AdminForm{
 		<button type=\"submit\" name=\"A_UPDATE\" value=\"1\">Update All</button>
 		</td>
 	</tr>
-	</table>
-	<div/>";
+	</table>";
 		
 		$xform.="<input type='hidden' name='admp' value='0'>\n";
-		$xform.="</form>"; //finish form
+		$xform.="</form></div>"; //finish form
 		
 		echo $xform;
 		mysql_free_result($result);

@@ -1,7 +1,7 @@
 <?php
 	session_start();
 ?>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -22,9 +22,6 @@ div.header {
 	background-image: url("baner.jpg");
 	background-attachment: fixed;
   	background-position: 99% 99%;
-
-
-
 }
 div.header span
 {
@@ -34,17 +31,16 @@ div.header span
 	color: #12b152;
 	font-size: 24pt;
 	text-align: center;
-
 }
 div.link
 {
 	position: absolute;
-	top: 71px;
+	top: 77px;
 	height: 12px;
 	padding: 2px 2px 2px 2xp;
 	margin: 0 0 0 0;
 	margin-left: 20px;
-	width: 96%;
+	width: 97%;
 	font-size: x-small;
 	font-weight: bold;
 	background-color: #daead0;
@@ -62,7 +58,6 @@ div.link
 }
 div.link a
 {
-
 	color: #12b152;
 	margin-left: 5px;
 	text-decoration: none;
@@ -94,8 +89,6 @@ div.adminform, div.edituser
 	margin-bottom:20px;
 	margin-left:10px;
 	padding: 0 0 0 0;
-	height: 600px;
-
 }
 div.adminform
 {
@@ -105,7 +98,7 @@ div.adminform
 }
 div.Search{
 	position: fixed ;
-	top: 46%;
+	top: 270px;
 	left:76%;
 	width: 16,5%;
 	background-color: #c5efbb;
@@ -120,7 +113,6 @@ div.theader
 	border: solid 1px;
 	border-color:  white;
 	font-style: italic;
-
 }
 .bcolor
 {
@@ -189,15 +181,20 @@ div.UPDATE button{
 }
 div.calendar {
 	position: fixed;
-	top: 16%;
+	top: 93px;
 	left:76%;
 	background-color: #c5efbb;
 	max-height: 200px;
 	max-width: 350px;
 }
+div.calendar .cdate
+{
+	padding-left: 61px;
+	padding-right: 62px;
+
+}
 div.edituser{
 	position: relative;
-	height: 600px;
 	font-family: "Arial";
 	font-size: small;
 
@@ -261,12 +258,12 @@ div.Footer{
 <div class="link">
 <?php
 
-		if($_GET['action'] == 'euser'){
+		if(($_GET['action'] == 'euser') || isset($_POST['euser']) || isset($_POST['callendar'])){
 			$link="<a href=\"".$_SERVER['PHP_SELF']."?action=euser\" class=\"feuser\">Edit User</a>";
 			$link.="<a href=\"".$_SERVER['PHP_SELF']."?action=ereservation\">Edit Reservation</a>";
 			$link.="<a href=\"".$_SERVER['PHP_SELF']."?action=logout\" class=\"logout\" >Logout</a>";
 		}
-		else if($_GET['action'] == 'ereservation'){
+		else if(($_GET['action'] == 'ereservation') || isset($_POST['admp'])){
 			$link="<a href=\"".$_SERVER['PHP_SELF']."?action=euser\" class=\"euser\">Edit User</a>";
 			$link.="<a href=\"".$_SERVER['PHP_SELF']."?action=ereservation\" class=\"fereservation\">Edit Reservation</a>";
 			$link.="<a href=\"".$_SERVER['PHP_SELF']."?action=logout\" class=\"logout\" >Logout</a>";
@@ -282,7 +279,7 @@ div.Footer{
 </div>
 <?php
 
-	if(($_GET['action'] == 'ereservation') || (isset($_POST['admp']) == TRUE) || (isset($_POST['callendar']) == true) && isset($_SESSION['username']))
+	if(($_GET['action'] == 'ereservation') || (isset($_POST['admp']) == TRUE) || (isset($_POST['callendar']) == true))
 	{
 		$cal=new Calendar();
 
@@ -297,7 +294,7 @@ div.Footer{
 	 	echo "</div>";
 
 	}
-	else if(($_GET['action'] == 'euser') || isset($_POST['euser']) && isset($_SESSION['username']))
+	else if(($_GET['action'] == 'euser') || isset($_POST['euser']))
 	{
 		echo "<div class=\"edituser\">";
 		$eu = new EditUsers();
@@ -307,7 +304,7 @@ div.Footer{
 		$footer.= "<center>powered by PP-2010</center>";
 		$footer.= "</div>";
 		//echo $footer;
-	}else if(($_GET['action'] == 'logout') && isset($_SESSION['username']))
+	}else if(($_GET['action'] == 'logout') )
 	{
 		session_destroy();
 		echo "xYou are logout";
@@ -316,3 +313,17 @@ div.Footer{
 ?>
 </body>
 </html>
+<?php
+
+	echo '<br>';
+	$a=1; $b=0; $x=10;
+	if((($a == 1) || ($b == 7)) && ($x==10))
+	{
+		echo 'all is ok<br>';
+	}
+	if((($a == 1) || ($b == 7)) && ($x!=10))
+	{
+		echo 'x!=10 <br>';
+	}
+?>
+
