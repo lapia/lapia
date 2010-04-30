@@ -48,7 +48,7 @@
 					<div id="middlemenu_container">
 						<div id="middlemenu">
 							<div id="alert">
-								<p>
+								<p class="alert">
 									<?php
 										if(isset($_SESSION['success'])) {
 											echo $_SESSION['success'];
@@ -56,7 +56,7 @@
 										}
 									?>
 								</p>
-								<p>
+								<p class="alert">
 									<?php
 										if(isset($_SESSION['edit'])) {
 											echo $_SESSION['edit'];

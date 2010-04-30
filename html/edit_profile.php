@@ -23,7 +23,7 @@
 				<br />
 				<br />
 					<div id="welcome_note">
-						<p>Welcome
+						<p class="welcome">Welcome
 							<?php $con = mysql_connect("localhost","root","test1");
 								if (!$con) {
 									die('Could not connect: ' . mysql_error());

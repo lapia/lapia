@@ -309,14 +309,19 @@ div#alert p{
 	padding: 1.5em;
 	font-size:12pt;
 }
-div#welcome_note p{
+div#welcome_note p.welcome{
 	width: auto;
 	float: left;
-	color: #20BF9F;
+	color: #253fff;
 	text-align: right;
 	font-size: 14pt;
 	display: block;
 	margin-right: 0.5em;
+}
+
+div#alert p.alert{
+	color: #ffae00;
+	font-size: 16pt;
 }
 
 div#register_form{

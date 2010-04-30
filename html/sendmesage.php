@@ -47,7 +47,7 @@ class SendMail
 		$mail_object->send($this->recipients, $this->headers, $this->mailmsg);
 
 		if (PEAR::isError($mail_object))   echo("<p>" . $mail_object->getMessage() . "</p>");
-		else echo("<p>Message successfully sent!</p>");
+		else echo("<p>The reservation code has been sent to your e-mail.</p>");
 
 	}
 	public function SetHtmlMesage($htmlbody)

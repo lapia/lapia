@@ -45,7 +45,7 @@
 				<br />
 				<br />
 					<div id="welcome_note">
-						<p>Welcome
+						<p class="welcome">Welcome
 							<?php
 								$querystr = "SELECT Contactperson FROM registereduser WHERE RegisteredEmailaddress = '".$_SESSION['username']."'";
 								$resource=&$dbconn->getResource();

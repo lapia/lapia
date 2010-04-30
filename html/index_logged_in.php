@@ -45,7 +45,7 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 				<br />
 				<br />
 					<div id="welcome_note">
-						<p>Welcome
+						<p class="welcome">Welcome
 							<?php
 								$dbconn = new SqlConnect("localhost","root","test1","LHR");
 								$dbconn->connectToDb();
