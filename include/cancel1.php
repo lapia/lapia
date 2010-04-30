@@ -41,7 +41,7 @@ class email
 								$query= "DELETE FROM LHR.Reservation WHERE idReservation ='".$pas."'";
 								mysql_query($query);
 
-								$html = '<html><body><p><h1>You\'re reservation has been canceled.</h1></p></body></html>';
+								$html = '<html><body><p><h1>Your reservation has been canceled.</h1></p></body></html>';
 								$smail = new SendMail();
 								$smail->SetRecipients($_SESSION["emailemail"]);
 								$smail->SetHtmlMesage($html);
