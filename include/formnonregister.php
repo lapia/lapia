@@ -1,12 +1,11 @@
 <?php
-include './sendmesage.php';
-echo "<script src='include/checkform.js' type='text/javascript'></script>";
+//include 'include/sendmesage.php';
 class FormNonRegister
 {
-	private $mail;
+	private $mail; 
 	private $adr;  	//addres
 	private $ca;   	//contatact person
-	private $or;   	//name of organization
+	private $or;   	//name of organization 
 	private $ph;   	//phone
 	private $added;
 	private $y;
@@ -14,7 +13,7 @@ class FormNonRegister
 	private $d;
 	private $key;
 	public function FormNonRegister()
-	{
+	{	
 		if($_SESSION['ShowRegisterForm'] == 0){
 			$this->added=false;
 			if(!isset($_POST['ShowRegisterForm']) )
@@ -57,7 +56,7 @@ class FormNonRegister
 		//$_SESSION['reservation']=$reservation;
 		$reservation=$_SESSION['reservation'];
 		$this->ExplodeDate($reservation['date']);
-
+		
 		$gkey=new GenKey($_POST['mail'],'Reservation','Reservecode',6);
 		$this->key=$gkey->GetCode();
 		$tstemp=$gkey->GetTimestemp();
@@ -72,30 +71,30 @@ class FormNonRegister
 			$area='A';
 			$area_b='B';
 		}else $area='A';
-
+		
 		$query="(select idUnregistereduser from Unregistereduser where UnregisteredEmailaddress='".$_POST['mail']."' and Address='".$_POST["addres"]."' and Contactperson='".$_POST["cpersopn"]."' and OrganizatioNname='".$_POST["noforganization"]."' and phone='".$_POST["phone"]."')";
 		$aquery="insert into Reservation( Reservecode,area,Statingtime,Endingtime,Startingdate,Endingdate,idUnregistereduser,TimeStemp) values('".$this->key."','".$area."','$ts','$tf','$ds','$df',$query,'$tstemp')";
-
+		
 		mysql_query($aquery);
-
+		
 		if($area_b == 'B')
 		{
 			$aquery="insert into Reservation( Reservecode,area,Statingtime,Endingtime,Startingdate,Endingdate,idUnregistereduser,TimeStemp) values('".$this->key."',".$area_b."','$ts','$tf','$ds','$df',$query,'$tstemp')";
 			mysql_query($aquery);
 		}
-		echo '<br> new reservation <br> :' . $aquery . mysql_error();
+		echo '<br> nowe rezerwacja <br> :' . $aquery . mysql_error();
 		$smail = new SendMail();
         $smail->SetRecipients($_POST['mail']);
         $smail->SetBodyMesage("Thank you for your booking. \nThe reservation will be confirmed by our administrator. \nYour reservation code :" .$this->key.
         "\nData of reservation ".$_SESSION['areadate']."\nArea ".$_SESSION['areaarea']."\nTime ".$_SESSION['areatime']."\nDuration ".$_SESSION['areaduration']);
         $smail->SetSubject('Lapiahally');
-        $smail->SendMesage();
+        $smail->SendMesage(); 
 	}
 	private function ExplodeDate($date)
 	{
 		$this->y=substr($date,0,4);
 		$this->m=substr($date,5,2);
-		$this->d=substr($date,8,2);
+		$this->d=substr($date,8,2);	
 	}
 	function aDdUserToDb()
 	{
@@ -107,13 +106,13 @@ class FormNonRegister
 
 		$query="insert into Unregistereduser(UnregisteredEmailaddress,Address,Contactperson, OrganizatioNname,phone) values('$this->ra','$this->adr','$this->ca','$this->or','$this->ph')";
 		echo '<br>'.$query.'<br>';
-		mysql_query($query) ; // zapisywanie rekordu do bazy
+		mysql_query($query) ; // zapisywanie rekordu do bazy	
 		echo   mysql_error();
 	}
 	function showNonRegisterForm($mesage="")
 	{
 		echo "$mesage<br>";
-		echo "<form action='".$_SERVER['PHP_SELF']."' method=post onSubmit='return ValidateForm()' name='nonRegisteredUser'>";
+		echo "<form action='".$_SERVER['PHP_SELF']."' method=post>";
 		echo "Email: <input type=text name=mail><br>";
 		echo "Name of Organization: <input type=text name=noforganization><br>";
 		echo "Contact persopn: <input type=text name=cpersopn><br>";

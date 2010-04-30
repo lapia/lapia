@@ -1,10 +1,16 @@
 <?php
+include_once 'include/sqlconnect.php';
 class Login
 {
-
+		private $dbconnect;
+		private $resource;
         public function Login()
         {
-				if(isset($_GET["logedout"]))
+			
+        	$this->dbconnect= new SqlConnect();
+        	$this->resource= &$this->dbconnect->getResource();
+        	
+        	if(isset($_GET["logedout"]))
 	                if($_GET["logedout"]=="yes")
 	                {
 	                        echo "You have been loged out ";
@@ -21,7 +27,7 @@ class Login
                                 $_SESSION['username']=$_POST["login"];
                                 $_SESSION["Loginpassword"]=$p;
                                 echo "<a href='index.php?logedout=yes'> loged out</a>";
-                        }else echo "<script type='text/javascript'>document.location = 'http://localhost/Lapia/newuser.php'</script>";
+                        }else echo "<script type='text/javascript'>document.location = 'http://localhost/Lapp/newuser.php'</script>";
                 }else
                 {
                         if(!isset($_SESSION['username'])) $this->ShowLogin("you have not logged in!!!");
@@ -44,19 +50,22 @@ class Login
         }
         public function cHackLogin()
         {
+        		$login=false;
                 $log=htmlspecialchars($_POST["login"]);
                 $pass=htmlspecialchars($_POST["password"]);
                 $query="select idRegistereduser from registereduser where RegisteredEmailaddress='".$log."' and password='".$pass."'";
                 echo $query;
-                $result=mysql_query($query);
+                $result=mysql_query($query,$this->resource);
                 if(mysql_num_rows($result)){
                         $row = mysql_fetch_assoc($result);
                         $_SESSION['userid']=$row['idRegistereduser'];
                         echo "<br>user id= ". $row['idRegistereduser'];
-                        return true;
+                        $login= true;
                 }
                 else  $_SESSION['userid']=0; //user not login
-                return false;
+
+                $this->dbconnect->disocnnect();
+                return $login;
         }
 }
 ?>

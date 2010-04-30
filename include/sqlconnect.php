@@ -1,25 +1,29 @@
 <?php
 class SqlConnect {
-	private $host;
-	private $user;
-	private $password;
-	private $db;
-	private $link;
 	
-	public function  SqlConnect($ho,$us,$pas,$d)
-	{
-		$this->host=$ho;
-		$this->user=$us;
-		$this->password=$pas;
-		$this->db=$d;
+	private $resource;
+	
+	public function  SqlConnect()
+	{			
+		$this->iNitComponents();
 	}
-	public function connectToDb()
+	private function iNitComponents()
 	{
-		$this->link= mysql_connect($this->host,$this->user,$this->password)or die("can't connect to db server"); //połączenie z bazą danych
-		mysql_select_db($this->db)or die("There was an error selecting database");
+		if(isset($_SESSION['SQLSETTINGS']))
+		{
+			$row=$_SESSION['SQLSETTINGS'];
+			$this->resource= mysql_connect($row['host'],$row['user'],$row['password'])or die("can't tonnect to db server");
+			mysql_select_db($row['dbname'],$this->resource)or die("There was an error selecting database");
+		}
+		else
+		{
+			echo 'err class AdminForm: not set $_SESSION[\'SQLSETTINGS\']';
+			echo "<br> example setings \$_SESSION['SQLSETTINGS']=array('host'=>'url','user'=>'root','password'=>'password','dbname'=>'dbmane');";
+			return false;
+		}
+		return true;
 	}
-	public function disocnnect() { mysql_close() or die("disocnect error") ;}
-	public function &getResource() { return $this->link;}
-		
+	public function disocnnect() { mysql_close($this->resource) or die("disocnect error") ;}
+	public function &getResource() { return $this->resource;}
 }
 ?>
