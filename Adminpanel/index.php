@@ -1,8 +1,7 @@
 <?php
 	session_start();
-
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -283,7 +282,7 @@ div.Footer{
 </div>
 <?php
 
-	if((($_GET['action'] == 'ereservation') || (isset($_POST['admp']) == TRUE) || (isset($_POST['callendar']) == true))  )
+	if(($_GET['action'] == 'ereservation') || (isset($_POST['admp']) == TRUE) || (isset($_POST['callendar']) == true) && isset($_SESSION['username']))
 	{
 		$cal=new Calendar();
 
@@ -298,7 +297,7 @@ div.Footer{
 	 	echo "</div>";
 
 	}
-	else if((($_GET['action'] == 'euser') || isset($_POST['euser']))  )
+	else if(($_GET['action'] == 'euser') || isset($_POST['euser']) && isset($_SESSION['username']))
 	{
 		echo "<div class=\"edituser\">";
 		$eu = new EditUsers();
@@ -308,9 +307,9 @@ div.Footer{
 		$footer.= "<center>powered by PP-2010</center>";
 		$footer.= "</div>";
 		//echo $footer;
-	}else if(($_GET['action'] == 'logout') && ($_SESSION['username'] != 0) )
+	}else if(($_GET['action'] == 'logout') && isset($_SESSION['username']))
 	{
-		$_SESSION['username']=0;
+		session_destroy();
 		echo "xYou are logout";
 	}
 	else echo "You are logout";

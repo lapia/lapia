@@ -89,7 +89,6 @@
 							<?php
 								$mail = new email();
 								$mail->cancel();
-								//echo "<p>dupa</p>";
 							?>
 						</div>
 					</div>
