@@ -59,7 +59,7 @@ class ReservationRuser
 				$this->dbconn->disocnnect();
 
 
-                $html = '<html><body><img src="rumianek.jpg"> <p>wlasnie skoncylem pisac klase do mailingu :).</p><br><img src="software-update-300x300.jpg"><br><p>another image</p></body></html>';
+                $html = '<html><body><p>Thank you. Your reservation was successful. Please find your reservation code below.</p><p><h1>Reservation Code: '.$this->key.'</h1></p><p>If you recived this mail by mistake, please discard it. For further information contact aministrator@lappia.fi or visit www.lapiahali.fi.</p></body></html>';
                 $imagegroup=array('software-update-300x300.jpg','rumianek.jpg',);
                 $smail = new SendMail();
                 $smail->SetRecipients($_SESSION['username']);

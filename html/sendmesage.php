@@ -1,23 +1,4 @@
 <?php
- /*single image
-  *$html = '<html><body><img src="rumianek.jpg"> <p>You don\'t see this image.</p></body></html>';
-*$smail = new SendMail();
-*$smail->SetRecipients($_SESSION['username']);
-*$smail->SetHtmlMesage($html);
-*$smail->SetImage('rumianek.jpg');
-*$smail->SetSubject('Lapiahally');
-*$smail->SendMesage();
--------------------------------------------------
-/gropu of images
-*$html = '<html><body><img src="rumianek.jpg"> <p>wlasnie skoncylem pisac klase do mailingu :).</p><br><img src="software-update-300x300.jpg"><br><p>another image</p></body></html>';
-*$imagegroup=array('software-update-300x300.jpg','rumianek.jpg',);
-*$smail = new SendMail();
-*$smail->SetRecipients($_SESSION['username']);
-*$smail->SetHtmlMesage($html);
-*$smail->SetGroupImage($imagegroup);
-*$smail->SetSubject('Lapiahally');
-$smail->SendMesage();
-*/
 require_once "Mail.php";
 require_once "Mail/mime.php";
 
