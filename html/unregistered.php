@@ -18,14 +18,14 @@
 <body>
 	<?php
 		include '../include/adduser.php';
-		include '../include/sqlconnect.php';
+		include 'sqlconnect.php';
 		include '../include/calendar.php';
 		include '../include/login.php';
 		include '../include/area.php';
-		include '../include/manuachosersdate.php';
+		include 'manuachosersdate.php';
 		include '../include/genkey.php';
 		include '../include/formnonregister.php';
-		include '../include/reservationregisteredu.php';
+		include 'reservationregisteredu.php';
 
 
 		//ini_set('display_errors',1);
