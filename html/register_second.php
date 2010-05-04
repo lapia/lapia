@@ -46,8 +46,9 @@
 			</div>
 		</div>
 	<div id="lewy_pasek">
-				<div id="ad">
-				</div>
+			<div id="ad">
+				<img src="images/lappia_baner.png" name="webcam" width="60" height="468">
+			</div>
 			</div>
 			<div id="srodek_pasek">
 			<div id="text_field_1">
