@@ -1,5 +1,5 @@
 <?php
-echo "<script src='include/submitform.js' type='text/javascript'></script>";
+echo "<script src='submitform.js' type='text/javascript'></script>";
 class ManuaChosersDate
 {
 	private $y;
@@ -90,7 +90,7 @@ class ManuaChosersDate
 			echo "<INPUT TYPE=hidden NAME=choserdate VALUE='send'>";
 			echo "</form>";
 
-			echo "<FORM METHOD='LINK' action='$phpfile'>";
+			echo "<form method='link' action='$phpfile'>";
 			//echo "<FORM METHOD='LINK' action='test.php'>";
 			if($test && !$this->disablebutton){
 				echo "<button type='submit' name='next_step' id='xx' value='true'>Go to reservation</button>";
@@ -99,7 +99,7 @@ class ManuaChosersDate
 				$_SESSION['reservation']=$reservation;
 			}
 			else echo "<button type='submit' disabled='disabled' name='next_step' value='false'>Go to reservation</button>";
-			echo "</FORM>";
+			echo "</form>";
 		/*
 		areaday
 		areamonth

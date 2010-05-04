@@ -1,10 +1,11 @@
-<?php session_start();
+<?php session_start();?>
+<?php
 //	if($_SESSION["logedin"] == 'false')  header('Location: http://localhost/Lapia/newuser.php');
 //	echo  '<br>logedin :'.$_SESSION["logedin"].'<br> newuser:'.$_SESSION['newuser'] .'<br>'; // potrzebne do przekierowania jeżeli chasło nieprawidłowe
+
 	$_SESSION['ShowRegisterForm']='0'; // set show nonregistred user form
 	if(isset($_SESSION['FIRST_OPEN_SITE'])) unset($_SESSION['FIRST_OPEN_SITE']);
 	$_SESSION['SQLSETTINGS']=array('host'=>'localhost','user'=>'root','password'=>'test1','dbname'=>'LHR');
-
 ?>
 
 <html>
@@ -28,6 +29,7 @@
 		include 'reservationregisteredu.php';
 
 
+		//error_reporting(E_ALL);
 		//ini_set('display_errors',1);
 	?>
 
