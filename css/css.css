@@ -49,6 +49,10 @@ div#lewy_pasek{
 	background-image:url(../images/a_06.png);
 }
 
+div#ad{
+	padding: 80px 20px 80px 20px;
+}
+
 div#srodek_pasek{
 	float: left;
 	width: 538px;
