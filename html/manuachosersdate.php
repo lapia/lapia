@@ -165,7 +165,7 @@ class ManuaChosersDate
 		$this->dbconnect->disocnnect();
 		if(mysql_num_rows($result))
 		{
-			if($this->debugmode) echo '<br>' .mysql_num_rows($result)."<br> startime $date_start_time  ".date("H:i j-m-Y",$date_start_time)."<br> endtime $date_finish_time " .date("H:i j-m-Y",$date_finish_time)."<br>";
+			//if($this->debugmode) echo '<br>' .mysql_num_rows($result)."<br> startime $date_start_time  ".date("H:i j-m-Y",$date_start_time)."<br> endtime $date_finish_time " .date("H:i j-m-Y",$date_finish_time)."<br>";
 			while($row=mysql_fetch_assoc($result))
 				if(!$this->CheckTime($row,$date_start_time,$date_finish_time)) { echo $this->infotab['busy_period'];$_POST['next_step']='incorect';return false;}
 		}
@@ -193,11 +193,11 @@ class ManuaChosersDate
 		$fd=substr($arr['Endingdate'],8,2);
 		$fy=substr($arr['Endingdate'],0,4);
 
-		if($this->debugmode)
-		{
-			echo "<br> finish time in datebase h: $fh m: $fmin d: $fd m: $fm y: $fy<br>";
-			echo "<br> start time in datebase h: $sh m: $smin d: $sd m: $fm y: $sy<br>";
-		}
+		//if($this->debugmode)
+		//{
+		//	echo "<br> finish time in datebase h: $fh m: $fmin d: $fd m: $fm y: $fy<br>";
+		//	echo "<br> start time in datebase h: $sh m: $smin d: $sd m: $fm y: $sy<br>";
+		//}
 		$start=mktime($sh,$smin,0,$sm,$sd,$sy);
 		$finish=mktime($fh,$fmin,0,$fm,$fd,$fy);
 
