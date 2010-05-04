@@ -80,7 +80,7 @@ $_SESSION['ShowRegisterForm']='0'; // set show nonregistred user form
 
 		<div id="lewy_pasek">
 			<div id="ad">
-				<img src="images/lappia_baner.png" name="webcam" width="60" height="468">
+				<img src="../images/lappia_baner.png" name="webcam" width="60" height="468">
 			</div>
 		</div>
 

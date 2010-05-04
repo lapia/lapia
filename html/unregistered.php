@@ -65,7 +65,7 @@
 
 		<div id="lewy_pasek">
 			<div id="ad">
-				<img src="images/lappia_baner.png" name="webcam" width="60" height="468">
+				<img src="../images/lappia_baner.png" name="webcam" width="60" height="468">
 			</div>
 		</div>
 
