@@ -91,7 +91,7 @@
 							else
 							{
 								?>
-								<form action="unregistered_user_info.php" onsubmit="return validate_form(this)" enctype="multipart/form-data" method="post">
+								<form class="field" action="unregistered_user_info.php" onsubmit="return validate_form(this)" enctype="multipart/form-data" method="post">
 
 								<p class="ckay">
 									<?php if(isset($_SESSION['already_err'])) {

@@ -1,4 +1,12 @@
 <?php  session_start(); ?>
+<?php
+//	if($_SESSION["logedin"] == 'false')  header('Location: http://localhost/Lapia/newuser.php');
+//	echo  '<br>logedin :'.$_SESSION["logedin"].'<br> newuser:'.$_SESSION['newuser'] .'<br>'; // potrzebne do przekierowania jeżeli chasło nieprawidłowe
+	$_SESSION['ShowRegisterForm']='0'; // set show nonregistred user form
+	if(isset($_SESSION['FIRST_OPEN_SITE'])) unset($_SESSION['FIRST_OPEN_SITE']);
+	$_SESSION['SQLSETTINGS']=array('host'=>'localhost','user'=>'root','password'=>'test1','dbname'=>'LHR');
+
+?>
 
 <html>
 <head>
@@ -10,6 +18,13 @@
 </head>
 
 <body>
+	<?php
+		include 'sqlconnect.php';
+
+		$dbconn = new SqlConnect("localhost","root","test1","LHR");
+
+		//ini_set('display_errors',1);
+	?>
 
 	<div id="tlo">
 	</div>
@@ -24,16 +39,13 @@
 				<br />
 					<div id="welcome_note">
 						<p class="welcome">Welcome
-							<?php $con = mysql_connect("localhost","root","test1");
-								if (!$con) {
-									die('Could not connect: ' . mysql_error());
-								}
-
-								mysql_select_db("LHR", $con);
+							<?php
 								$querystr = "SELECT Contactperson FROM registereduser WHERE RegisteredEmailaddress = '".$_SESSION['username']."'";
-								$result = mysql_query($querystr);
+								$resource=&$dbconn->getResource();
+								$result = mysql_query($querystr,$resource);
 								$row = mysql_fetch_assoc($result);
-								echo $row['Contactperson']
+								echo $row['Contactperson'];
+								mysql_free_result($result);
 							?>
 						</p>
 					</div>

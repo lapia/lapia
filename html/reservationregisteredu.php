@@ -11,7 +11,7 @@ class ReservationRuser
         {
 
         		$this->dbconn = new SqlConnect("localhost","root","test1","LHR");
-				$this->dbconn->connectToDb();
+				//$this->dbconn->connectToDb();
 
                 $this->ExplodeDate($_SESSION['areadate']);
                 $this->AddReservation();
@@ -59,7 +59,7 @@ class ReservationRuser
 				$this->dbconn->disocnnect();
 
 
-                $html = '<html><body><p>Thank you. Your reservation was successful. Please find your reservation code below.</p><p><h1>Reservation Code: '.$this->key.'</h1></p><p>If you recived this mail by mistake, please discard it. For further information contact aministrator@lappia.fi or visit www.lapiahali.fi.</p></body></html>';
+                $html = '<html><body><p>Thank you. Your reservation was successful. Please find your reservation code below.</p><p><h1>Reservation Code: '.$this->key.'</h1></p><p>If you recived this mail by mistake, please discard it. For further information contact lappihalli@gmail.com or visit www.lapiahali.fi.</p></body></html>';
                 $imagegroup=array('software-update-300x300.jpg','rumianek.jpg',);
                 $smail = new SendMail();
                 $smail->SetRecipients($_SESSION['username']);

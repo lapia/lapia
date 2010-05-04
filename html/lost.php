@@ -4,8 +4,12 @@ session_start();
 include 'sendmesage.php';
 include 'sqlconnect.php';
 
+	$_SESSION['ShowRegisterForm']='0'; // set show nonregistred user form
+	if(isset($_SESSION['FIRST_OPEN_SITE'])) unset($_SESSION['FIRST_OPEN_SITE']);
+	$_SESSION['SQLSETTINGS']=array('host'=>'localhost','user'=>'root','password'=>'test1','dbname'=>'LHR');
+
 $dbconn = new SqlConnect("localhost","root","test1","LHR");
-$dbconn->connectToDb();
+//$dbconn->connectToDb();
 $resource=&$dbconn->getResource();
 
 $sql="SELECT password FROM registereduser WHERE RegisteredEmailaddress = '".$_POST['username']."'";

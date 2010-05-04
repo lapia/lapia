@@ -151,6 +151,22 @@ div#middlearea p.kkay{
 	font-size: 12pt;
 	margin: 10px 0px 0px 0px;
 }
+div#middlearea fieldset.field{
+	text-align: center;
+	font-size: 12pt;
+    border: 2px dotted gray;
+    padding: 0px;
+	margin: 0px 0px 0px 0px;
+}
+
+div#middlearea form.field{
+    height: 291px;
+    width: 310px;
+	text-align: center;
+	font-size: 12pt;
+    padding: 0px;
+	margin: 0px 0px 0px 20px;
+}
 
 div#cancelarea{
 	width: 200px;

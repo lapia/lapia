@@ -41,7 +41,7 @@ class email
 								$query= "DELETE FROM LHR.Reservation WHERE idReservation ='".$pas."'";
 								mysql_query($query);
 
-								$html = '<html><body><p><h1>You\'re reservation has been canceled.</h1></p><p>If you have not authorised this cancellation, please contact the administrator@lapia.fi or visit www.lapia.fi.</p></body></html>';
+								$html = '<html><body><p><h1>You\'re reservation has been canceled.</h1></p><p>If you have not authorised this cancellation, please contact the lappihalli@gmail.com or visit www.lapia.fi.</p></body></html>';
 								$smail = new SendMail();
 								$smail->SetRecipients($_SESSION["emailemail"]);
 								$smail->SetHtmlMesage($html);

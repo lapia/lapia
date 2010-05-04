@@ -27,9 +27,9 @@
 		include './include/formnonregister.php';
 
 		$dbconn = new SqlConnect("localhost","root","test1","LHR");
-		$dbconn->connectToDb();
+		//$dbconn->connectToDb();
 
-		ini_set('display_errors',1);
+		//ini_set('display_errors',1);
 	?>
 
 	<div id="tlo">
@@ -80,10 +80,13 @@
 								$infotab['busy_period']="<br>time is busy<br>";
 								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br> Reservations must be made at least<br> 24 hours before letting the area<br>";
 
-								$rol=new ManuaChosersDate($_POST['date'],$infotab,24);
-								$rol->SetCalendar($cal);
-								$cal->sHowCalendar();
-							?>
+								$rol=new ManuaChosersDate($_POST['date'],$infotab,1,true);
+	                            $rol->SetCalendar($cal);
+	                            if(isset($_POST['choserdate'])) $cal->setBacklightDate($_SESSION['areadate']);
+	                            else if (isset($_GET['rt']) ) $cal->setBacklightDate($_SESSION['lastdate']);
+
+	                            $cal->sHowCalendar();
+	                        ?>
 						</div>
 						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
 							<p style="text-align:left; font-size: 14pt; padding-left: 60px; margin-bottom: 5px">Upcoming events:</p>

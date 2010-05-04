@@ -1,15 +1,15 @@
 <?php
-include_once 'include/sqlconnect.php';
+include_once 'sqlconnect.php';
 class Login
 {
 		private $dbconnect;
 		private $resource;
         public function Login()
         {
-			
+
         	$this->dbconnect= new SqlConnect();
         	$this->resource= &$this->dbconnect->getResource();
-        	
+
         	if(isset($_GET["logedout"]))
 	                if($_GET["logedout"]=="yes")
 	                {
@@ -17,7 +17,7 @@ class Login
 	                        unset($_SESSION['username']);
 	                        $_SESSION['userid']=0;
 	                }
-                
+
                 if(isset($_POST['inlogin'])){
                         if($this->cHackLogin() == true ){
                                 $p="";

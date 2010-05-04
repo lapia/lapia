@@ -2,8 +2,9 @@
 <?php
 //	if($_SESSION["logedin"] == 'false')  header('Location: http://localhost/Lapia/newuser.php');
 //	echo  '<br>logedin :'.$_SESSION["logedin"].'<br> newuser:'.$_SESSION['newuser'] .'<br>'; // potrzebne do przekierowania jeżeli chasło nieprawidłowe
-	$_SESSION['ShowRegisterForm']='-2'; // set show nonregistred user form
-
+	$_SESSION['ShowRegisterForm']='0'; // set show nonregistred user form
+	if(isset($_SESSION['FIRST_OPEN_SITE'])) unset($_SESSION['FIRST_OPEN_SITE']);
+	$_SESSION['SQLSETTINGS']=array('host'=>'localhost','user'=>'root','password'=>'test1','dbname'=>'LHR');
 ?>
 
 <html>
@@ -17,14 +18,14 @@
 <body>
 	<?php
 		include '../include/adduser.php';
-		include '../include/sqlconnect.php';
+		include 'sqlconnect.php';
 		include '../include/calendar.php';
 		include '../include/login.php';
 		include '../include/area.php';
-		include '../include/manuachosersdate.php';
+		include 'manuachosersdate.php';
 		include '../include/genkey.php';
 		include '../include/formnonregister.php';
-		include '../include/cancel1.php';
+		include 'cancel1.php';
 
 
 		//ini_set('display_errors',1);
@@ -79,9 +80,10 @@
 								$infotab['busy_period']="<br>time is busy<br>";
 								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br> Reservations must be made at least<br> 24 hours before letting the area<br>";
 
-								$rol = new ManuaChosersDate($_POST['date'],$infotab,24);
-								$rol->SetCalendar($cal);
-								if($_POST['choserdate']) $cal->setBacklightDate($_SESSION['areadate']);
+								$rol=new ManuaChosersDate($_POST['date'],$infotab,1,true);
+	                            $rol->SetCalendar($cal);
+	                            if(isset($_POST['choserdate'])) $cal->setBacklightDate($_SESSION['areadate']);
+	                            else if (isset($_GET['rt']) ) $cal->setBacklightDate($_SESSION['lastdate']);
 								$cal->sHowCalendar();
 							?>
 						</div>
@@ -136,7 +138,7 @@
 	</div>
 
 <?php if($_SESSION["logedin"] == 'false')
-echo "<script type='text/javascript'>document.location = 'http://localhost/~test/newuser.php'</script>"
+echo "<script type='text/javascript'>document.location = './newuser.php'</script>"
 ?>
 
 </body>

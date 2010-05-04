@@ -1,8 +1,13 @@
 <?php
 session_start();
+?>
+<?php
 if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 	header("location:../index.php");
 }
+$_SESSION['ShowRegisterForm']='0'; // set show nonregistred user form
+	if(isset($_SESSION['FIRST_OPEN_SITE'])) unset($_SESSION['FIRST_OPEN_SITE']);
+	$_SESSION['SQLSETTINGS']=array('host'=>'localhost','user'=>'root','password'=>'test1','dbname'=>'LHR');
 ?>
 
 <html>
@@ -16,7 +21,7 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 <body>
 	<?php
 		include '../include/adduser.php';
-		include '../include/sqlconnect.php';
+		include 'sqlconnect.php';
 		include '../include/calendar.php';
 		include '../include/login.php';
 		include '../include/area.php';
@@ -24,11 +29,7 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 		include '../include/genkey.php';
 		include '../include/formnonregister.php';
 
-		$_SESSION['ShowRegisterForm']='0'; // set show nonregistred user form
-		if(isset($_SESSION['FIRST_OPEN_SITE'])){
-			unset($_SESSION['FIRST_OPEN_SITE']);
-		}
-
+		$dbconn = new SqlConnect("localhost","root","test1","LHR");
 
 		//ini_set('display_errors',1);
 	?>
@@ -47,8 +48,7 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 					<div id="welcome_note">
 						<p class="welcome">Welcome
 							<?php
-								$dbconn = new SqlConnect("localhost","root","test1","LHR");
-								$dbconn->connectToDb();
+								//$dbconn->connectToDb();
 
 								$querystr = "SELECT Contactperson FROM registereduser WHERE RegisteredEmailaddress = '".$_SESSION['username']."'";
 								$resource=&$dbconn->getResource();
@@ -96,10 +96,12 @@ if(isset($_SESSION['username']) == false || empty($_SESSION['username'])){
 								$infotab['busy_period']="<br>time is busy<br>";
 								$infotab['past_time']="<br>Sorry, the reservation is not possible.<br> Reservations must be made at least<br> 24 hours before letting the area<br>";
 
-								$rol=new ManuaChosersDate($_POST['date'],$infotab,24);
-								$rol->SetCalendar($cal);
-								if($_POST['choserdate']) $cal->setBacklightDate($_SESSION['areadate']);
-								$cal->sHowCalendar();
+								$rol=new ManuaChosersDate($_POST['date'],$infotab,1,true);
+	                            $rol->SetCalendar($cal);
+	                            if(isset($_POST['choserdate'])) $cal->setBacklightDate($_SESSION['areadate']);
+	                            else if (isset($_GET['rt']) ) $cal->setBacklightDate($_SESSION['lastdate']);
+
+	                            $cal->sHowCalendar();
 							?>
 						</div>
 						<div id="middlearea" style="font-size: 10pt; text-align: centered;">

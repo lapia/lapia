@@ -1,31 +1,31 @@
 <?php
 //DA2010-03-21
-include_once 'include/sqlconnect.php';
+include_once 'sqlconnect.php';
 class UserRecord
 {
 	public $cperson;
 	public $area;
 	public $rstat;
 	public function UserRecord($cperson,$area,$rstat)
-	{	
+	{
 		$this->cperson=$cperson;
 		$this->area=$area;
 		if($rstat == NULL) $this->rsta=NULL;
 		$this->rstat=$rstat;
 	}
 }
-	
+
 	/*
 	 * pending 	 0
 	 * authorize 1
 	 * deny		 2
 	 */
-	
+
 	/*
 	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
 	*| area | Statingtime | Endingtime | Startingdate | Endingdate | cperson | idAdminuser | Reservecode |
 	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
-	*| A    | 08:00:00    | 18:00:00   | 2010-03-05   | 2010-03-05 | x       |        NULL | NULL        | 
+	*| A    | 08:00:00    | 18:00:00   | 2010-03-05   | 2010-03-05 | x       |        NULL | NULL        |
 	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
 	*/
 class DataTable
@@ -33,7 +33,7 @@ class DataTable
 	public  $areaA;
 	public  $areaB;
 	public  $areaAB;
-	
+
 	public function DataTable($result)
 	{
 		for($i=0;$i < 24;$i++) $this->areaA[$i]=NULL;
@@ -70,7 +70,7 @@ class DataTable
 		}
 	}
 }
-class Area 
+class Area
 {
 	private $adate;
 	private $acoll;
@@ -80,7 +80,7 @@ class Area
 	private $acolorreserved;
 	private $dbconnect;
 	private $resource;
-	
+
 	public function Area($date/*YYYY-MM-DD*/,$colorc1='c9cfc4',$colorc2c3='86c856',$colorreservednotchack='fbf963',$colorreserved='red')
 	{
 		$this->dbconnect= new SqlConnect();
@@ -89,10 +89,10 @@ class Area
 		$this->acolorc2c3=$colorc2c3;
 		$this->acolorreservednotchack=$colorreservednotchack;
 		$this->acolorreserved=$colorreserved;
-		
+
 		if(isset($_POST['changedate'])) $testvalue=$_POST['changedate'];
 		else $testvalue=false;
-		
+
 		if($_SESSION["area"]!='set')
 		{
 			$_SESSION["area"]='set';
@@ -100,7 +100,7 @@ class Area
 			$this->ShowArea();
 		}
 		else if($testvalue != 'next' && $testvalue != 'last'){
-				
+
 				$_SESSION["areadate"]=$this->adate=$date;
 				$this->ShowArea();
 		}else{
@@ -108,7 +108,7 @@ class Area
 			$this->ShowArea();
 		}
 	}
-	private function getReservationTable($sdate) 
+	private function getReservationTable($sdate)
 	{
 	$y=substr($sdate,0,4);
 		$m=substr($sdate,5,2);
@@ -122,24 +122,24 @@ class Area
 		//echo "<br> $query<br>";
 		$dtable= new DataTable($result);
 		$this->dbconnect->disocnnect();
-		return  $dtable;                		
+		return  $dtable;
 	}
-	
+
 	/*
 	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
 	*| area | Statingtime | Endingtime | Startingdate | Endingdate | cperson | idAdminuser | Reservecode |
 	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
-	*| A    | 08:00:00    | 18:00:00   | 2010-03-05   | 2010-03-05 | x       |        NULL | NULL        | 
+	*| A    | 08:00:00    | 18:00:00   | 2010-03-05   | 2010-03-05 | x       |        NULL | NULL        |
 	*+------+-------------+------------+--------------+------------+---------+-------------+-------------+
 	*/
 	public function ShowArea()
 	{
-		
+
 		$dtab= $this->getReservationTable($this->adate);
 		$mtable="<table>";
 		$mtable.= "<caption>".$this->adate.'</caption>'."\n";
         $mtable.="<tr><td></td><th>A</th><th>B</th></tr>";
-	 
+
 	   	for($i=0;$i <= 23;$i++)
         {
         	$mtable .= "<tr>\n";
@@ -178,23 +178,23 @@ class Area
                     	else $mtable.=" BGCOLOR='$this->acolorc2c3'>";
                     	$mtable.="</td>";
                     break;
-                }	
+                }
 	        }
             $mtable .= "</tr>\n";
 		}
         $mtable .= "</table>";
         echo $mtable;
-     }	
+     }
      public function ChangeColor($arrobject,$areaABobject,$i)
      {
      	$change=0;
-		if($arrobject != null)     	
+		if($arrobject != null)
 	     	foreach ($arrobject as $object)
 	     	{
 	     		$change=$object->rstat;
 	     		if($change == 1) break;
 	     	}
-		
+
 	     if(($areaABobject != null) && ($change != 1))
 	     {
 	     	foreach ($areaABobject as $object)
@@ -202,7 +202,7 @@ class Area
 	     		$change=$object->rstat;
 	     		if($change == 1) break;
 	     	}
-	     }	
+	     }
      		if(($change == 0) || ($change == 2)) return " BGCOLOR='$this->acolorreservednotchack'>";
      		else if( $change == 1) return " BGCOLOR='$this->acolorreserved'>";
      }
