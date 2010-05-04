@@ -18,9 +18,9 @@
 <body>
 	<?php
 		include '../include/adduser.php';
-		include 'sqlconnect.php';
+		//include 'sqlconnect.php';
 		include '../include/calendar.php';
-		include '../include/login.php';
+		include 'include/login.php';
 		include '../include/area.php';
 		include 'manuachosersdate.php';
 		include '../include/genkey.php';
