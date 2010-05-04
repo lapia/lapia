@@ -41,7 +41,7 @@ div.link
 	margin: 0 0 0 0;
 	margin-left: 20px;
 	width: 97%;
-	font-size: x-small;
+	font-size: 9pt;
 	font-weight: bold;
 	background-color: #daead0;
 }
