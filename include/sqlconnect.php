@@ -1,10 +1,10 @@
 <?php
 class SqlConnect {
-	
+
 	private $resource;
-	
-	public function  SqlConnect()
-	{			
+
+	public function SqlConnect()
+	{
 		$this->iNitComponents();
 	}
 	private function iNitComponents()

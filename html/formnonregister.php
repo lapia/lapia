@@ -1,5 +1,5 @@
 <?php
-include 'include/sendmesage.php';
+//include 'sendmesage.php';
 class FormNonRegister
 {
 	private $mail;

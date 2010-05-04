@@ -23,7 +23,7 @@
 		include '../include/calendar.php';
 		include '../include/login.php';
 		include '../include/area.php';
-		include '../include/manuachosersdate.php';
+		include 'manuachosersdate.php';
 		include '../include/genkey.php';
 		include 'reservationregisteredu.php';
 
