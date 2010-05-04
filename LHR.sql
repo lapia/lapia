@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.1
+-- version 3.3.2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 13, 2010 at 09:11 AM
--- Server version: 5.1.45
+-- Generation Time: May 04, 2010 at 09:45 AM
+-- Server version: 5.1.46
 -- PHP Version: 5.3.2
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
@@ -33,14 +33,15 @@ CREATE TABLE IF NOT EXISTS `adminusers` (
   `password` varchar(12) NOT NULL,
   `phone` varchar(12) NOT NULL,
   PRIMARY KEY (`idAdminuser`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `adminusers`
 --
 
 INSERT INTO `adminusers` (`idAdminuser`, `AdminEmailaddress`, `Address`, `Contactperson`, `password`, `phone`) VALUES
-(1, 'admin@o2.pl', 'lomza', 'Zdzisiek', '123', '321');
+(1, 'admin@o2.pl', 'lomza', 'Zdzisiek', '123', '321'),
+(2, 'administrator@lappia.fi', 'administrator@lappia.fi', 'administrator@lappia.fi', 'password', '123123123');
 
 -- --------------------------------------------------------
 
@@ -58,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `registereduser` (
   `phone` varchar(25) NOT NULL,
   `confirmationcode` varchar(25) NOT NULL,
   PRIMARY KEY (`idRegistereduser`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `registereduser`
@@ -69,12 +70,23 @@ INSERT INTO `registereduser` (`idRegistereduser`, `RegisteredEmailaddress`, `Add
 (2, 'x', 'x', 'x', 'x', 'x', 'x', ''),
 (3, 'a', 'a', 'a', 'a', 'a', 'a', ''),
 (4, 'wa', 'wa', 'wa', 'wa', 'wa', 'wa', ''),
-(8, 'boromil@gmail.com', 'none', 'mememe', 'boromil@gmai', 'qweqweqwe', '123123123', ''),
+(8, 'boromil@gmail.com', 'sdfrsdf', 'fghvch', 'boromil@gmai', 'qweqweqwe', '123123123', ''),
 (9, 'test@test.fi', 'test', 'test', 'test', 'testtest', '1234', ''),
 (10, 'abbeyola@yahoo.com', 'Sammonkatu4, B3 Kemi', 'Abbey', 'kingbios', 'kingstar', '445311318', ''),
 (11, 'ludomirc@gmail.com', 'home', 'home', 'home', 'beniamin', 'home', ''),
 (12, 'walecoolfm@yahoo.com', 'sammonkatu 4 c 1', 'Mr Thai Bui', 'kemi-tornio ', 'walenchy1939', '0443233475', ''),
-(13, 'valeloclan@hotmail.com', 'reservi', 'Mr Thai Bui', 'TEKU', 'ghana12', '256498745', '');
+(13, 'valeloclan@hotmail.com', 'Teku', 'Mr Elorm Damalie', 'teku', 'ghana12', '256498745', ''),
+(14, 'isaakay111@yahoo.com', 'hillevinkatu 37', 'Thai Bui', 'kingbios', 'kilowade', '0442099307', ''),
+(15, 'abbeygold101@yahoo.com', 'sammon 4', 'Abbey', 'Abbey int', '123456', '54689721', ''),
+(16, '', '', '', '', '', '', ''),
+(17, 'eloclan@yahoo.com', 'reser', 'mr thai', 'teku', 'finland', '987678', ''),
+(18, 'kayode_ogunlolu@yahoo.com', 'kemi city', 'benek', 'kemi tornoi ', 'commando', '000000', ''),
+(19, 'abbeygold101@hotmail.com', 'ksjsjio', 'Abbey', 'Abeey', '123456', '12525', ''),
+(20, 'elorm.damale@tokem.fi', 'Tema', 'Kwaku Damalie', 'school', 'allen12', '543762', ''),
+(21, 'kingbios2000@yahoo.co.uk', 'hjhkjjo', 'abey', 'ade', '123456', '11454564', ''),
+(22, 'boromil3@dasd.fi', 'kjhkjhkjh', 'Abbey', 'Abbey int', 'qwertyu', '12321321', ''),
+(23, 'fdsdas@dad.ds', 'sammon 4', 'kjhkjhkjh', 'rfwekjhk', 'qweqweqweqwe', '12321321', ''),
+(24, 'test@test.com', 'deletemeimmediately', 'test', 'justtesting', 'deleteme', '000', '');
 
 -- --------------------------------------------------------
 
@@ -94,78 +106,34 @@ CREATE TABLE IF NOT EXISTS `Reservation` (
   `idUnregistereduser` int(11) DEFAULT NULL,
   `idAdminuser` int(11) DEFAULT NULL,
   `TimeStemp` int(11) NOT NULL,
+  `Status` int(11) DEFAULT '0',
   PRIMARY KEY (`idReservation`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=92 ;
 
 --
 -- Dumping data for table `Reservation`
 --
 
-INSERT INTO `Reservation` (`idReservation`, `Reservecode`, `area`, `Statingtime`, `Endingtime`, `Startingdate`, `Endingdate`, `idRegistereduser`, `idUnregistereduser`, `idAdminuser`, `TimeStemp`) VALUES
-(4, NULL, 'A', '00:00:00', '01:00:00', '2010-03-09', '2010-03-09', NULL, 11, NULL, 1267707874),
-(3, NULL, 'A', '00:00:00', '01:00:00', '2010-03-09', '2010-03-09', 2, NULL, NULL, 1267697015),
-(5, NULL, 'A', '00:00:00', '01:00:00', '2010-03-08', '2010-03-08', 2, NULL, NULL, 1267708090),
-(6, NULL, 'A', '00:00:00', '01:00:00', '2010-03-10', '2010-03-10', 2, NULL, NULL, 1267708104),
-(7, NULL, 'A', '03:00:00', '06:00:00', '2010-03-10', '2010-03-10', NULL, 12, NULL, 1267708457),
-(8, NULL, 'A', '08:00:00', '18:00:00', '2010-03-05', '2010-03-05', 2, NULL, NULL, 1267708690),
-(9, NULL, 'A', '10:00:00', '22:00:00', '2010-03-08', '2010-03-08', NULL, 13, NULL, 1267708771),
-(10, NULL, 'A', '21:00:00', '01:00:00', '2010-03-01', '2010-03-02', NULL, 14, NULL, 1267718596),
-(11, NULL, 'A', '07:00:00', '11:00:00', '2010-03-01', '2010-03-01', NULL, 15, NULL, 1267718790),
-(12, NULL, 'A', '22:00:00', '02:00:00', '2010-03-04', '2010-03-05', NULL, 11, NULL, 1267718919),
-(13, NULL, 'A', '10:00:00', '12:00:00', '2010-03-05', '2010-03-05', NULL, 16, NULL, 1267718992),
-(14, NULL, 'A', '06:00:00', '08:00:00', '2010-03-05', '2010-03-05', 2, NULL, NULL, 1267719059),
-(15, NULL, 'B', '05:00:00', '08:00:00', '2010-03-05', '2010-03-05', NULL, 11, 1, 1267749122),
-(16, NULL, 'B', '04:00:00', '06:00:00', '2010-03-10', '2010-03-10', 2, NULL, NULL, 1267749198),
-(17, NULL, 'A', '10:00:00', '12:00:00', '2010-03-05', '2010-03-05', NULL, 17, NULL, 1267781975),
-(18, NULL, 'B', '04:00:00', '05:00:00', '1999-11-30', '1999-11-30', NULL, 12, NULL, 1267858890),
-(19, NULL, 'A', '03:00:00', '04:00:00', '2010-03-05', '2010-03-05', NULL, 11, NULL, 1267858943),
-(20, NULL, 'B', '04:00:00', '05:00:00', '2010-03-05', '2010-03-05', NULL, 12, 1, 1267859336),
-(21, NULL, 'B', '01:00:00', '02:00:00', '2010-03-05', '2010-03-05', NULL, 18, 1, 1267859576),
-(22, NULL, 'B', '03:00:00', '04:00:00', '2010-03-05', '2010-03-05', NULL, 14, NULL, 1267859618),
-(23, 'fff731', 'A', '00:00:00', '01:00:00', '2010-03-04', '2010-03-04', 8, NULL, NULL, 1269931436),
-(24, 'c22ace', 'A', '03:00:00', '08:00:00', '2010-03-17', '2010-03-17', 8, NULL, NULL, 1269931444),
-(25, '008143', 'A', '00:00:00', '01:00:00', '2010-03-30', '2010-03-30', 8, NULL, NULL, 1269931634),
-(26, 'fc505b', 'A', '00:00:00', '01:00:00', '2010-03-30', '2010-03-30', 8, NULL, NULL, 1269931639),
-(27, 'c3e8f9', 'A', '00:00:00', '01:00:00', '2010-03-30', '2010-03-30', 8, NULL, NULL, 1269931642),
-(28, 'fefcba', 'A', '00:00:00', '01:00:00', '2010-03-16', '2010-03-16', 8, NULL, NULL, 1269931644),
-(29, 'd2487a', 'A', '00:00:00', '01:00:00', '2010-03-30', '2010-03-30', 8, NULL, NULL, 1269931692),
-(30, 'f6f521', 'A', '00:00:00', '01:00:00', '2010-03-30', '2010-03-30', 8, NULL, NULL, 1269931697),
-(31, '5e6d10', 'A', '00:00:00', '01:00:00', '2010-04-10', '2010-04-10', 8, NULL, NULL, 1270805534),
-(32, '8879cc', 'A', '00:00:00', '01:00:00', '2010-04-10', '2010-04-10', 8, NULL, NULL, 1270805620),
-(33, 'ea67fd', 'A', '00:00:00', '01:00:00', '2010-04-14', '2010-04-14', 8, NULL, NULL, 1271137387);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `time_table`
---
-
-CREATE TABLE IF NOT EXISTS `time_table` (
-  `time_id` int(11) NOT NULL AUTO_INCREMENT,
-  `duration` time NOT NULL,
-  `date` date NOT NULL,
-  `time` varchar(40) NOT NULL,
-  `date2` varchar(40) NOT NULL,
-  `email` varchar(40) NOT NULL,
-  `name` varchar(40) NOT NULL,
-  `status` varchar(40) NOT NULL,
-  `authcode` varchar(40) NOT NULL,
-  PRIMARY KEY (`time_id`),
-  KEY `service_id` (`date2`),
-  KEY `staff_id` (`email`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
-
---
--- Dumping data for table `time_table`
---
-
-INSERT INTO `time_table` (`time_id`, `duration`, `date`, `time`, `date2`, `email`, `name`, `status`, `authcode`) VALUES
-(1, '30:00:00', '2009-10-14', '08:00', '13:00', 'kate@hotmail.com', 'kate', 'denied', 'sdf456'),
-(2, '00:03:00', '2009-10-11', '09:00', '13:00', 'zone@hotmail.com', 'zone', 'denied', 'wer489'),
-(3, '00:03:00', '2009-10-11', '09:00', '13:00', 'poll@yahoo.com', 'poll', 'denied', 'qwe153'),
-(4, '00:03:00', '2009-10-11', '09:00', '13:00', 'jone@yahoo.com', 'jone', 'pending', 'zxc444'),
-(5, '00:03:00', '2009-10-12', '09:00', '13:00', 'shala@yahoo.com', 'shala', 'denied', 'fgh153'),
-(6, '00:03:00', '2009-10-13', '09:00', '13:00', 'telisa', 'telisa', 'denied', 'wer777');
+INSERT INTO `Reservation` (`idReservation`, `Reservecode`, `area`, `Statingtime`, `Endingtime`, `Startingdate`, `Endingdate`, `idRegistereduser`, `idUnregistereduser`, `idAdminuser`, `TimeStemp`, `Status`) VALUES
+(91, 'e621b9', 'A', '00:00:00', '01:00:00', '2010-05-05', '2010-05-05', 8, NULL, NULL, 1272955052, 0),
+(89, '1e7255', 'A', '01:00:00', '18:00:00', '2010-05-18', '2010-05-18', 8, NULL, NULL, 1272614090, 1),
+(88, 'c5fb91', 'A', '01:00:00', '02:00:00', '2010-05-26', '2010-05-26', 8, NULL, NULL, 1272613821, 0),
+(90, '7990de', 'A', '01:00:00', '03:00:00', '2010-05-11', '2010-05-11', 8, NULL, NULL, 1272617699, 0),
+(85, 'f2a7d8', 'A', '06:00:00', '13:00:00', '2010-05-30', '2010-05-30', 14, NULL, NULL, 1272612998, 0),
+(82, 'ed922c', 'A', '01:00:00', '02:00:00', '2010-05-19', '2010-05-19', 8, NULL, NULL, 1272612362, 0),
+(81, '57cfee', 'B', '10:00:00', '16:00:00', '2010-05-08', '2010-05-08', 14, NULL, NULL, 1272612312, 2),
+(80, '57cfee', 'A', '10:00:00', '16:00:00', '2010-05-08', '2010-05-08', 14, NULL, NULL, 1272612312, 2),
+(79, '008001', 'B', '02:00:00', '17:00:00', '2010-05-14', '2010-05-14', 8, NULL, NULL, 1272612169, 0),
+(78, '008001', 'A', '02:00:00', '17:00:00', '2010-05-14', '2010-05-14', 8, NULL, NULL, 1272612169, 0),
+(77, 'c51ce5', 'B', '01:00:00', '20:00:00', '2010-05-13', '2010-05-13', 8, NULL, NULL, 1272612105, 0),
+(76, '5e8c94', 'A', '02:00:00', '15:00:00', '2010-05-13', '2010-05-13', 8, NULL, NULL, 1272611055, 0),
+(75, '46d568', 'A', '02:00:00', '15:00:00', '2010-05-13', '2010-05-13', 8, NULL, NULL, 1272610914, 0),
+(73, '774f1d', 'B', '01:00:00', '15:00:00', '2010-05-12', '2010-05-12', 8, NULL, NULL, 1272609970, 0),
+(72, '774f1d', 'A', '01:00:00', '15:00:00', '2010-05-12', '2010-05-12', 8, NULL, NULL, 1272609970, 0),
+(70, '0ff883', 'A', '02:00:00', '17:00:00', '2010-05-01', '2010-05-01', 8, NULL, NULL, 1272609933, 0),
+(67, 'ef3e5e', 'A', '06:00:00', '12:00:00', '2010-04-30', '2010-04-30', 13, NULL, NULL, 1272536377, 0),
+(74, 'b173a9', 'A', '02:00:00', '03:00:00', '2010-05-14', '2010-05-14', 8, NULL, NULL, 1272610812, 0),
+(69, '22d7fc', 'A', '14:00:00', '16:00:00', '2010-05-01', '2010-05-01', 15, NULL, NULL, 1272607641, 1);
 
 -- --------------------------------------------------------
 
@@ -181,23 +149,17 @@ CREATE TABLE IF NOT EXISTS `Unregistereduser` (
   `OrganizatioNname` varchar(25) NOT NULL,
   `phone` varchar(25) NOT NULL,
   PRIMARY KEY (`idUnregistereduser`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data for table `Unregistereduser`
 --
 
 INSERT INTO `Unregistereduser` (`idUnregistereduser`, `UnregisteredEmailaddress`, `Address`, `Contactperson`, `OrganizatioNname`, `phone`) VALUES
-(12, 'a', 'a', 'a', 'a', 'a'),
-(11, 'x', 'x', 'x', 'x', 'x'),
-(10, 'x1', 'x1', 'x1', 'x1', 'x1'),
-(9, 'lolek@o2.pl', 'warszawa', 'Lolek', 'home', '23232323'),
-(13, 'xa', 'xa', 'xa', 'xa', 'xa'),
-(14, 'q', 'q', 'q', 'q', 'q'),
-(15, 'aa', 'aa', 'aa', 'aa', 'aa'),
-(16, 'f', 'f', 'f', 'f', 'f'),
-(17, 'cos@mail', 'kemi', 'Zdzisiek', 'home', '123343434'),
-(18, 's', 's', 's', 's', 's');
+(33, 'kayode_ogunlolu@yahoo.com', 'silicon valley 18', 'Prof. kay', 'Google inc.', '0404042200'),
+(32, 'eloclan@yahoo.com', 'ghana', 'christoopher', 'teku', '2345678'),
+(31, 'kurisu@o2.pl', 'kjhkjhkjh', 'kjhkjhkjh', 'rfwekjhk', '12321321'),
+(30, 'boromil@gmail.com', 'kjhkjhkjh', 'kjhkjhkjh', 'rfwekjhk', '12321321');
 
 -- --------------------------------------------------------
 
@@ -216,3 +178,7 @@ CREATE TABLE IF NOT EXISTS `UpcomingEvents` (
 -- Dumping data for table `UpcomingEvents`
 --
 
+INSERT INTO `UpcomingEvents` (`idUpcomingEvents`, `Title`, `Content`) VALUES
+(0, '2010.05.06', 'Kemi - Tornio'),
+(1, '2010.08.07', 'Tornio - Rovaniemi'),
+(2, '2010.08.15', 'Kemi - Helsinki');
