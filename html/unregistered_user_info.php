@@ -4,6 +4,8 @@ session_start();
 <?php
 include 'sqlconnect.php';
 
+//ini_set('display_errors',1);
+
 if (isset ($_POST['register'])){
 	$Email = $_POST['email'];
 	$Address = $_POST['Address'];
@@ -13,7 +15,6 @@ if (isset ($_POST['register'])){
 	$update_user = $_POST['email'];
 
 	$dbconn = new SqlConnect("localhost","root","test1","LHR");
-	$dbconn->connectToDb();
 	$resource=&$dbconn->getResource();
 
 	$sql = "SELECT* FROM Unregistereduser WHERE UnregisteredEmailaddress = '".$Email."' ";

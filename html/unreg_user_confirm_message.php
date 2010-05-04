@@ -17,14 +17,15 @@
 
 <body>
 	<?php
-		include '../include/sqlconnect.php';
+		include '../include/adduser.php';
+		include 'sqlconnect.php';
 		include '../include/calendar.php';
 		include '../include/login.php';
-		include	'../include/area.php';
-		include '../include/manuachosersdate.php';
+		include '../include/area.php';
+		include 'manuachosersdate.php';
 		include '../include/genkey.php';
 		include '../include/formnonregister.php';
-		include '../include/reservationregisteredu.php';
+		include 'reservationregisteredu.php';
 
 
 		//ini_set('display_errors',1);
@@ -192,8 +193,8 @@
 
 	</div>
 
-<?php if($_SESSION["logedin"] == 'false')
-echo "<script type='text/javascript'>document.location = 'http://localhost/~test/newuser.php'</script>"
+<?php //if($_SESSION["logedin"] == 'false')
+//echo "<script type='text/javascript'>document.location = 'http://localhost/~test/newuser.php'</script>"
 ?>
 
 </body>

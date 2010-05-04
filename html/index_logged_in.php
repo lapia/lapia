@@ -106,9 +106,9 @@ $_SESSION['ShowRegisterForm']='0'; // set show nonregistred user form
 						</div>
 						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
 							<?php
-								//$phpfile = "reg_user_confirm_message.php";
+								$phpfile = "reg_user_confirm_message.php";
 
-								$rol->ShowForm('reg_user_confirm_message.php');
+								$rol->ShowForm($phpfile);
 							?>
 						</div>
 					</div>

@@ -90,19 +90,16 @@
 						<div id="middlearea" style="font-size: 10pt; text-align: centered;">
 							<?php
 								$phpfile = "unreg_user_confirm_message.php";
-
 								$rol->ShowForm($phpfile);
 							?>
 						</div>
 					</div>
 
 					<div id="colorimage_container">
-						<div id="colorimage">
+						<div id="colorimage" style="font-size: 10pt;">
 							<?php
 								$area=new Area($_POST['date']);
-
 								//echo "<br>check:" .$_POST['next_step'];
-
 							?>
 						</div>
 					</div>
@@ -140,10 +137,5 @@
 		</div>
 
 	</div>
-
-<?php if($_SESSION["logedin"] == 'false')
-echo "<script type='text/javascript'>document.location = 'http://localhost/~test/newuser.php'</script>"
-?>
-
 </body>
 </html>
