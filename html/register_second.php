@@ -2,8 +2,10 @@
 <?php
 //	if($_SESSION["logedin"] == 'false')  header('Location: http://localhost/Lapia/newuser.php');
 //	echo  '<br>logedin :'.$_SESSION["logedin"].'<br> newuser:'.$_SESSION['newuser'] .'<br>'; // potrzebne do przekierowania jeżeli chasło nieprawidłowe
-	$_SESSION['ShowRegisterForm']='-2'; // set show nonregistred user form
 
+	$_SESSION['ShowRegisterForm']='0'; // set show nonregistred user form
+	if(isset($_SESSION['FIRST_OPEN_SITE'])) unset($_SESSION['FIRST_OPEN_SITE']);
+	$_SESSION['SQLSETTINGS']=array('host'=>'localhost','user'=>'root','password'=>'test1','dbname'=>'LHR');
 ?>
 
 <html>
@@ -11,10 +13,10 @@
 	<title>Lappia Halli - Registration</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
-	<link rel="stylesheet" href="css/css.css" type="text/css">
-	<script type="text/javascript" src="cameraView.js"></script>
+	<link rel="stylesheet" href="../css/css.css" type="text/css">
+	<script type="text/javascript" src="form_validation.js"></script>
 </head>
-<body onLoad="cameraView()">
+<body>
 
 	<div id="tlo">
 	</div>
@@ -118,11 +120,30 @@
 
 		<div id="prawy_pasek">
 			<div id="webcams">
+				<script type="text/javascript" language="JavaScript">
+					newImage = new Image();
+
+					function LoadNewImage() {
+						var unique = new Date();
+						document.images.webcam.src = newImage.src;
+						newImage.src = "images/1265849610942_20.jpg?time=" + unique.getTime();
+					}
+
+					function InitialImage() {
+						var unique = new Date();
+						newImage.onload = LoadNewImage;
+						newImage.src = "images/1265849610942_20.jpg?time=" + unique.getTime();
+						document.images.webcam.onload="";
+					}
+				</script>
+
 				<div id="webcam1">
-					<img src="images/1265849610942_20.png" name="webcam1" id="camera1" width="300" height="280">
+					<!--<h3>A</h3>-->
+					<img src="../images/1265849610942_20.jpg" name="webcam" width="300" height="280">
 				</div>
 				<div id="webcam2">
-					<img src="images/rect2888.png" name="webcam2" id="camera2" width="300" height="280">
+					<!--<h3>A</h3>-->
+					<img src="../images/1265849610942_20.jpg" name="webcam" width="300" height="280">
 				</div>
 			</div>
 		</div>

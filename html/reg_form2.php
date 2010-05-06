@@ -5,7 +5,7 @@ session_start();
 include 'sqlconnect.php';
 
 $dbconn = new SqlConnect("localhost","root","test1","LHR");
-$dbconn->connectToDb();
+//$dbconn->connectToDb();
 $resource=&$dbconn->getResource();
 
 if (isset ($_POST['register'])){
