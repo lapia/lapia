@@ -11,10 +11,10 @@
 	<title>Lappia Halli - About Us</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="generator" content="Geany 0.18" />
-	<link rel="stylesheet" href="../css/css.css" type="text/css">
+	<link rel="stylesheet" href="css/css.css" type="text/css">
+	<script type="text/javascript" src="cameraView.js"></script>
 </head>
-
-<body>
+<body onLoad="cameraView()">
 	<?php
 		include '../include/ad.php';
 		include '../include/adduser.php';
@@ -90,30 +90,11 @@
 
 		<div id="prawy_pasek">
 			<div id="webcams">
-				<script type="text/javascript" language="JavaScript">
-					newImage = new Image();
-
-					function LoadNewImage() {
-						var unique = new Date();
-						document.images.webcam.src = newImage.src;
-						newImage.src = "../images/1265849610942_20.jpg?time=" + unique.getTime();
-					}
-
-					function InitialImage() {
-						var unique = new Date();
-						newImage.onload = LoadNewImage;
-						newImage.src = "../images/1265849610942_20.jpg?time=" + unique.getTime();
-						document.images.webcam.onload="";
-					}
-				</script>
-
 				<div id="webcam1">
-					<!--<h3>A</h3>-->
-					<img src="../images/1265849610942_20.jpg" name="webcam" width="300" height="280">
+					<img src="images/1265849610942_20.png" name="webcam1" id="camera1" width="300" height="280">
 				</div>
 				<div id="webcam2">
-					<!--<h3>A</h3>-->
-					<img src="../images/1265849610942_20.jpg" name="webcam" width="300" height="280">
+					<img src="images/rect2888.png" name="webcam2" id="camera2" width="300" height="280">
 				</div>
 			</div>
 		</div>
