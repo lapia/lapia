@@ -58,6 +58,7 @@
 				<a href="disclamer.php">Disclaimer</a>
 				<a href="privacypolicy.php">Privacy Policy</a>
 				<a href="help.php">Help</a>
+				<a href="contributors.php">Contributors</a>
 			</div>
 		</div>
 

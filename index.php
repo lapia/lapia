@@ -60,6 +60,7 @@
 				<a href="html/faq.php">FAQ</a>
 				<a href="html/privacypolicy.php">Privacy Policy</a>
 				<a href="html/help.php">Help</a>
+				<a href="html/contributors.php">Contributors</a>
 			</div>
 		</div>
 
